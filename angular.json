@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test-app": {
+    "wedding-ui": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/test-app",
+            "outputPath": "dist/wedding-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,15 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/materialize-css/dist/css/materialize.css",
-              "./node_modules/angular-calendar/css/angular-calendar.css",
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/materialize-css/dist/css/materialize.css"
             ],
             "scripts": [
-            "./node_modules/jquery/dist/jquery.js",
-            "./node_modules/hammerjs/hammer.js",
-            "./node_modules/materialize-css/dist/js/materialize.js",
-			"./node_modules/jspdf/dist/jspdf.min.js" 
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/hammerjs/hammer.js",
+              "./node_modules/materialize-css/dist/js/materialize.js"
             ]
           },
           "configurations": {
@@ -57,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "test-app:build"
+            "browserTarget": "wedding-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "test-app:build:production"
+              "browserTarget": "wedding-ui:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "test-app:build"
+            "browserTarget": "wedding-ui:build"
           }
         },
         "test": {
@@ -102,7 +100,7 @@
         }
       }
     },
-    "test-app-e2e": {
+    "wedding-ui-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -110,11 +108,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "test-app:serve"
+            "devServerTarget": "wedding-ui:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "test-app:serve:production"
+              "devServerTarget": "wedding-ui:serve:production"
             }
           }
         },
@@ -130,5 +128,5 @@
       }
     }
   },
-  "defaultProject": "test-app"
+  "defaultProject": "wedding-ui"
 }
