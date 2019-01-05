@@ -1,0 +1,244 @@
+/* You can add global styles to this file, and also import other style files */
+.container-admin-grid {
+    float:left;
+    margin-top: 4px;
+    margin-left:4px;
+    max-width: 1280px;
+    width: 80%;
+    padding:5px;
+    border-radius:5px;
+}
+
+.rounded-border{
+    border: 1px solid #e3f2fd  ;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top:10px;
+}
+
+.border-radius-ticketInfo{
+  border-radius: 5px;
+
+}
+
+.rounded-border-dark{
+  border: 2px solid #bdbdbd  ;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top:10px;
+}
+
+.border-radius-5{
+	border-radius:5px;
+}
+.cal-day-view .cal-time {
+    font-weight: bold;
+    padding-top: 5px;
+    width: 70px;
+    text-align: center;
+    font-size:10px; 
+}
+.deletetask{
+  position: absolute;
+              right: 0px;
+              color: red;
+              padding-right: 40px;
+              opacity: 0.5;
+             
+  transition: 0.3s;
+}
+
+.deletetask:hover {opacity: 1;
+  cursor: pointer;}
+
+.container-dash-top {
+	float:left;
+	margin-top:4px;
+	margin-left:4px;
+	max-width:1280px;
+	width:100%;
+	padding:5px;
+	background:linear-gradient(to right,#bbdefb,#e3f2fd)
+	
+}
+
+
+.nav-wrapper-dashboard{
+	background: linear-gradient(to right,#006064,#424242);
+}
+
+.view-tickets-nav{
+	background-color:#fafafa;
+}
+
+.row .col.offset-m2 {
+  margin-left: 22.6666666667%;
+}
+
+
+
+
+.container-assign-ticket{
+    margin:auto;
+    border-color:#424242;
+    border-radius: 3px;
+    width: 50%;
+    padding:5px;
+    height:100%;
+    background-color:white;
+}
+
+html, body, #assign-window {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+ 
+
+.font-color {
+   color:white;
+}
+
+.black-font-color {
+  color:black;
+}
+
+.rcorners-teal {
+    border-radius: 15px;
+    background: #009688;
+    color:white;
+    padding: 5px; 
+    width: 120px;
+    height: 30px; 
+    text-align:center;
+}
+
+.rcorners-blue {
+    border-radius: 15px;
+    background: #01579b;
+    color:white;
+    padding: 5px; 
+    width: 120px;
+    height: 30px; 
+    text-align:center;
+}
+
+.rcorners-red {
+    border-radius: 15px;
+    background: #e53935;
+    color:white;
+    padding: 5px; 
+    width: 120px;
+    height: 30px; 
+    text-align:center;
+}
+
+.actionbtn {
+    display: inline-block;
+    border-radius: 15px;
+    background-color: #4caf50;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 6px;
+    width: 80px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    height: 30px; 
+  }
+
+  .actionbtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .actionbtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .actionbtn:hover span {
+    padding-right: 15px;
+  }
+
+  .actionbtn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  
+  
+.actionbtnRed {
+    display: inline-block;
+    border-radius: 15px;
+    background-color: #4caf50;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 6px;
+    width: 80px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    height: 30px; 
+  }
+
+  .actionbtnRed span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .actionbtnRed span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .actionbtnRed:hover span {
+    padding-right: 15px;
+  }
+
+  .actionbtnRed:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  
+  
+  .card-title-custom {
+  font-size :12px;
+  font-weight:300;
+  }
+  
+  .w3-ligh-grey,.w3-hover-light-grey:hover,.w3-light-grey,.w3-hover-light-grey:hover
+  {
+  color:#000!important;
+  background-color:#f1f1f1!important
+  }
+  
+  .w3-round-xlarge{border-radius:12px}
+  
+  .w3-container,.wr-panel{padding:0.01em 12px}
+  .w3-panel{margin-top:12px;margin-bottom:12px}
+  .w3-blue,.w3-hover-blue:hover{color:#fff!important;background-color:#2196F3!important}
+
+  .reset{
+    margin-left:20px
+  }
+
+
+  .mybutton{
+    margin-left:20px
+  }

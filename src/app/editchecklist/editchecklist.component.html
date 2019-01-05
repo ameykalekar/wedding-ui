@@ -1,0 +1,67 @@
+<div style="color:grey;border-bottom:solid grey">
+  <h4>Create Checklist</h4>
+</div>
+
+<div style="margin: 20px">
+
+  <div class="row">
+
+    <div class="col s6 z-depth-1" style="padding:10px" id="panell">
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="card-panel" *ngIf="selectCheckList?.length > 0 " >
+          <blockquote>
+              To Edit Checklist ,Please select new checklist from dropdown.
+             </blockquote>
+        <div class="input-field" >
+          <select name="singleSelect" formControlName="checklistid" name="selectedOption"
+           materialize="material_select" [materializeSelectOptions]="selectOptions" (change)="getTasks(form.value.checklistid)"
+            >
+            <option value="" disabled selected>Select New Checklist</option>
+            <option *ngFor="let option of selectCheckList" [value]="option.value">{{option.name}}</option>
+          </select>
+     
+        </div>
+
+        <div class="row" *ngIf="taskList?.length > 0">
+            <ul class="collection with-header " >
+              <li class="collection-header green darken-1"><h4>Task Names</h4></li>
+              <li *ngFor="let item of taskList" class="collection-item">{{item.name}}</li>
+              
+            </ul>
+       </div>
+      </div>
+      <div class="row" *ngIf="numberoftasks?.length > 0">
+          <ul class="collection with-header " >
+            <li class="collection-header green darken-1" ><h4 >New Task Names</h4></li>
+            <li  *ngFor="let task of numberoftasks ;let i = index" class="collection-item "><span> 
+              {{task}}</span> <a><i class="small material-icons deletetask  " (click)="deletetask(i)" >delete</i></a></li> 
+            
+          </ul>
+     </div>
+       
+        <div class="row" *ngIf="form.value.checklistid">
+          <div class="col s10">
+            <div class="input-field" id="usernamediv">
+              <input type="text" id="username" class="validate" formControlName="task">
+              <label for="username">  Task Name </label>
+            </div>
+          </div>
+          <div class="col s2">
+            <a class="btn-floating btn-small  green" style="margin-top: 20px" (click)="addtask()"><i class="material-icons">add</i></a>
+
+          </div>
+        </div>
+
+
+
+        <button class="waves-effect waves-light btn " id="loginbtn" [disabled]="!form.valid">Edit Checklist</button>
+        <button class="waves-effect waves-light btn reset " id="reset" (click)="reset()">Reset</button>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

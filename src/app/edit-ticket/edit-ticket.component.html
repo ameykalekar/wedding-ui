@@ -1,0 +1,412 @@
+<div style="color:grey;border-bottom:solid grey">
+  <h4>Ticket :: {{ticketId}}</h4>
+</div>
+
+<div class="row" style="margin-top:10px;">
+  <div class="col s12" style="margin-bottom:30px">
+    <ul class="tabs" materialize="tabs">
+      <li class="tab col s3"><a class="active" href="#information">Information</a></li>
+      <li class="tab col s3"><a href="#products">Products</a></li>
+      <li class="tab col s3"><a href="#estimate">Estimate</a></li>
+      <div class="indicator teal" style="z-index:1"></div>
+    </ul>
+  </div>
+
+  <div id="information" class="col s12">
+    <div class="row">
+      <div class="col s4">
+        <div class="blue lighten-4 ">
+          <h6 style="padding:10px">Status : {{ticketinfo.ticket.status}} </h6>
+        </div>
+
+
+        <div class="blue-grey lighten-5 ">
+          <div class="blue lighten-4 ">
+            <h6 style="padding:10px">Problem Description</h6>
+          </div>
+          <div style="padding:10px">
+            {{ticketinfo.ticket.description}}
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div class="col s4">
+        <div class="blue lighten-4">
+          <h6 style="padding:10px">Raised By : {{ticketinfo.ticket.createdBy}} </h6>
+        </div>
+
+        <div class="blue lighten-4">
+          <h6 style="padding:10px">Assigned To : {{ticketinfo.ticket.assignedTo}} </h6>
+        </div>
+
+        <div class="blue lighten-4">
+          <h6 style="padding:10px">Created On : {{getFormattedCreatedAt()}} </h6>
+        </div>
+
+      </div>
+
+      <div class="col s4">
+        <div class="blue-grey lighten-5 ">
+          <div class="blue lighten-4 ">
+            <h6 style="padding:10px">Visit Time</h6>
+          </div>
+          <div style="padding:10px">
+            {{getDisplayDateTimeForSchedule()}}
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="products" class="col s10">
+
+
+    <ul materialize="collapsible" class="collapsible popout" data-collapsible="expandable">
+      <li *ngFor="let item of ticketinfo.productInfos">
+        <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>{{item.product.productName}} </div>
+        <div class="collapsible-body">
+
+
+          <ul materialize="collapsible" class="collapsible popout" data-collapsible="expandable">
+            <li>
+              <div class="collapsible-header"><i class="material-icons">assignment</i>Checklist > {{item.checkList.checkListName}}
+                <span style="margin-left: 50px"><a class="waves-effect waves-light btn" (click)="editChecklist()">Edit</a></span></div>
+
+              <!-- start of checklist div-->
+
+              <div style="margin:20px">
+                <table>
+                  <thead>
+                    <tr>
+                      <th *ngIf="enableEditChecklist==false">
+                        Status
+                      </th>
+                      <th *ngIf="enableEditChecklist">
+                        Action Item
+                      </th>
+                      <th>
+                        Task
+                      </th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let task of item.checkList.tasks">
+                      <td *ngIf="enableEditChecklist==false">
+                        <div *ngIf="getTaskStatus(task.status)==false">
+                          <div><i class="material-icons" style="color:#ff1744">clear</i></div>
+                        </div>
+                        <div *ngIf="getTaskStatus(task.status)==true">
+                          <div><i class="material-icons" style="color:#004d40">done</i></div>
+
+                        </div>
+                      </td>
+                      <td *ngIf="enableEditChecklist">
+                        <span>
+                          <label>
+                            <input type="checkbox" id="{{task.id+item.barcodeId}}" [checked]="task.status" [(ngModel)]="task.status" />                            <label
+                              for="{{task.id+item.barcodeId}}">{{task.desc}}</label>
+                            <span></span>
+                          </label>
+                        </span>
+
+
+                      </td>
+
+                      <td>
+                        {{task.desc}}
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+                <a *ngIf="enableEditChecklist" style="margin:10px" class="  green darken-1 waves-effect waves-light btn" (click)="confirmTaskChecklist()">Confirm</a>
+              </div>
+              <!-- end of checklist div-->
+            </li>
+
+          </ul>
+          <!--checklist collapsible panel end-->
+
+
+        </div>
+      </li>
+    </ul>
+
+    <div [hidden]="showProductPanel==false" class="card-panel" style="margin:20px">
+      <div class="row">
+
+        <div class="input-field col s2">
+          <input id="barcodeid" type="text" class="barcodeid" data-length="10" [(ngModel)]="barcodeid">
+          <label for="barcodeid">Barcode ID</label>
+        </div>
+
+        <div class="col s2" style="margin-top:15px">
+          <button class="waves-effect waves-light btn" (click)="onSubmit()">Search Product</button>
+        </div>
+        <!-- <button class="waves-effect waves-light btn reset  " id="reset" (click)="reset()">Reset</button> -->
+      </div>
+
+
+
+      <div *ngIf="selectedproduct">
+        <div class="row">
+          <div class="col s10">
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Brand</th>
+                  <th>Type</th>
+                  <th>CompanyId</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{selectedproduct.productName}}</td>
+                  <td>{{selectedproduct.category}}</td>
+                  <td>{{selectedproduct.productBrand}}</td>
+                  <td>{{selectedproduct.productType}}</td>
+                  <td>{{selectedproduct.companyid}}</td>
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="waves-effect waves-light btn" style="margin-top:10px" id="confirm" (click)="confirm()">Confirm</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-left:20px">
+      <a class="btn-floating btn-large waves-effect waves-light red" (click)="addProduct()"><i class="material-icons">add</i></a>
+    </div>
+  </div>
+
+  <div id="estimate" class="col s10">
+    <div *ngIf="ticketinfo!=undefined">
+      <div *ngFor="let item of ticketinfo.productInfos">
+        <app-estimate [productid]="item.product.id" [barcodeid]="item.barcodeId" [productname]="item.product.productName" (valueChange)='addToEstimate($event)'></app-estimate>
+      </div>
+      <div *ngIf="enablePartSelection" style="margin-left:20px">
+        <a class="btn-floating btn-small waves-effect waves-light green small" (click)="addPartForProduct()"><i class="material-icons">add</i></a>
+      </div>
+      <div *ngIf="enablePartSelection==false">
+          <div class="row">
+              <div class="input-field col s6">
+                <input id="barcodeid" type="text" class="barcodeid" data-length="10" [(ngModel)]="barcodeid">
+                <label for="barcodeid">Barcode ID</label>
+              </div>
+            </div>
+            <button class="waves-effect waves-light btn reset " id="search" (click)="onSubmit()">Search Product</button>      
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+<ul [hidden]="true" materialize="collapsible" class="collapsible" data-collapsible="accordion">
+
+  <li>
+    <div class="collapsible-header"><i class="material-icons">details</i>Information</div>
+    <div class="collapsible-body" style="padding:10px">
+      <div class="row " style="margin: 5px">
+
+        <div class="col s10">
+
+          <div class="container-ticket">
+            <div class="col s4">
+              <div class="blue lighten-4 border-radius-ticketInfo">
+                <h6 style="padding:10px">Status : {{ticketinfo.ticket.status}} </h6>
+              </div>
+
+
+              <div class="blue-grey lighten-5 border-radius-ticketInfo">
+                <div class="blue lighten-4 border-radius-ticketInfo">
+                  <h6 style="padding:10px">Problem Description</h6>
+                </div>
+                <div style="padding:10px">
+                  {{ticketinfo.ticket.description}}
+                </div>
+
+              </div>
+
+
+            </div>
+
+            <div class="col s4">
+              <div class="blue lighten-4 border-radius-ticketInfo">
+                <h6 style="padding:10px">Raised By : {{ticketinfo.ticket.createdBy}} </h6>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- Product details -->
+  <li>
+    <div class="collapsible-header"><i class="material-icons">details</i>Materials</div>
+    <div class="collapsible-body">
+      <div class="row">
+
+        <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+
+
+          <li>
+            <div class="collapsible-header"><i class="material-icons">expand_more</i>Products</div>
+            <div class="collapsible-body" style="padding:10px">
+              <div *ngFor="let item of ticketinfo.productInfos">
+                <div class="row">
+                  <div class="col s8 ">
+
+                    <div class="blue-grey lighten-5 border-radius-ticketInfo">
+                      <div class="blue lighten-4 border-radius-ticketInfo">
+                        <h6 style="padding:10px">{{item.product.productName}} </h6>
+                      </div>
+
+                      <div style="padding:10px">
+                        <h6 style="padding:10px">Checklist :{{item.checkList.checkListName}}</h6>
+                        <a materialize="tooltip" class="btn tooltipped" data-position="bottom" data-delay="50" html="<p>Thisi is html tooltip</p>">Checklist
+                          :{{item.checkList.checkListName}}
+                        </a>
+
+                        <a class="waves-effect waves-light btn modal-trigger" (click)="openModal()">Modal</a>
+
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+                          <div class="modal-content">
+                            <div *ngFor="let task of item.checkList.tasks">
+                              <div>
+                                <div *ngIf="getTaskStatus(task.status)==false">
+                                  <div class="blue-grey lighten-5 border-radius-ticketInfo">{{task.desc}}</div>
+                                </div>
+                                <div *ngIf="getTaskStatus(task.status)==true">
+                                  true
+                                </div>
+
+
+                              </div>
+
+                              <p>
+                                <input type="checkbox" id="{{task.id+item.barcodeId}}" [checked]="task.status" [(ngModel)]="task.status" />                                <label
+                                  for="{{task.id+item.barcodeId}}">{{task.desc}}</label>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <a class="waves-effect waves-green btn-flat" (click)="closeModal()">Close</a>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+
+        <div *ngIf="selectedproduct" class="row">
+
+          <span>Product Name:</span> {{selectedproduct.productName}}
+
+          <button class="waves-effect waves-light btn  " id="confirm" (click)="confirm()">Confirm</button>
+        </div>
+
+        <div *ngIf="ticketinfo!=undefined">
+          <div *ngFor="let item of ticketinfo.productInfos">
+
+            <h4>Product Name : {{item.product.productName}}</h4>
+            <h4>Checklist Name :{{item.checkList.checkListName}}</h4>
+
+
+            <br>
+            <h4>
+              Tasks
+            </h4>
+            <div *ngFor="let task of item.checkList.tasks">
+              {{task.status}}
+              <p>
+                <input type="checkbox" id="{{task.id+item.barcodeId}}" [checked]="task.status" [(ngModel)]="task.status" />                <label
+                  for="{{task.id+item.barcodeId}}">{{task.desc}}</label>
+              </p>
+            </div>
+
+            <div class="row" style="margin:50px ;padding: 20px">
+
+              <div class="row">
+                <h1>Estimate</h1>
+                <app-estimate [productid]="item.product.id" [barcodeid]="item.barcodeId" (valueChange)='addToEstimate($event)'></app-estimate>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- last -->
+  <li>
+    <div class="collapsible-header"><i class="material-icons">details</i>Third</div>
+    <div class="collapsible-body">
+      <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+  </li>
+</ul>
+
+
+
+<div [hidden]="true" class="row" style="margin: 30px">
+
+  <div class="row">
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="barcodeid" type="text" class="barcodeid" data-length="10" [(ngModel)]="barcodeid">
+        <label for="barcodeid">Barcode ID</label>
+      </div>
+    </div>
+    <button class="waves-effect waves-light btn reset " id="search" (click)="onSubmit()">Search Product</button>
+    <button class="waves-effect waves-light btn reset  " id="reset" (click)="reset()">Reset</button>
+
+  </div>
+
+
+
+  <div>
+    <button class="waves-effect waves-light btn " id="confirm" (click)="saveticketinfo()">Save Ticket</button>
+    <button class="waves-effect waves-light btn reset " id="mybutton" (click)="submitticket()">Submit Ticket</button>
+  </div>
+
+
+  <div>
+    <app-comment [ticketid]="ticketId"></app-comment>
+
+  </div>
+</div>

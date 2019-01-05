@@ -1,0 +1,42 @@
+<div class="container">
+
+	<div class="row">
+
+		<div class="col s6  z-depth-1 " id="panell" >
+			<h5 class="blue darken-4"  style=" background-color: #f44336 !important" id="title">Login</h5>
+
+
+			<div *ngIf="validLogin" class="card-panel  red "
+				style="padding: 5px; margin: 10px">
+				<span class="white-text">Invalid Username and Password</span>
+			</div>
+
+			<div [hidden]="globalservice.serverworking">
+				<p class="errormessage">Technical issue,Please try after some
+					time</p>
+			</div>
+			<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+
+				<div class="input-field" id="usernamediv">
+					<input type="text" id="username" class="validate"
+						formControlName="firstName"> <label for="username">Username</label>
+				</div>
+
+				<div class="input-field" id="usernamediv">
+					<input type="password" id="password" class="validate"
+						formControlName="password"> <label for="password">Password</label>
+				</div>
+
+			
+				
+				<button class="waves-effect waves-light btn blue darken-4 "
+					id="loginbtn" [disabled]="!form.valid">Login</button>
+			</form>
+
+		</div>
+	</div>
+
+</div>
+

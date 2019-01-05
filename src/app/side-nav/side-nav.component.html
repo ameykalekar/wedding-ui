@@ -1,0 +1,71 @@
+
+<nav>
+	<ul id="nav-mobile" class="sidenav sidenav-fixed">
+		<li >
+			<div class="nav-wrapper nav-wrapper-dashboard">
+        <a href="#"  class="logo white-text" style="font-size:18px">Rapid-Serve</a>
+        
+        <div *ngIf="globalservice.validuser"><span class="white-text name" style="font-size:15px ;font-weight:400;padding: 20px">Welcome Dear {{globalservice.user.userinfo.firstname}} {{globalservice.user.userinfo.lastname}}</span></div>
+        
+      			<a *ngIf="globalservice.validuser"><span class="white-text name" style="font-size:12px">{{getUserNameAndRole()}}</span> | <span (click)= "logout()" class="waves-effect waves-light btn btn-logout">Logout</span></a>
+			</div>
+		</li>
+		
+		<li *ngIf=" (globalservice.isAuthorizedFunction('dashboard'))"><a href="#" routerLink="dashboard" routerLinkActive="active">Home</a></li>
+		
+		<li *ngIf=" (globalservice.isAuthorizedFunction('viewproducts'))"><div class="divider"></div></li>
+		
+		<li class="no-padding">
+		<ul  class="collapsible collapsible-accordion">
+          <li *ngIf="globalservice.isAuthorizedFunction('viewproducts')">
+            <a class="collapsible-header">Products<i class="material-icons">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+              <li *ngIf="globalservice.isAuthorizedFunction('createproduct')"><a href="#" routerLink="createproduct" routerLinkActive="active">Create Product</a></li>
+              <li *ngIf="globalservice.isAuthorizedFunction('associatechecklist')"><a href="#" routerLink="productcheklist" routerLinkActive="active">Associate Checklist</a></li>
+              <li *ngIf="globalservice.isAuthorizedFunction('viewproducts')"><a href="#" routerLink="viewproducts" routerLinkActive="active">View Products</a></li>
+              <li *ngIf="globalservice.isAuthorizedFunction('createproducttype')"><a href="#" routerLink="createproducttype" routerLinkActive="active">Create Product Type</a></li>
+              <li *ngIf="globalservice.isAuthorizedFunction('createchecklist')"><a href="#" routerLink="createchecklist" routerLinkActive="active">Create Checklist</a></li>
+              <li *ngIf="globalservice.isAuthorizedFunction('createticket')"><a href="#" routerLink="editchecklist" routerLinkActive="active">Edit Checklist</a></li>  
+              <li *ngIf="globalservice.isAuthorizedFunction('createpart')"><a href="#" routerLink="createpart" routerLinkActive="active">Create Part</a></li>  
+              <li *ngIf="globalservice.isAuthorizedFunction('createpart')"><a href="#" routerLink="partproductassociation" routerLinkActive="active">Associate Part </a></li>
+              <li *ngIf="globalservice.isAuthorizedFunction('onboard')"><a href="#" routerLink="onboard" routerLinkActive="active">OnBoard Product </a></li>
+
+            </ul>
+            </div>
+          </li>
+        </ul>
+        </li>
+        
+        <li><div class="divider"></div></li>
+		
+		<li class="no-padding">
+		<ul class="collapsible collapsible-accordion">
+          <li *ngIf="globalservice.isAuthorizedFunction('createticket')">
+            <a class="collapsible-header">Ticket<i class="material-icons">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+              	<li *ngIf="globalservice.isAuthorizedFunction('createticket')"><a href="#" routerLink="createticket" routerLinkActive="active">Create Ticket</a></li>
+              	<li *ngIf="globalservice.isAuthorizedFunction('ticketaudit')"><a href="#" routerLink="ticketaudit" routerLinkActive="active">Ticket Audit</a></li>
+              	<li *ngIf="globalservice.isAuthorizedFunction('updatenotification')"><a href="#" routerLink="notificationconfig" routerLinkActive="active">Notification Config</a></li>
+              	<li *ngIf="globalservice.isAuthorizedFunction('viewtickets')"><a href="#" routerLink="viewtickets"  routerLinkActive="active">View Tickets</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        </li>
+		
+		<li><div class="divider"></div></li>
+		
+		<li *ngIf=" (globalservice.isAuthorizedFunction('createusers'))"><a href="#" routerLink="createuser" routerLinkActive="active">Create User</a></li>
+    <li *ngIf=" (globalservice.isAuthorizedFunction('createcompany'))"><a href="#" routerLink="createcompany" routerLinkActive="active">Create Company</a></li>
+   
+		
+		
+		<li *ngIf=" (globalservice.isAuthorizedFunction('changepassword'))"><a href="#" routerLink="changepassword" routerLinkActive="active">Change Password</a></li>
+		
+		<li *ngIf=" (globalservice.isAuthorizedFunction('createcustomerclient'))"><a href="#" routerLink="mycustomers" routerLinkActive="active">My Customers</a></li>
+		<li><a routerLink="aboutus"  routerLinkActive="active">About Us</a></li>
+		<li> <a href="#" routerLink="reports" routerLinkActive="active">Reports</a></li>
+	</ul>
+</nav>

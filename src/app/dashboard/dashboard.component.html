@@ -1,0 +1,8 @@
+<div style="color:grey;border-bottom:solid grey">
+<h4 class="header">My Dashboard</h4>
+</div>
+<div *ngIf="globalservice.getValidUser()==true">
+<app-app-status *ngIf="globalservice.isAuthorizedFunction('dashboard')"></app-app-status>
+<app-my-schedule></app-my-schedule>
+<app-open-tickets *ngIf="globalservice.isAuthorizedFunction('viewtickets')"></app-open-tickets>
+</div>

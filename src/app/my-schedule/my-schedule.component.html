@@ -1,0 +1,10 @@
+
+  <div  style="color:grey">
+    <h6 class="header"><b>WorkLog</b></h6>
+  </div>
+
+<div class="row">
+  <div *ngFor="let schedule of scheduleAry" class="col s8 white-text card-panel small lime darken-1" style="margin-left:20px">
+    Ticket Id - {{schedule.ticketId}} <br>Time - {{schedule.startTime.substring(0,10)}} - {{schedule.startTime.substring(11)}}
+  </div>
+</div>

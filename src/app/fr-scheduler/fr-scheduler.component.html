@@ -1,0 +1,79 @@
+<div class="row">
+
+	<div class="col s4 ">
+		<div class="row rounded-border ">
+
+			<div class="col s6">
+				<label>Select Date</label>
+
+				<div style="width: 100px; margin: 3px">
+					<input id="schdate" name="schdate" [(ngModel)]="schdate"
+						id="dateSlot" name="dateSlot" materialize="pickadate"
+						[materializeActions]="dateSlot" [materializeParams]="dateParams"
+						type="text" />
+
+				</div>
+
+			</div>
+
+
+			<div class="col s6" (keydown.enter) ="onSearch(searchtext.value)">
+
+				<div style="width: 100px; margin: 3px">
+					<label>Search</label><input #searchtext class="search" type="text"
+						placeholder="Search ..">
+				</div>
+
+
+			</div>
+		</div>
+		<div class="row rounded-border ">
+			<div class="col s11">
+				<app-resource-grid [searchtext]="searchquery"
+					(rowSelected)="onRowSelect($event)"></app-resource-grid>
+			</div>
+		</div>
+
+		<div class="row rounded-border ">
+			<div class="col s5">
+					<label for="starttime">Start Time </label> 
+					<input
+						id="starttime" name="starttime" [(ngModel)]="startTime"
+						materialize="pickatime"
+						[materializeParams]="[{twelvehour: false}]" placeholder="00:00"
+						class="validate" type="text">
+						
+			</div>
+			
+			<div class="col s5">
+					<label for="endtime">End Time </label> 
+					<input
+						id="endtime" name="endtime" [(ngModel)]="endTime"
+						materialize="pickatime" 
+						[materializeParams]="[{twelvehour: false}]" placeholder="00:00"
+						class="validate" type="text">
+						
+			</div>
+		</div>
+		
+		<div class="row " style="padding:10px">
+			<a class="waves-effect waves-light btn" (click)="createCalenderEvent()">Schedule</a>
+		</div>
+	</div>
+
+
+
+
+	<div class="col s7 rounded-border" style="margin:10px">
+		<div style="width: 80%; overflow: auto; margin: 10px; height: 500px">
+			<mwl-calendar-day-view [viewDate]="viewDate" [events]="events"
+				[refresh]="refresh" [dayStartHour]="10" [dayEndHour]="19"
+				(eventClicked)="handleEvent('Clicked', $event.event)"
+				(eventTimesChanged)="eventTimesChanged($event)">
+			</mwl-calendar-day-view>
+
+		</div>
+
+	</div>
+
+</div>

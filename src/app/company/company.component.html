@@ -1,0 +1,101 @@
+<div style="color:grey;border-bottom:solid grey">
+  <h4>Create Company</h4>
+</div>
+<div style="margin-top: 10px;padding-left:10px">
+    <div class="col s6 z-depth-1" id="panell">
+  <div class="row">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col s12">
+      <div *ngIf="companyexist"
+      class="card-panel   red darken-4 accent-4 "
+      style="padding: 5px; margin: 10px">
+      <span class="white-text">Company Allready Present ,Please Create use with different Email Id</span>
+    </div>
+        <div *ngIf="created"
+				class="card-panel  light-green accent-4 "
+				style="padding: 5px; margin: 10px">
+				<span class="white-text">Company Created successfully</span>
+			</div>
+        <div class="row">
+      <div class="input-field col s6">
+        <select name="singleSelect" formControlName="type" name="selectedOption"
+         materialize="material_select" [materializeSelectOptions]="selectOptions"
+          >
+          <option value="" disabled selected>Select Type Of Company</option>
+          <option *ngFor="let option of selectOptions" [value]="option.value">{{option.name}}</option>
+        </select>
+   
+      </div>
+      </div>
+      <div class="row">
+        <div class="input-field col ">
+          <input id="input_text" type="text" data-length="30" formControlName="companyname" [ngClass]="{
+            'invalid': form.controls.companyname.invalid && form.controls.companyname.dirty ,
+            'valid': form.controls.companyname.valid && form.controls.companyname.dirty 
+           
+          }" >
+          <label for="input_text">Company Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="input_text" type="text" data-length="30" formControlName="ownername" [ngClass]="{
+            'invalid': form.controls.ownername.invalid && form.controls.ownername.dirty ,
+            'valid': form.controls.ownername.valid && form.controls.ownername.dirty 
+           
+          }" >
+          <label for="input_text">Owner Name</label>
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s12 " >
+            <input id="mobilenumber" type="text" data-length="10" maxlength="10" formControlName="mobilenumber" [ngClass]="{
+              'invalid': form.controls.mobilenumber.invalid && form.controls.mobilenumber.dirty ,
+              'valid': form.controls.mobilenumber.valid && form.controls.mobilenumber.dirty 
+             
+            }" [ngStyle]="{'border-bottom:1px solid #F44336': form.controls.mobilenumber.invalid && form.controls.mobilenumber.dirty}">
+            form.controls.mobilenumber.valid {{form.controls.mobilenumber.valid}}
+            form.controls.mobilenumber.invalid  {{form.controls.mobilenumber.invalid}}
+            form.controls.mobilenumber.dirty {{form.controls.mobilenumber.dirty}}
+            <label for="mobilenumber">Mobile Number</label>
+            <span style="color: red"  [hidden]="!(form.controls.mobilenumber.invalid && form.controls.mobilenumber.dirty)" >Please Enter Valid Mobile Number</span>
+         
+            
+          </div>
+        </div>
+
+      <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate" formControlName="emailid">
+            <label for="email">Email</label>
+            <span style="color: red"  [hidden]="!(form.controls.emailid.invalid && form.controls.emailid.dirty)" >Please Enter Valid Email ID</span>
+          </div>
+        </div>
+
+      <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea2" class="materialize-textarea" data-length="50" formControlName="address"  [ngClass]="{
+              'invalid': form.controls.address.invalid && form.controls.address.dirty ,
+              'valid': form.controls.address.valid && form.controls.address.dirty 
+             
+            }"></textarea>
+            <label for="textarea2">Address</label>
+          </div>
+        </div>
+       
+      <button class="waves-effect waves-light btn " style="margin:5px" id="loginbtn" [disabled]="!form.valid">Create Company</button>
+      <button class="waves-effect waves-light btn " id="reset" (click)="reset()">Reset</button>
+    </form>
+
+    
+   
+
+
+
+
+
+
+
+
+  </div>
+  </div>
+</div>

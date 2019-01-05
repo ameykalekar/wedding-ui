@@ -1,0 +1,85 @@
+<div style="color:grey;border-bottom:solid grey">
+<h4>Create Product</h4>
+</div>
+
+<div style="margin: 20px">
+
+  <div class="row">
+
+    <div class="col s6 z-depth-1" id="panell">
+      
+      <div class="row">
+        <form class="col s12">
+            <div *ngIf="partcreated"
+            class="card-panel  light-green accent-4 "
+            style="padding: 5px; margin: 10px">
+            <span class="white-text">Product Created successfully</span>
+          </div>
+          <div *ngIf="selectProductType.length == 0"
+          class="card-panel  red accent-4 "
+          style="padding: 5px; margin: 10px">
+          <span class="white-text">Product Type is not present</span>
+        </div>
+          <div class="row" *ngIf="selectProductType.length > 0">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col s12">
+              <div class="row" >
+
+                  <div class="col s6">
+
+
+                  <select name="singleSelect" formControlName="productType" name="selectedOption"
+                  materialize="material_select" [materializeSelectOptions]="selectOptions" 
+                   >
+                   <option value="" disabled selected>Select Type Of Product</option>
+                   <option *ngFor="let option of selectProductType" [value]="option.value">{{option.name}}</option>
+                 </select>
+
+                </div>
+               
+              </div>
+              
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="input_text" type="text" data-length="10" formControlName="productBrand">
+                  <label for="input_text">Product Brand</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="input_text" type="text" data-length="10" formControlName="productName">
+                  <label for="input_text">Product Name</label>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="input_text" type="text" data-length="10" formControlName="category">
+                  <label for="input_text">Category</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="input_text" type="text" data-length="10" formControlName="subCategory">
+                  <label for="input_text">Sub Category</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea2" class="materialize-textarea" data-length="120" formControlName="comments"></textarea>
+                  <label for="textarea2">Comments</label>
+                </div>
+              </div>
+
+
+
+              <button class="waves-effect waves-light btn " id="loginbtn" [disabled]="!form.valid">Create Product</button>
+              <button class="waves-effect waves-light btn " id="reset" (click)="reset()">Reset</button>
+            </form>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

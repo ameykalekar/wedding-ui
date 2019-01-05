@@ -1,0 +1,15 @@
+.background-grey {
+	background-color: blue-grey lighten-5;
+}
+
+.row .col.offset-m20 {
+	margin-left: 20%;
+}
+
+.row .col.pull-m20 {
+	right: 20%;
+}
+
+.row .col.push-m20 {
+	left: 20%;
+}

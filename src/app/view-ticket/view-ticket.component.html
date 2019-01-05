@@ -1,0 +1,170 @@
+<div class="row">
+
+  <div class="col s10">
+
+
+    <div style="color:grey;border-bottom:solid grey">
+      <h4>Ticket :: {{ticketId}}<span> 
+          <a *ngIf = "enableStartWork()" class="waves-effect btn light-green" style="margin-left:20px" (click)="onClickStartWork()">Start Work</a> 
+      </span></h4>
+      
+    </div>
+    
+
+    <div class="row" style="margin-top:10px;">
+      <div class="col s12" style="margin-bottom:30px">
+        <ul class="tabs" materialize="tabs">
+          <li class="tab col s3"><a class="active" href="#information">Information</a></li>
+          <li class="tab col s3"><a href="#materials">Products</a></li>
+          <li class="tab col s3"><a (click)="onEstimate()" href="#estimate">Estimate</a></li>
+          <li class="tab col s3"><a href="#messages">Messages</a></li>
+          <div class="indicator teal" style="z-index:1"></div>
+        </ul>
+      </div>
+      <div id="information" class="col s12">
+        <div class="row">
+          <div class="col s4">
+            <div class="blue lighten-4 ">
+              <h6 style="padding:10px">Status : {{ticketinfo.ticket.status}} </h6>
+            </div>
+
+
+            <div class="blue-grey lighten-5 ">
+              <div class="blue lighten-4 ">
+                <h6 style="padding:10px">Problem Description</h6>
+              </div>
+              <div style="padding:10px">
+                {{ticketinfo.ticket.description}}
+              </div>
+
+            </div>
+
+
+          </div>
+
+          <div class="col s4">
+            <div class="blue lighten-4">
+              <h6 style="padding:10px">Raised By : {{ticketinfo.ticket.createdBy}} </h6>
+            </div>
+            
+            <div class="blue lighten-4">
+                <h6 style="padding:10px">Assigned To : {{ticketinfo.ticket.assignedTo}} </h6>
+            </div>
+            
+            <div class="blue lighten-4"> 
+                <h6 style="padding:10px">Created On : {{getFormattedCreatedAt()}} </h6>
+            </div>
+
+          </div>
+
+          <div class="col s4">
+          <div class="blue-grey lighten-5 ">
+              <div class="blue lighten-4 ">
+                <h6 style="padding:10px">Visit Time</h6>
+              </div>
+              <div style="padding:10px">
+                {{getDisplayDateTimeForSchedule()}}
+                
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div id="materials" class="col s12">
+        <ul materialize="collapsible" class="collapsible popout" data-collapsible="expandable">
+          <li *ngFor="let item of ticketinfo.productInfos">
+            <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>{{item.product.productName}} </div>
+            <div class="collapsible-body">
+
+
+              <ul materialize="collapsible" class="collapsible popout" data-collapsible="expandable">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">assignment</i>Checklist > {{item.checkList.checkListName}}</div>
+
+                  <!-- start of checklist div-->
+                  
+                  <div style="margin:20px">
+                  <table>
+                    <thead>
+                      <tr>
+                         <th>
+                            Status
+                         </th> 
+                         <th>
+                            Task
+                         </th>
+                      </tr>
+                    </thead>
+                      <tbody>
+                        <tr *ngFor="let task of item.checkList.tasks">
+                          <td>
+                              <div *ngIf="getTaskStatus(task.status)==false">
+                                  <div><i class="material-icons" style="color:#ff1744">clear</i></div>
+                                </div>
+                                <div *ngIf="getTaskStatus(task.status)==true">
+                                  <div><i class="material-icons" style="color:#004d40">done</i></div>
+        
+                                </div>
+                          </td>
+                          <td>
+                                  {{task.desc}}
+                          </td>
+                          
+                        </tr>
+                      </tbody>
+                  </table>  
+                </div>
+                  <!-- end of checklist div-->
+                </li>
+
+              </ul>
+              <!--checklist collapsible panel end-->
+
+
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="estimate" class="col s8" style="margin-left:20px">
+
+        <table class="responsive-table centered highlight">
+
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Part Name</th>
+              <th>Price(Rupees)</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let partPrice of partPriceAry">
+              <td>
+                {{partPrice.productname}}
+              </td>
+              <td>
+                {{partPrice.partname}}
+              </td>
+              <td>
+                Rs.{{partPrice.price}}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <div style="margin-top:20px">
+          <b>Total Cost (Rs) : {{this.totalCost}}</b>
+        </div>
+
+
+      </div>
+
+      <div id="messages" class="col s12">
+        <app-comment [ticketid]="ticketId"></app-comment>
+      </div>
+    </div>
+
+  </div>
+</div>

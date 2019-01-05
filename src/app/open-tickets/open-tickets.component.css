@@ -1,0 +1,32 @@
+
+:host /deep/ ng2-smart-table tbody > tr > td > a {
+color: #ED1C24;
+font-size: 12px;
+}
+
+:host /deep/ ng2-smart-table tbody > tr > th > a {
+color: #ED1C24;
+font-size: 12px;
+}
+
+
+:host /deep/ a { color: indigo darken-4;font-size: 12px; }
+:host /deep/ a:link { color: indigo darken-4; font-size: 12px;}
+:host /deep/ a:hover { color: indigo darken-4; font-size: 12px;}
+:host /deep/ a:focus { color: indigo darken-4; font-size: 12px;}
+
+:host /deep/ ng2-smart-table a { color: indigo darken-4; font-size: 12px;}
+:host /deep/ ng2-smart-table a:link { color: indigo darken-4; font-size: 12px;}
+:host /deep/ ng2-smart-table a:hover { color: indigo darken-4; font-size: 12px;}
+:host /deep/ ng2-smart-table a:focus { color: indigo darken-4; font-size: 12px;}
+
+
+:host /deep/ ng2-smart-table nav {background-color : #ffffff !important;}
+:host /deep/ pagination li:active {background-color : #ffffff !important;}
+
+:host /deep/ tr.ng2-smart-row a { color: indigo darken-4; font-size: 12px;}
+:host /deep/ tr.ng2-smart-row a:link { color: indigo darken-4; font-size: 12px;}
+:host /deep/ tr.ng2-smart-row a:hover { color: indigo darken-4; font-size: 12px;}
+:host /deep/ tr.ng2-smart-row a:focus { color: indigo darken-4; font-size: 12px;}
+
+
