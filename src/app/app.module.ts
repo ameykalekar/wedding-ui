@@ -14,12 +14,16 @@ import { FormsModule } from '@angular/forms';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 import { MyDatePickerModule } from 'mydatepicker';
+import { SearchComponent } from './components/search/search.component';
+import { DisplayProfilesComponent } from './components/display-profiles/display-profiles.component';
 
 const appRoutes: Routes = [
-   { path: 'myprofile', component: MyProfileComponent }
-  , { path: 'register', component: CreateProfileComponent }  
-  , { path: 'editprofile/:id' , component: EditProfileComponent}
+  { path: 'myprofile', component: MyProfileComponent }
+  , { path: 'register', component: CreateProfileComponent }
+  , { path: 'editprofile/:id', component: EditProfileComponent }
   , { path: '', component: MyProfileComponent }
+  , { path: 'search', component: SearchComponent }
+
 
 ];
 
@@ -31,17 +35,19 @@ const appRoutes: Routes = [
     LandingPageComponent,
     MyProfileComponent,
     CreateProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    SearchComponent,
+    DisplayProfilesComponent
   ],
   imports: [
-    MaterializeModule ,
+    MaterializeModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    MyDatePickerModule 
-    
+    MyDatePickerModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
