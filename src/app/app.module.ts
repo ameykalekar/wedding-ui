@@ -24,6 +24,7 @@ const appRoutes: Routes = [
   , { path: 'editprofile/:id', component: EditProfileComponent }
   , { path: '', component: MyProfileComponent }
   , { path: 'search', component: SearchComponent }
+  , { path: 'displayprofile', component: DisplayProfilesComponent }
 
 
 ];
