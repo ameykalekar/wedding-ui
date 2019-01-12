@@ -1,4 +1,6 @@
 import { Component, OnInit,ViewChild,EventEmitter } from '@angular/core';
+import { ProfileServiceService } from '../../services/profile-service.service';
+import {ProfileVo} from '../../vo/profile-vo';
 
 @Component({
   selector: 'app-my-profile',
@@ -11,8 +13,8 @@ export class MyProfileComponent implements OnInit {
 
   actions = new EventEmitter<string>();
 
-
-constructor() { }
+  profileVo:ProfileVo=new ProfileVo();
+constructor(private profileService:ProfileServiceService) { }
 
 imageURLs = [
 
@@ -24,6 +26,14 @@ imageURLs = [
 ];
 
   ngOnInit() {
+    this.profileService.getProfile('1').subscribe(
+
+      res => {
+        this.profileVo =res;
+        console.log(this.profileVo);
+      }
+
+    );
   }
 
 }

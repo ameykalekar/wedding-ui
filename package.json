@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -26,6 +26,7 @@
     "jquery": "^2.2.4",
     "materialize-css": "^0.100.2",
     "mdi": "^2.2.43",
+    "mydatepicker": "^2.6.6",
     "ng2-materialize": "^1.8.1",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"

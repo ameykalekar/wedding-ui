@@ -1,9 +1,8 @@
 <div class="row">
 
-
   <div class="col s12">
     <div class="parallax-container">
-      <div class="parallax" materialize="parallax"><img src="assets/profile.jpg" ></div>
+      <div class="parallax" materialize="parallax"><img src="/api/profile/getProfileImage" ></div>
     </div>
     <div class="section white">
       <div class="row container">
@@ -17,65 +16,65 @@
         <div class="col s10">
           <h5>Basic Details</h5>
         </div>
-        <div class="col s10">
-          <div class="divider"></div>
+        <div class="divider"></div>
+          <div class="col s10">
         </div>
 
       </div>
 
       <div class="row container">
         <div class="col s6">
-          <b>Name</b> : Suraj
+          <b>Name</b> : {{profileVo.firstName}}
         </div>
 
         <div class="col s6">
-            <b>Surname</b> : Patil
+            <b>Surname</b> : {{profileVo.lastName}}
         </div>
       </div>
 
       <div class="row container">
         <div class="col s6">
-            <b>Date of birth</b> : 28/08/1987
+            <b>Date of birth</b> : {{profileVo.dateOfBirth}} 
         </div>
         <div class="col s6">
-          <b>Place of Birth</b> : Pune
-        </div>
-
-      </div>
-
-      <div class="row container">
-        <div class="col s6">
-            <b>Religion</b> : Hindu
-        </div>
-        <div class="col s6">
-            <b>Caste</b> : Maratha
+          <b>Place of Birth</b> : {{profileVo.placeOfBirth}}
         </div>
 
       </div>
 
       <div class="row container">
         <div class="col s6">
-            <b>Marrital Status</b> : Unmarried
+            <b>Religion</b> : {{profileVo.religion}}
         </div>
         <div class="col s6">
-            <b>Height</b> : 5 feet 7 inch
+            <b>Caste</b> : {{profileVo.caste}}
+        </div>
+
+      </div>
+
+      <div class="row container">
+        <div class="col s6">
+            <b>Marrital Status</b> : {{profileVo.marritalStatus}}
+        </div>
+        <div class="col s6">
+            <b>Height</b> : {{profileVo.heightFeet}} feet {{profileVo.heightInch}} inch
         </div>
       </div>
 
       <div class="row container">
         <div class="col s6">
-            <b>Complexion</b> : fair
+            <b>Complexion</b> : {{profileVo.complexion}}
         </div>
 
         <div class="col s6">
-            <b>Body Type</b> : Heavy
+            <b>Body Type</b> : {{profileVo.bodyType}}
         </div>
       </div>
 
 
       <div class="row container">
         <div class="col s6">
-            <b>Challenged</b> : No
+            <b>Challenged</b> : {{profileVo.challenged}}
         </div>
       </div>
 
@@ -91,17 +90,17 @@
 
       <div class="row container">
         <div class="col s6">
-          Highest Degree : BE
+          Highest Degree : {{profileVo.highestDegree}}
         </div>
         <div class="col s6">
-          UG College : MIT College, Pune
+          UG College : {{profileVo.collegeName}}
         </div>
 
       </div>
 
       <div class="row container">
         <div class="col s6">
-          School Name : Bishops,Pune
+          School Name : {{profileVo.companyName}}
         </div>
       </div>
 
@@ -120,10 +119,10 @@
       <div class="row container">
 
         <div class="col s6">
-          Occupation : Project Manager - IT
+          Occupation : {{profileVo.occupation}}
         </div>
         <div class="col s6">
-          Anual Income : 8 lacs
+          Anual Income : {{profileVo.annualIncome}} lacs
         </div>
       </div>
 
@@ -132,7 +131,7 @@
       <div class="row container">
 
         <div class="col s6">
-          Company Name : 3i Infotech
+          Company Name : {{profileVo.companyName}}
         </div>
       </div>
 
@@ -148,17 +147,17 @@
 
       <div class="row container">
         <div class="col s6">
-          Dietary Habits : Vegetarian
+          Dietary Habits : {{profileVo.dietaryHabit}}
         </div>
 
         <div class="col s6">
-          Drinking Habits : Occasional
+          Drinking Habits : {{profileVo.drining}}
         </div>
       </div>
 
       <div class="row container">
         <div class="col s6">
-          Smoking Habits : No
+          Smoking Habits : {{profileVo.smoking}}
         </div>
       </div>
 
@@ -175,59 +174,57 @@
 
       <div class="row container">
         <div class="col s6">
-          Mother Name : Vijayalaxmi
+          Mother Name : {{profileVo.motherName}}
         </div>
 
         <div class="col s6">
-          Mother is  : Housewife
+          Mother is  : {{profileVo.motherIs}}
         </div>
       </div>
 
       
       <div class="row container">
           <div class="col s6">
-            Father Name : Vijayalaxmi
+            Father Name : {{profileVo.fatherName}}
           </div>
   
           <div class="col s6">
-            Father is  : Business/Entreprenuer
+            Father is  : {{profileVo.fatherIs}}
           </div>
       </div>
       
       <div class="row container">
           <div class="col s6">
-            Number of Sisters : 2 
+            Number of Sisters : {{profileVo.numberOfSisters}} 
           </div>
           <div class="col s6">
-              Number of Brothers : 2 
+              Number of Brothers : {{profileVo.numberOfBrothers}}
             </div>
       </div>
 
       <div class="row container">
           <div class="col s6">
-            Gothra : 2 
+            Gothra : {{profileVo.gothra}}
           </div>
-          <div class="col s6">
-              Number of Brothers : 2 
-            </div>
+          
       </div> 
 
       <div class="row container">
           <div class="col s6">
-            Family Income : 15 lac 
+            Family Income : {{profileVo.familyIncome}} 
           </div>
           <div class="col s6">
-             Family Type : Nuclear 
+             Family Type : {{profileVo.familyType}} 
             </div>
       </div>
 
       
       <div class="row container">
           <div class="col s6">
-            Family Values : Conservative 
+            Family Values : {{profileVo.familyValues}} 
           </div>
           <div class="col s6">
-            Living with Parents : Yes 
+            Living with Parents : {{profileVo.livingWithParents}} 
             </div>
       </div>
 
