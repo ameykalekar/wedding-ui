@@ -10,7 +10,7 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 import { MyDatePickerModule } from 'mydatepicker';
@@ -20,6 +20,8 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { AuthGuard } from './guards/auth-guard.service';
 import { LogoutComponent } from './components/logout/logout.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { SearchComponent } from './components/search/search.component';
+import { DisplayProfilesComponent } from './components/display-profiles/display-profiles.component';
 
 const appRoutes: Routes = [
    { path: 'myprofile', component: MyProfileComponent , canActivate: [AuthGuard]}
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
   , { path: 'editprofile/:id' , component: EditProfileComponent, canActivate: [AuthGuard]}
   , { path: 'front',component: FrontPageComponent}
   , { path: 'login', component:UserLoginComponent}
+  , { path: 'search',component: SearchComponent}
   , { path: 'logout', component:LogoutComponent}
   , { path: '', component: UserLoginComponent }
 
@@ -45,14 +48,16 @@ const appRoutes: Routes = [
     RouterOutletComponent,
     UserLoginComponent,
     LogoutComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    SearchComponent,
+    DisplayProfilesComponent
   ],
   imports: [
     MaterializeModule ,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule,ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     MyDatePickerModule 
     

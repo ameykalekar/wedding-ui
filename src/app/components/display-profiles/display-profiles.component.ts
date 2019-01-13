@@ -7,7 +7,7 @@ import { ProfileVo } from '../../vo/profile-vo';
   styleUrls: ['./display-profiles.component.css']
 })
 export class DisplayProfilesComponent implements OnInit {
-  @Input()
+  @Input('profiles')
   profiles: ProfileVo[];
 
 

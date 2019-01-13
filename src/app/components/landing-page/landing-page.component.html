@@ -6,7 +6,7 @@
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo right hide-on-med-and-down ">Jodi No 1</a>
                     <ul id="nav-mobile" class="left">
-                        <li  *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="serach">Search</a></li>
+                        <li  *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="search">Search</a></li>
                         <li  *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="myprofile">My Profile</a></li>
                         <li  *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="register" >Register</a></li>
                         <li  *ngIf="_authService.isLoggednIn()"><a href="#" [routerLink]=getLoggedInUserRoute()>Edit Profile</a></li>
