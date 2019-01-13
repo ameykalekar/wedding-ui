@@ -17,12 +17,21 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { MyDatePickerModule } from 'mydatepicker';
 import { SearchComponent } from './components/search/search.component';
 import { DisplayProfilesComponent } from './components/display-profiles/display-profiles.component';
+import { FrontPageComponent } from './components/front-page/front-page.component';
+import { RouterOutletComponent } from './components/router-outlet/router-outlet.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { SearchComponent } from './components/search/search.component';
+import { DisplayProfilesComponent } from './components/display-profiles/display-profiles.component';
 
 const appRoutes: Routes = [
   { path: 'myprofile', component: MyProfileComponent }
   , { path: 'register', component: CreateProfileComponent }
   , { path: 'editprofile/:id', component: EditProfileComponent }
-  , { path: '', component: MyProfileComponent }
+  , { path: 'front',component: FrontPageComponent}
+  , { path: 'login', component:UserLoginComponent}
+  , { path: '', component: UserLoginComponent }
+  , { path: 'search', component: SearchComponent }
+  , { path: 'displayprofile', component: DisplayProfilesComponent }
   , { path: 'search', component: SearchComponent }
   , { path: 'displayprofile', component: DisplayProfilesComponent }
 
@@ -37,6 +46,13 @@ const appRoutes: Routes = [
     LandingPageComponent,
     MyProfileComponent,
     CreateProfileComponent,
+    EditProfileComponent,
+    SearchComponent,
+    DisplayProfilesComponent
+    EditProfileComponent,
+    FrontPageComponent,
+    RouterOutletComponent,
+    UserLoginComponent
     EditProfileComponent,
     SearchComponent,
     DisplayProfilesComponent
