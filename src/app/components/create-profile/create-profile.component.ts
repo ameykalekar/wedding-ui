@@ -12,6 +12,8 @@ export class CreateProfileComponent implements OnInit {
   constructor(private profileService: ProfileServiceService) { }
 
   private img1:string;
+  showProcessing:boolean=false;
+
   ngOnInit() {
   }
 
@@ -19,8 +21,11 @@ export class CreateProfileComponent implements OnInit {
 
     console.log(profile);
     profile.picture1=this.img1;
+    profile.dateOfBirth = this.dateOfBirth;
+    this.showProcessing = true;
     this.profileService.insertProfile(profile).subscribe(res=>
     {
+      this.showProcessing= false;
       console.log(res);
 
     });
@@ -38,6 +43,13 @@ export class CreateProfileComponent implements OnInit {
         this.img1 =reader.result.toString().split(',')[1]; 
       };
     }
+  }
+
+  dateOfBirth:any;
+  onDateChanged(event){
+  
+    this.dateOfBirth = event.formatted;
+    
   }
 
   clearFile(){

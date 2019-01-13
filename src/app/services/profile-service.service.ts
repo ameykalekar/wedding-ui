@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { ProfileVo } from '../vo/profile-vo';
+import {ProfileVo} from '../vo/profile-vo';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +14,16 @@ export class ProfileServiceService {
   };
 
 
-  constructor(private http: HttpClient) {
+  constructor( private http: HttpClient) {
+   }
+
+   getProfile(profileId) {
+    return this.http.get<ProfileVo>('/api/profile/'+profileId, this.httpOptions);
   }
 
-  getProfile(profileId) {
-    return this.http.get<ProfileVo>('/api/profile/' + profileId, this.httpOptions);
-  }
 
-
-  insertProfile(profileVo: ProfileVo) {
+    insertProfile(profileVo : ProfileVo) {
     return this.http.post('/api/profile', JSON.stringify(profileVo), this.httpOptions);
-  }
-
-  searchProfile(profileVo: ProfileVo) {
-    return this.http.post<ProfileVo[]>('/api/search', JSON.stringify(profileVo), this.httpOptions);
   }
 
 

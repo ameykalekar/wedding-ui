@@ -1,615 +1,639 @@
-<div class="row">
 
-    <!--  <form #profile="ngForm" (ngSubmit)="onClickSubmit(profile.value)">
-      <input type="text" name="emailid" placeholder="emailid" ngModel>
-      <br/>
-      <input type="password" name="passwd" placeholder="passwd" ngModel>
-      <br/>
-      <input type="submit" value="submit">
-  
-    </form> -->
-  
-  </div>
-  
-  
-  <div class="row">
-  
-    <form #profile="ngForm" (ngSubmit)="profile.form.valid && onClickSubmit(profile.value)">
-      
-      <div class="row container">
-        <div class="col s12">
-          <h4>Edit Profile</h4>
-        </div>
-        <div class="col s12">
-          <div class="divider"></div>
-        </div>
-      </div>
-  
-      <div class="row container">
-          <div class="col s12">
-              <span>Profile ID : {{profileVo.id}}</span>
+  <div  class="row grey lighten-3" style="padding: 2%">
+    <div class="col s10 offset-s1">
+        <div class="row white">
+            <div class="col s12">
+              <h4 class="section-header">Edit Profile</h4>
+            </div>
+            <div class="col s12">
+              <div class="divider"></div>
+            </div>
           </div>
-          <input name = "id" id="id" hidden  [(ngModel)]="profileVo.id" type="text">
-        </div>
-
-        
-
-      <div class="row container">
-        <div class="col s12">
-          <h5>About me</h5>
-        </div>
-        <div class="col s12">
-          <div class="divider"></div>
-        </div>
-      </div>
-  
-    
-      <div class="row container">
-        <div class="input-field col s10">
-          <textarea id="about_me" maxlength="200" placeholder="Write few lines about yourself/ likes/dislikes/ family values/etc"
-            class="materialize-textarea" name="aboutMe" required minlength="50" 
-            [(ngModel)]="profileVo.aboutMe"
-            required
-            #aboutMe="ngModel"></textarea>
-          <label for="about_me">*About</label>
-        </div>
-  
-      </div>
-  
-      
-      <div class="row container">
-        <div class="col s12">
-          <h5>Basic Details</h5>
-        </div>
-        <div class="col s12">
-          <div class="divider"></div>
-        </div>
-      </div>
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input id="first_name" #firstName="ngModel" name="firstName" [(ngModel)]="profileVo.firstName" type="text"
-          placeholder="first name" required class="validate" data-length="50">
-  
-          <div *ngIf="profile.submitted && firstName.invalid" class="card-content white-text red">
-            <div *ngIf="firstName.errors.required">First Name is required</div>
-          </div>
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-  
-          <input placeholder="last name" data-length="50" id="last_name" #lastName="ngModel" name="lastName" type="text" required class="validate"
-            [(ngModel)]="profileVo.lastName">
-  
-          <div *ngIf="profile.submitted && lastName.invalid" class="card-content white-text red">
-            <div *ngIf="lastName.errors.required">Last Name is required</div>
-          </div>
-  
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
-  
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input placeholder="contact number" id="contact_number" required  data-length="10" name="contactNumber" type="number"
-            #contactNumber="ngModel" class="validate" [(ngModel)]="profileVo.contactNumber">
-  
-          <div *ngIf="profile.submitted && contactNumber.invalid" class="card-content white-text red">
-            <div *ngIf="contactNumber.errors.required">Contact is required</div>
-          </div>
-  
-  
-          <label for="contact_number">Contact Number</label>
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="email" name="email" required email #email="ngModel" id="email" type="email" class="validate" [(ngModel)]="profileVo.email">
-  
-          <div *ngIf="profile.submitted && email.invalid" class="card-content white-text red">
-            <div *ngIf="email.errors.required">email is required</div>
-            <div *ngIf="email.errors.email">Email must be a valid email address</div>
-          </div>
-  
-          <label for="email">Email</label>
-        </div>
-  
-      </div>
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-            <div>Birth Date</div>
-            <my-date-picker id="mydate" name="mydate" [options]="myDatePickerOptions"
-            [(ngModel)]="model"  (dateChanged)="onDateChanged($event)" required></my-date-picker>
-            <!-- <input id="birthdate" required #dateOfBirth="ngModel" name="dateOfBirth" type="date" class="datepicker"
-              [(ngModel)]="profileVo.dateOfBirth"> -->
+        <form #profile="ngForm" (ngSubmit)="profile.form.valid && onClickSubmit(profile.value)">
+            <div class="fixed-action-btn">
+                <input class="waves-effect waves-light btn green" type="submit" value="Update">
+              </div>
+                <div class="white"> 
+                <div class="row container">
+                    <div class="col s12">
+                        <span>Profile ID : {{profileVo.id}}</span>
+                    </div>
+                    <input name = "id" id="id" hidden  [(ngModel)]="profileVo.id" type="text">
+                  </div>
+          
+                  
+          
+                <div class="row container">
+                  <div class="col s12">
+                    <h5 class="section-header">About me</h5>
+                  </div>
+                  <div class="col s12">
+                    <div class="divider"></div>
+                  </div>
+                </div>
             
-         <!--  <div *ngIf="profile.submitted && dateOfBirth.invalid" class="card-content white-text red">
-            <div *ngIf="dateOfBirth.errors.required">Birth Date is required</div>
-          </div> -->
-          
-        </div>
-  
-  
-        <div class="input-field col s6">
-          <input placeholder="birth place" #placeOfBirth="ngModel" name="placeOfBirth" required minlength="3" id="birth_place" type="text"
-            class="validate" [(ngModel)]="profileVo.placeOfBirth">
-          <label for="birth_place">Birth Place</label>
-          <div *ngIf="profile.submitted && placeOfBirth.invalid" class="card-content white-text red">
-            <div *ngIf="placeOfBirth.errors.required">Birth Place is required</div>
-            <div *ngIf="placeOfBirth.errors.minlength">Birth Place should be more than 3 characters</div>
-          </div>
-        </div>
-  
-  
-      </div>
-  
-  
-      <div class="row container">
-  
-        <!-- <div class="input-field col s6">
-        <label placeholder="Birth Time" for="birthdate">Birthdate</label>
-        <input id="birthdate" name="birthdate" materialize="pickadate" [materializeActions]="birthDateActions"
-          [materializeParams]="[{format: 'dd/mm/yyyy'}]" type="text" />
-      </div> -->
-        <div class="col s6">
-          <label for="marritalStatusSelect">Marrital Status</label>
-          <select name="marritalStatusSelect" required #marritalStatus="ngModel" name="marritalStatus" materialize="material_select"
-            [materializeSelectOptions]="selectOptions" [(ngModel)]="profileVo.marritalStatus">
-            <option value="" disabled selected>Select Marrital Status</option>
-            <option value="married">Married</option>
-            <option value="unmarried">Un-Married</option>
-            <option value="divorced">Divorced</option>
-            <option value="widowed">Widowed</option>
-          </select>
-          <div *ngIf="profile.submitted && marritalStatus.invalid" class="card-content white-text red">
-            <div *ngIf="marritalStatus.errors.required">Marrital Status is required</div>
-          </div>
-        </div>
-  
-        <div class="input-field col s6">
-  
-          <select name="genderSelect" #gender="ngModel" required name="gender" materialize="material_select" [materializeSelectOptions]="selectOptions"
-            [(ngModel)]="profileVo.gender">
-            <option value="" disabled selected>Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-          <label for="genderSelect">Gender</label>
-  
-          <div *ngIf="profile.submitted && gender.invalid" class="card-content white-text red">
-            <div *ngIf="gender.errors.required">Gender is required</div>
-          </div>
-  
-        </div>
-  
-      </div>
-  
-      <div class="row container">
-  
-        <div class="col s6">
-          <label for="religionSelect">Religion</label>
-          <select name="religionSelect" name="religion" materialize="material_select" [materializeSelectOptions]="selectOptions" #religion="ngModel"
-            required [(ngModel)]="profileVo.religion">
-            <option value="" disabled selected>Select religion</option>
-            <option value="hindu">Hindu</option>
-            <option value="jain">Jain</option>
-            <option value="christian">Christian</option>
-            <option value="muslim">Muslim</option>
-            <option value="buddist">Buddhist</option>
-            <option value="parsi">Parsi</option>
-            <option value="sikh">Sikh</option>
-            <option value="sindhi">Sindhi</option>
-          </select>
-  
-          <div *ngIf="profile.submitted && religion.invalid" class="card-content white-text red">
-            <div *ngIf="religion.errors.required">religion is required</div>
-          </div>
-  
-        </div>
-  
-  
-        <div class="input-field col s6">
-          <input placeholder="caste" name="caste" id="caste" type="text" class="validate" required [(ngModel)]="profileVo.caste" #caste="ngModel">
-          <label for="caste">Caste</label>
-  
-          <div *ngIf="profile.submitted && caste.invalid" class="card-content white-text red">
-            <div *ngIf="caste.errors.required">Caste is required</div>
-          </div>
-  
-        </div>
-  
-      </div>
-  
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <textarea id="address" name="address" placeholder="Enter your address here" class="materialize-textarea" [(ngModel)]="profileVo.address"
-            #address="ngModel" required></textarea>
-          <label for="address">Current Address</label>
-          <div *ngIf="profile.submitted && address.invalid" class="card-content white-text red">
-            <div *ngIf="address.errors.required">address is required</div>
-          </div>
-        </div>
-  
-        <div class="input-field col s6">
-          <textarea id="home_address" name="homeAddress" placeholder="Enter your home/native here" class="materialize-textarea" [(ngModel)]="profileVo.homeAddress"
-            #homeAddress="ngModel" required></textarea>
-          <label for="home_address">Home Address</label>
-          <div *ngIf="profile.submitted && homeAddress.invalid" class="card-content white-text red">
-            <div *ngIf="homeAddress.errors.required">Home Address is required</div>
-          </div>
-        </div>
-  
-  
-  
-  
-      </div>
-  
-  
-  
-      <div class="row container">
-        <div class="col s12">
-          <h6><b>LifeStyle Details</b></h6>
-        </div>
-        <div class="col s12">
-          <div class="divider"></div>
-        </div>
-      </div>
-  
-  
-  
-      <div class="row container">
-        <div class="col s6">
-          <label for="dietaryHabitsSelect">Dietary Habits</label>
-          <select name="dietaryHabits"  materialize="material_select" [materializeSelectOptions]="dietaryHabitsOptions"
-            [(ngModel)]="profileVo.dietaryHabits" #dietaryHabits="ngModel" required>
-            <option value="" disabled selected>Select Dietary Habits</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="nonvegetarian">Non Vegetarian</option>
-            <option value="jain">Jain</option>
-            <option value="eggetarian">Eggetarian</option>
-          </select>
-          <div *ngIf="profile.submitted && dietaryHabits.invalid" class="card-content white-text red">
-            <div *ngIf="dietaryHabits.errors.required">Dietary Habits is required</div>
-          </div>
-        </div>
-  
-  
-        <div class="col s6">
-          <label for="drinkingHabitsSelect">Drinking Habits Type</label>
-          <select name="drinkingHabits" materialize="material_select" [materializeSelectOptions]="drinkingHabitsOptions" #drinkingHabits="ngModel"
-            required [(ngModel)]="profileVo.drinkingHabits">
-            <option value="" disabled selected>Select Skin Type</option>
-            <option value="yes">yes</option>
-            <option value="no">no</option>
-            <option value="occasionally">occasionally</option>
-          </select>
-  
-          <div *ngIf="profile.submitted && drinkingHabits.invalid" class="card-content white-text red">
-            <div *ngIf="drinkingHabits.errors.required">Dietary Habits is required</div>
-          </div>
-        </div>
-  
-      </div>
-  
-  
-      <div class="row container">
-  
-        <div class="col s6">
-          <label for="smokingHabitsSelect">Smoking Habits Type</label>
-          <select name="smokingHabits" materialize="material_select" [materializeSelectOptions]="smokingHabitsOptions" [(ngModel)]="profileVo.smokingHabits"
-            required #smokingHabits="ngModel">
-            <option value="" disabled selected>Select smoking habit</option>
-            <option value="yes">yes</option>
-            <option value="no">no</option>
-            <option value="occasionally">occasionally</option>
-          </select>
-  
-          <div *ngIf="profile.submitted && smokingHabits.invalid" class="card-content white-text red">
-            <div *ngIf="smokingHabits.errors.required">Smoking Habits is required</div>
-          </div>
-        </div>
-  
-  
-        <div class="col s6">
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="feet" name="heightFeet" type="number" class="validate" [(ngModel)]="profileVo.heightFeet" #heightFeet="ngModel"
-                required>
-              <label for="feet">Feet(height)</label>
-  
-              <div *ngIf="profile.submitted && heightFeet.invalid" class="card-content white-text red">
-                <div *ngIf="heightFeet.errors.required">Height is required</div>
+              
+                <div class="row container">
+                  <div class="input-field col s10">
+                    <textarea id="about_me" maxlength="200" placeholder="Write few lines about yourself/ likes/dislikes/ family values/etc"
+                      class="materialize-textarea" name="aboutMe" required minlength="50" 
+                      [(ngModel)]="profileVo.aboutMe"
+                      required
+                      #aboutMe="ngModel"></textarea>
+                    <label for="about_me">*About</label>
+                  </div>
+            
+                </div>
+
               </div>
-            </div>
-  
-            <div class="input-field col s6">
-              <input id="inches" name="heightInch" type="number" class="validate" [(ngModel)]="profileVo.heightInch" #heightInch="ngModel"
-                required>
-              <label for="inches">Inches(height)</label>
-  
-  
-              <div *ngIf="profile.submitted && heightInch.invalid" class="card-content white-text red">
-                <div *ngIf="heightInch.errors.required">Height is required</div>
-              </div>
-            </div>
-  
-          </div>
-  
-  
-  
-  
-        </div>
-  
-  
-      </div>
-  
-      <div class="row container">
-        <div class="col s6">
-          <label for="bodyTypeSelect">Body Type</label>
-          <select name="bodyTypeSelect" name="bodyType" materialize="material_select" [materializeSelectOptions]="bodyTypeOptions"
-            [(ngModel)]="profileVo.bodyType" #bodyType="ngModel" required>
-            <option value="" disabled selected>Select Body Type</option>
-            <option value="slim">Slim</option>
-            <option value="average">Average</option>
-            <option value="athletic">Athletic</option>
-            <option value="heavy">Heavy</option>
-          </select>
-  
-          <div *ngIf="profile.submitted && bodyType.invalid" class="card-content white-text red">
-              <div *ngIf="bodyType.errors.required">Body Type is required</div>
-            </div>
-        </div>
-  
-  
-        <div class="col s6">
-          <label for="skinTypeSelect">Skin Type</label>
-          <select name="skinType" materialize="material_select" [materializeSelectOptions]="skinTypeOptions"
-          [(ngModel)]="profileVo.skinType" #skinType="ngModel" required>
-            <option value="" disabled selected>Select Skin Type</option>
-            <option value="veryfair">Very fair</option>
-            <option value="fair">fair</option>
-            <option value="wheatesh">wheatesh</option>
-            <option value="wheateshbrown">wheatesh brown</option>
-            <option value="dark">dark</option>
-          </select>
-  
-          <div *ngIf="profile.submitted && skinType.invalid" class="card-content white-text red">
-              <div *ngIf="skinType.errors.required">Body Type is required</div>
-            </div>
-  
-        </div>
-  
-      </div>
-  
-      <div class="row container">
-        <div class="col s6">
-          <label for="challengedSelect">Challenged</label>
-          <select name="challengedSelect" name="challenged" materialize="material_select" [materializeSelectOptions]="challengedOptions"
-          [(ngModel)]="profileVo.challenged" #challenged="ngModel" required>
-            <option value="" disabled selected>None</option>
-            <option value="slim">No</option>
-            <option value="bybirth">Physically-ByBirth</option>
-            <option value="byaccident">Phyically-ByAccident</option>
-            <option value="Mbybirth">Mentally-ByBirth</option>
-            <option value="Mbyaccident">Mentally-ByAccident</option>
-          </select>
-          <div *ngIf="profile.submitted && challenged.invalid" class="card-content white-text red">
-              <div *ngIf="challenged.errors.required">Body Type is required</div>
-            </div>
-        </div>
-  
-  
-        <div class="col s6">
-          <label for="bloodGroupSelect">Blood Group</label>
-          <select name="bloodGroupSelect" name="bloodGroup" materialize="material_select" [materializeSelectOptions]="bloodGroupOptions"
-          [(ngModel)]="profileVo.bloodGroup" #bloodGroup="ngModel" required>
-            <option value="" disabled selected>Select Blood Group</option>
-            <option value="a+">A+</option>
-            <option value="a-">A-</option>
-            <option value="b+">B+</option>
-            <option value="b-">B-</option>
-            <option value="ab+">AB+</option>
-            <option value="ab-">AB-</option>
-            <option value="o+">O+</option>
-            <option value="o-">O-</option>
-  
-          </select>
-  
-          <div *ngIf="profile.submitted && bloodGroup.invalid" class="card-content white-text red">
-              <div *ngIf="bloodGroup.errors.required">Blood Group is required</div>
-            </div>
-        </div>
-      </div>
-  
-  
-      <div class="row container">
-        <div class="col s12">
-          <h6><b>Educational / Professional Details</b></h6>
-        </div>
-        <div class="col s12">
-          <div class="divider"></div>
-        </div>
-      </div>
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input placeholder="highest education" name="highestDegree" id="highest_education" type="text" class="validate" 
-          [(ngModel)]="profileVo.highestDegree" #highestDegree="ngModel" required>
-          <label for="highest_education">Highest Education</label>
-          <div *ngIf="profile.submitted && highestDegree.invalid" class="card-content white-text red">
-              <div *ngIf="highestDegree.errors.required">Highest Degree is required</div>
-            </div>
-        </div>
-  
-  
-        <div class="input-field col s6">
-  
-          <input placeholder="college name" name="collegeName" id="college_name" type="text" class="validate" 
-          [(ngModel)]="profileVo.collegeName" #collegeName="ngModel" required>
-          <label for="college_name">College Name</label>
-          <div *ngIf="profile.submitted && collegeName.invalid" class="card-content white-text red">
-              <div *ngIf="collegeName.errors.required">College Name is required</div>
-            </div>
-        </div>
-  
-      </div>
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input placeholder="Occupation" name="occupation" id="occupation" type="text" class="validate" 
-          [(ngModel)]="profileVo.occupation" #occupation="ngModel" required>
-          <label for="occupation">Occupation</label>
-          <div *ngIf="profile.submitted && occupation.invalid" class="card-content white-text red">
-              <div *ngIf="occupation.errors.required">Occupation is required</div>
-            </div>
-        </div>
-  
-  
-        <div class="input-field col s6">
-  
-          <input placeholder="income" name="annualIncome" id="income" type="number" class="validate" 
-          [(ngModel)]="profileVo.annualIncome" #annualIncome="ngModel" required>
-          <label for="income">Income (lacs/pa)</label>
-          <div *ngIf="profile.submitted && annualIncome.invalid" class="card-content white-text red">
-              <div *ngIf="annualIncome.errors.required">Annual Income is required</div>
-            </div>
-        </div>
-  
-      </div>
-  
-  
-      <div class="row container">
-        <div class="col s12">
-          <h6><b>Family Details</b></h6>
-        </div>
-        <div class="col s12">
-          <div class="divider"></div>
-        </div>
-      </div>
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input placeholder="Mother name" name="motherName" id="mother_name" type="text" class="validate" 
-          [(ngModel)]="profileVo.motherName" #motherName="ngModel" required>
-          <label for="mother_name">Mother name:</label>
-          <div *ngIf="profile.submitted && motherName.invalid" class="card-content white-text red">
-              <div *ngIf="motherName.errors.required">Mother Name is required</div>
-            </div>
-        </div>
-  
-  
-        <div class="input-field col s6">
-  
-          <input placeholder="father name" name="fatherName" id="father_name" type="text" class="validate" 
-          [(ngModel)]="profileVo.fatherName" #fatherName="ngModel" required>
-          <label for="father_name">Father name:</label>
-          <div *ngIf="profile.submitted && fatherName.invalid" class="card-content white-text red">
-              <div *ngIf="fatherName.errors.required">Father Name is required</div>
-            </div>
-        </div>
-  
-      </div>
-  
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input placeholder="Housewife/working/entreprenuer/etc" name="motherIs" id="mother_is" type="text" class="validate" 
-          [(ngModel)]="profileVo.motherIs" #motherIs="ngModel" required>
-          <label for="mother_is">Mother is:</label>
-          <div *ngIf="profile.submitted && motherIs.invalid" class="card-content white-text red">
-              <div *ngIf="motherIs.errors.required">Mother occupation is required</div>
-            </div>
-        </div>
-  
-  
-        <div class="input-field col s6">
-  
-          <input placeholder="service/business/etc" name="fatherIs" id="father_is" type="text" class="validate" 
-          [(ngModel)]="profileVo.fatherIs" #fatherIs="ngModel" required>
-          <label for="father_is">Father is:</label>
-          <div *ngIf="profile.submitted && fatherIs.invalid" class="card-content white-text red">
-              <div *ngIf="fatherIs.errors.required">Father occupation is required</div>
-            </div>
-        </div>
-  
-      </div>
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input placeholder="number of sisters" name="numberOfSisters" id="sisters" type="number" class="validate" ngModel>
-          <label for="sisters">Sister(s)</label>
+            
+                
+                <div class="white">
+                <div class="row container">
+                  <div class="col s12">
+                    <h5 class="section-header">Basic Details</h5>
+                  </div>
+                  <div class="col s12">
+                    <div class="divider"></div>
+                  </div>
+                </div>
+            
+                <div class="row container">
+                    <div class="input-field col s6">
+                        <input placeholder="first name" id="first_name" #firstName="ngModel" name="firstName" [(ngModel)]="profileVo.firstName" type="text"
+                          required class="validate" data-length="50">
+                
+                        <div *ngIf="profile.submitted && firstName.invalid" class="card-content white-text red">
+                          <div *ngIf="firstName.errors.required">First Name is required</div>
+                        </div>
+                        <label for="first_name">First Name</label>
+                      </div>
           
-        </div>
-  
-  
-        <div class="input-field col s6">
-  
-          <input placeholder="number of brother(s)" name="nameOfBrothers" id="brothers" type="number" class="validate" ngModel>
-          <label for="borthers">Brother(s)</label>
-        </div>
-  
-      </div>
-  
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input placeholder="gothra" name="gothra" id="gothra" type="text" class="validate" ngModel>
-          <label for="gothra">Gothra</label>
-        </div>
-  
-        <div class="input-field col s6">
-          <input placeholder="gothra_maternal" name="maternalGothra" id="gothra_maternal" type="text" class="validate" ngModel>
-          <label for="gothra_maternal">Gothra(maternal)</label>
-        </div>
-  
-      </div>
-  
-  
-      <div class="row container">
-        <div class="input-field col s6">
-          <input placeholder="family income" name="familyIncome" id="family_income" type="number" class="validate" ngModel>
-          <label for="family_income">Family Income</label>
-        </div>
-  
-        <div class="input-field col s6">
-          <input placeholder="Orthodox/reserved/conservative/moderate/liberal" name="familyValues" id="family_values" type="text" class="validate"
-            ngModel>
-          <label for="family_values">Family Values</label>
-        </div>
-  
-      </div>
-  
-      <div class="row container">
-        <div class="row ">
-          <div class="col s6"><label>Upload Pics</label></div>
-        </div>
-  
-        <div class="row">
-          <div class="input-field col s6">
-            <input type="file" name="picture1" id="avatar" (change)="onFileChange($event)" ngModel>
-            <a class="waves-effect waves-light btn" (click)="clearFile()">Clear</a>
-          </div>
-        </div>
-      </div>
-  
-      <div class="row container">
-        <div class="col s6">
-          <input type="submit" value="submit">
-        </div>
-      </div>
-  
-    </form>
-  
-  
-  
+          
+                  <div class="input-field col s6">
+            
+                    <input placeholder="last name" data-length="50" id="last_name" #lastName="ngModel" name="lastName" type="text" required 
+                    class="validate"  [(ngModel)]="profileVo.lastName">
+            
+                    <div *ngIf="profile.submitted && lastName.invalid" class="card-content white-text red">
+                      <div *ngIf="lastName.errors.required">Last Name is required</div>
+                    </div>
+            
+                    <label for="last_name">Last Name</label>
+                  </div>
+                </div>
+            
+            
+            
+                <div class="row container">
+                  <div class="input-field col s6">
+                    <input placeholder="contact number" id="contact_number" required  data-length="10" name="contactNumber" type="number"
+                      #contactNumber="ngModel" class="validate" [(ngModel)]="profileVo.contactNumber">
+            
+                    <div *ngIf="profile.submitted && contactNumber.invalid" class="card-content white-text red">
+                      <div *ngIf="contactNumber.errors.required">Contact is required</div>
+                    </div>
+            
+            
+                    <label for="contact_number">Contact Number</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input placeholder="email" name="email" required email #email="ngModel" id="email" type="email" class="validate" [(ngModel)]="profileVo.email">
+            
+                    <div *ngIf="profile.submitted && email.invalid" class="card-content white-text red">
+                      <div *ngIf="email.errors.required">email is required</div>
+                      <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                    </div>
+            
+                    <label for="email">Email</label>
+                  </div>
+            
+                </div>
+            
+            
+                <div class="row container">
+                  <div class="input-field col s6">
+                      <div>Birth Date</div>
+                      <my-date-picker id="mydate" name="mydate" [options]="myDatePickerOptions"
+                      [(ngModel)]="model"  (dateChanged)="onDateChanged($event)" required></my-date-picker>
+                      <!-- <input id="birthdate" required #dateOfBirth="ngModel" name="dateOfBirth" type="date" class="datepicker"
+                        [(ngModel)]="profileVo.dateOfBirth"> -->
+                      
+                   <!--  <div *ngIf="profile.submitted && dateOfBirth.invalid" class="card-content white-text red">
+                      <div *ngIf="dateOfBirth.errors.required">Birth Date is required</div>
+                    </div> -->
+                    
+                  </div>
+            
+            
+                  <div class="input-field col s6">
+                    <input placeholder="birth place" #placeOfBirth="ngModel" name="placeOfBirth" required minlength="3" id="birth_place" type="text"
+                      class="validate" [(ngModel)]="profileVo.placeOfBirth">
+                    <label for="birth_place">Birth Place</label>
+                    <div *ngIf="profile.submitted && placeOfBirth.invalid" class="card-content white-text red">
+                      <div *ngIf="placeOfBirth.errors.required">Birth Place is required</div>
+                      <div *ngIf="placeOfBirth.errors.minlength">Birth Place should be more than 3 characters</div>
+                    </div>
+                  </div>
+            
+            
+                </div>
+            
+            
+                <div class="row container">
+            
+                  <!-- <div class="input-field col s6">
+                  <label placeholder="Birth Time" for="birthdate">Birthdate</label>
+                  <input id="birthdate" name="birthdate" materialize="pickadate" [materializeActions]="birthDateActions"
+                    [materializeParams]="[{format: 'dd/mm/yyyy'}]" type="text" />
+                </div> -->
+                  <div class="col s6">
+                    <label for="marritalStatusSelect">Marrital Status</label>
+                    <select name="marritalStatusSelect" required #marritalStatus="ngModel" name="marritalStatus" materialize="material_select"
+                      [materializeSelectOptions]="selectOptions" [(ngModel)]="profileVo.marritalStatus">
+                      <option value="" disabled selected>Select Marrital Status</option>
+                      <option value="married">Married</option>
+                      <option value="unmarried">Un-Married</option>
+                      <option value="divorced">Divorced</option>
+                      <option value="widowed">Widowed</option>
+                    </select>
+                    <div *ngIf="profile.submitted && marritalStatus.invalid" class="card-content white-text red">
+                      <div *ngIf="marritalStatus.errors.required">Marrital Status is required</div>
+                    </div>
+                  </div>
+            
+                  <div class="input-field col s6">
+            
+                    <select name="genderSelect" #gender="ngModel" required name="gender" materialize="material_select" [materializeSelectOptions]="selectOptions"
+                      [(ngModel)]="profileVo.gender">
+                      <option value="" disabled selected>Select Gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                    <label for="genderSelect">Gender</label>
+            
+                    <div *ngIf="profile.submitted && gender.invalid" class="card-content white-text red">
+                      <div *ngIf="gender.errors.required">Gender is required</div>
+                    </div>
+            
+                  </div>
+            
+                </div>
+            
+                <div class="row container">
+            
+                  <div class="col s6">
+                    <label for="religionSelect">Religion</label>
+                    <select name="religionSelect" name="religion" materialize="material_select" [materializeSelectOptions]="selectOptions" #religion="ngModel"
+                      required [(ngModel)]="profileVo.religion">
+                      <option value="" disabled selected>Select religion</option>
+                      <option value="hindu">Hindu</option>
+                      <option value="jain">Jain</option>
+                      <option value="christian">Christian</option>
+                      <option value="muslim">Muslim</option>
+                      <option value="buddist">Buddhist</option>
+                      <option value="parsi">Parsi</option>
+                      <option value="sikh">Sikh</option>
+                      <option value="sindhi">Sindhi</option>
+                    </select>
+            
+                    <div *ngIf="profile.submitted && religion.invalid" class="card-content white-text red">
+                      <div *ngIf="religion.errors.required">religion is required</div>
+                    </div>
+            
+                  </div>
+            
+            
+                  <div class="input-field col s6">
+                    <input placeholder="caste" name="caste" id="caste" type="text" class="validate" required [(ngModel)]="profileVo.caste" #caste="ngModel">
+                    <label for="caste">Caste</label>
+            
+                    <div *ngIf="profile.submitted && caste.invalid" class="card-content white-text red">
+                      <div *ngIf="caste.errors.required">Caste is required</div>
+                    </div>
+            
+                  </div>
+            
+                </div>
+            
+            
+            
+                <div class="row container">
+                  <div class="input-field col s6">
+                    <textarea id="address" name="address" placeholder="Enter your address here" class="materialize-textarea" [(ngModel)]="profileVo.address"
+                      #address="ngModel" required></textarea>
+                    <label for="address">Current Address</label>
+                    <div *ngIf="profile.submitted && address.invalid" class="card-content white-text red">
+                      <div *ngIf="address.errors.required">address is required</div>
+                    </div>
+                  </div>
+            
+                  <div class="input-field col s6">
+                    <textarea id="home_address" name="homeAddress" placeholder="Enter your home/native here" class="materialize-textarea" [(ngModel)]="profileVo.homeAddress"
+                      #homeAddress="ngModel" required></textarea>
+                    <label for="home_address">Home Address</label>
+                    <div *ngIf="profile.submitted && homeAddress.invalid" class="card-content white-text red">
+                      <div *ngIf="homeAddress.errors.required">Home Address is required</div>
+                    </div>
+                  </div>
+            
+            
+            
+            
+                </div>
+            
+            </div>
+
+
+            
+          
+            <div class="white">
+              
+            <div class="row container">
+                <div class="col s12">
+                  <h5 class="section-header">LifeStyle Details</h5>
+                </div>
+                <div class="col s12">
+                  <div class="divider"></div>
+                </div>
+              </div>
+          
+          
+          
+              <div class="row container">
+                <div class="col s6">
+                  <label for="dietaryHabitsSelect">Dietary Habits</label>
+                  <select name="dietaryHabits"  materialize="material_select" [materializeSelectOptions]="dietaryHabitsOptions"
+                    [(ngModel)]="profileVo.dietaryHabits" #dietaryHabits="ngModel" required>
+                    <option value="" disabled selected>Select Dietary Habits</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="nonvegetarian">Non Vegetarian</option>
+                    <option value="jain">Jain</option>
+                    <option value="eggetarian">Eggetarian</option>
+                  </select>
+                  <div *ngIf="profile.submitted && dietaryHabits.invalid" class="card-content white-text red">
+                    <div *ngIf="dietaryHabits.errors.required">Dietary Habits is required</div>
+                  </div>
+                </div>
+          
+          
+                <div class="col s6">
+                  <label for="drinkingHabitsSelect">Drinking Habits Type</label>
+                  <select name="drinkingHabits" materialize="material_select" [materializeSelectOptions]="drinkingHabitsOptions" #drinkingHabits="ngModel"
+                    required [(ngModel)]="profileVo.drinkingHabits">
+                    <option value="" disabled selected>Select Drinking Habits</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                    <option value="occasionally">occasionally</option>
+                  </select>
+          
+                  <div *ngIf="profile.submitted && drinkingHabits.invalid" class="card-content white-text red">
+                    <div *ngIf="drinkingHabits.errors.required">Dietary Habits is required</div>
+                  </div>
+                </div>
+          
+              </div>
+          
+          
+              <div class="row container">
+          
+                <div class="col s6">
+                  <label for="smokingHabitsSelect">Smoking Habits Type</label>
+                  <select name="smokingHabits" materialize="material_select" [materializeSelectOptions]="smokingHabitsOptions" [(ngModel)]="profileVo.smokingHabits"
+                    required #smokingHabits="ngModel">
+                    <option value="" disabled selected>Select smoking habit</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                    <option value="occasionally">occasionally</option>
+                  </select>
+          
+                  <div *ngIf="profile.submitted && smokingHabits.invalid" class="card-content white-text red">
+                    <div *ngIf="smokingHabits.errors.required">Smoking Habits is required</div>
+                  </div>
+                </div>
+          
+          
+                <div class="col s6">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="feet" name="heightFeet" type="number" class="validate" [(ngModel)]="profileVo.heightFeet" #heightFeet="ngModel"
+                        required>
+                      <label for="feet">Feet(height)</label>
+          
+                      <div *ngIf="profile.submitted && heightFeet.invalid" class="card-content white-text red">
+                        <div *ngIf="heightFeet.errors.required">Height is required</div>
+                      </div>
+                    </div>
+          
+                    <div class="input-field col s6">
+                      <input id="inches" name="heightInch" type="number" class="validate" [(ngModel)]="profileVo.heightInch" #heightInch="ngModel"
+                        required>
+                      <label for="inches">Inches(height)</label>
+          
+          
+                      <div *ngIf="profile.submitted && heightInch.invalid" class="card-content white-text red">
+                        <div *ngIf="heightInch.errors.required">Height is required</div>
+                      </div>
+                    </div>
+          
+                  </div>
+          
+          
+          
+          
+                </div>
+          
+          
+              </div>
+          
+              <div class="row container">
+                <div class="col s6">
+                  <label for="bodyTypeSelect">Body Type</label>
+                  <select name="bodyTypeSelect" name="bodyType" materialize="material_select" [materializeSelectOptions]="bodyTypeOptions"
+                    [(ngModel)]="profileVo.bodyType" #bodyType="ngModel" required>
+                    <option value="" disabled selected>Select Body Type</option>
+                    <option value="slim">Slim</option>
+                    <option value="average">Average</option>
+                    <option value="athletic">Athletic</option>
+                    <option value="heavy">Heavy</option>
+                  </select>
+          
+                  <div *ngIf="profile.submitted && bodyType.invalid" class="card-content white-text red">
+                      <div *ngIf="bodyType.errors.required">Body Type is required</div>
+                    </div>
+                </div>
+          
+          
+                <div class="col s6">
+                  <label for="skinTypeSelect">Skin Type</label>
+                  <select name="skinType" materialize="material_select" [materializeSelectOptions]="skinTypeOptions"
+                  [(ngModel)]="profileVo.skinType" #skinType="ngModel" required>
+                    <option value="" disabled selected>Select Skin Type</option>
+                    <option value="veryfair">Very fair</option>
+                    <option value="fair">fair</option>
+                    <option value="wheatesh">wheatesh</option>
+                    <option value="wheateshbrown">wheatesh brown</option>
+                    <option value="dark">dark</option>
+                  </select>
+          
+                  <div *ngIf="profile.submitted && skinType.invalid" class="card-content white-text red">
+                      <div *ngIf="skinType.errors.required">Body Type is required</div>
+                    </div>
+          
+                </div>
+          
+              </div>
+          
+              <div class="row container">
+                <div class="col s6">
+                  <label for="challengedSelect">Challenged</label>
+                  <select name="challengedSelect" name="challenged" materialize="material_select" [materializeSelectOptions]="challengedOptions"
+                  [(ngModel)]="profileVo.challenged" #challenged="ngModel" required>
+                    <option value="" disabled selected>None</option>
+                    <option value="slim">No</option>
+                    <option value="bybirth">Physically-ByBirth</option>
+                    <option value="byaccident">Phyically-ByAccident</option>
+                    <option value="Mbybirth">Mentally-ByBirth</option>
+                    <option value="Mbyaccident">Mentally-ByAccident</option>
+                  </select>
+                  <div *ngIf="profile.submitted && challenged.invalid" class="card-content white-text red">
+                      <div *ngIf="challenged.errors.required">Body Type is required</div>
+                    </div>
+                </div>
+          
+          
+                <div class="col s6">
+                  <label for="bloodGroupSelect">Blood Group</label>
+                  <select name="bloodGroupSelect" name="bloodGroup" materialize="material_select" [materializeSelectOptions]="bloodGroupOptions"
+                  [(ngModel)]="profileVo.bloodGroup" #bloodGroup="ngModel" required>
+                    <option value="" disabled selected>Select Blood Group</option>
+                    <option value="a+">A+</option>
+                    <option value="a-">A-</option>
+                    <option value="b+">B+</option>
+                    <option value="b-">B-</option>
+                    <option value="ab+">AB+</option>
+                    <option value="ab-">AB-</option>
+                    <option value="o+">O+</option>
+                    <option value="o-">O-</option>
+          
+                  </select>
+          
+                  <div *ngIf="profile.submitted && bloodGroup.invalid" class="card-content white-text red">
+                      <div *ngIf="bloodGroup.errors.required">Blood Group is required</div>
+                    </div>
+                </div>
+              </div>
+          
+          
+            </div>
+            
+            
+        
+        
+            <div class="white">
+                <div class="row container">
+                    <div class="col s12">
+                      <h5 class="section-header">Educational / Professional Details</h5>
+                    </div>
+                    <div class="col s12">
+                      <div class="divider"></div>
+                    </div>
+                  </div>
+              
+              
+                  <div class="row container">
+                    <div class="input-field col s6">
+                      <input placeholder="highest education" name="highestDegree" id="highest_education" type="text" class="validate" 
+                      [(ngModel)]="profileVo.highestDegree" #highestDegree="ngModel" required>
+                      <label for="highest_education">Highest Education</label>
+                      <div *ngIf="profile.submitted && highestDegree.invalid" class="card-content white-text red">
+                          <div *ngIf="highestDegree.errors.required">Highest Degree is required</div>
+                        </div>
+                    </div>
+              
+              
+                    <div class="input-field col s6">
+              
+                      <input placeholder="college name" name="collegeName" id="college_name" type="text" class="validate" 
+                      [(ngModel)]="profileVo.collegeName" #collegeName="ngModel" required>
+                      <label for="college_name">College Name</label>
+                      <div *ngIf="profile.submitted && collegeName.invalid" class="card-content white-text red">
+                          <div *ngIf="collegeName.errors.required">College Name is required</div>
+                        </div>
+                    </div>
+              
+                  </div>
+              
+              
+                  <div class="row container">
+                    <div class="input-field col s6">
+                      <input placeholder="Occupation" name="occupation" id="occupation" type="text" class="validate" 
+                      [(ngModel)]="profileVo.occupation" #occupation="ngModel" required>
+                      <label for="occupation">Occupation</label>
+                      <div *ngIf="profile.submitted && occupation.invalid" class="card-content white-text red">
+                          <div *ngIf="occupation.errors.required">Occupation is required</div>
+                        </div>
+                    </div>
+              
+              
+                    <div class="input-field col s6">
+              
+                      <input placeholder="income" name="annualIncome" id="income" type="number" class="validate" 
+                      [(ngModel)]="profileVo.annualIncome" #annualIncome="ngModel" required>
+                      <label for="income">Income (lacs/pa)</label>
+                      <div *ngIf="profile.submitted && annualIncome.invalid" class="card-content white-text red">
+                          <div *ngIf="annualIncome.errors.required">Annual Income is required</div>
+                        </div>
+                    </div>
+              
+                  </div>
+              
+            </div>
+            
+            <div class="white">
+                <div class="row container">
+                    <div class="col s12">
+                      <h5 class="section-header">Family Details</h5>
+                    </div>
+                    <div class="col s12">
+                      <div class="divider"></div>
+                    </div>
+                  </div>
+              
+              
+                  <div class="row container">
+                    <div class="input-field col s6">
+                      <input placeholder="Mother name" name="motherName" id="mother_name" type="text" class="validate" 
+                      [(ngModel)]="profileVo.motherName" #motherName="ngModel" required>
+                      <label for="mother_name">Mother name:</label>
+                      <div *ngIf="profile.submitted && motherName.invalid" class="card-content white-text red">
+                          <div *ngIf="motherName.errors.required">Mother Name is required</div>
+                        </div>
+                    </div>
+              
+              
+                    <div class="input-field col s6">
+              
+                      <input placeholder="father name" name="fatherName" id="father_name" type="text" class="validate" 
+                      [(ngModel)]="profileVo.fatherName" #fatherName="ngModel" required>
+                      <label for="father_name">Father name:</label>
+                      <div *ngIf="profile.submitted && fatherName.invalid" class="card-content white-text red">
+                          <div *ngIf="fatherName.errors.required">Father Name is required</div>
+                        </div>
+                    </div>
+              
+                  </div>
+              
+              
+              
+                  <div class="row container">
+                    <div class="input-field col s6">
+                      <input placeholder="Housewife/working/entreprenuer/etc" name="motherIs" id="mother_is" type="text" class="validate" 
+                      [(ngModel)]="profileVo.motherIs" #motherIs="ngModel" required>
+                      <label for="mother_is">Mother is:</label>
+                      <div *ngIf="profile.submitted && motherIs.invalid" class="card-content white-text red">
+                          <div *ngIf="motherIs.errors.required">Mother occupation is required</div>
+                        </div>
+                    </div>
+              
+              
+                    <div class="input-field col s6">
+              
+                      <input placeholder="service/business/etc" name="fatherIs" id="father_is" type="text" class="validate" 
+                      [(ngModel)]="profileVo.fatherIs" #fatherIs="ngModel" required>
+                      <label for="father_is">Father is:</label>
+                      <div *ngIf="profile.submitted && fatherIs.invalid" class="card-content white-text red">
+                          <div *ngIf="fatherIs.errors.required">Father occupation is required</div>
+                        </div>
+                    </div>
+              
+                  </div>
+              
+              
+                  <div class="row container">
+                    <div class="input-field col s6">
+                      <input placeholder="number of sisters"  [(ngModel)]="profileVo.numberOfSisters" name="numberOfSisters" id="sisters" type="number" class="validate" ngModel>
+                      <label for="sisters">Sister(s)</label>
+                      
+                    </div>
+              
+              
+                    <div class="input-field col s6">
+              
+                      <input placeholder="number of brother(s)" [(ngModel)]="profileVo.numberOfBrothers" name="numberOfBrothers" id="brothers" type="number" class="validate" ngModel>
+                      <label for="borthers">Brother(s)</label>
+                    </div>
+              
+                  </div>
+              
+              
+              
+                  <div class="row container">
+                    <div class="input-field col s6">
+                      <input placeholder="gothra" name="gothra"   [(ngModel)]="profileVo.gothra"  id="gothra" type="text" class="validate" ngModel>
+                      <label for="gothra">Gothra</label>
+                    </div>
+              
+                    <div class="input-field col s6">
+                      <input placeholder="gothra_maternal" name="maternalGothra" [(ngModel)]="profileVo.maternalGothra"   id="gothra_maternal" type="text" class="validate" ngModel>
+                      <label for="gothra_maternal">Gothra(maternal)</label>
+                    </div>
+              
+                  </div>
+              
+              
+                  <div class="row container">
+                    <div class="input-field col s6">
+                      <input placeholder="family income" name="familyIncome" [(ngModel)]="profileVo.familyIncome" id="family_income" type="number" class="validate" ngModel>
+                      <label for="family_income">Family Income</label>
+                    </div>
+              
+                    <div class="input-field col s6">
+                      <input placeholder="Orthodox/reserved/conservative/moderate/liberal"  [(ngModel)]="profileVo.familyValues"  name="familyValues" id="family_values" type="text" class="validate"
+                        ngModel>
+                      <label for="family_values">Family Values</label>
+                    </div>
+              
+                  </div>
+              
+                </div>
+
+
+                <div class="white">
+                    <div class="row container">
+                        <div class="col s12">
+                          <h5 class="section-header">Upload Picture</h5>
+                        </div>
+                        <div class="col s12">
+                          <div class="divider"></div>
+                        </div>
+                      </div>
+
+                      <div class="row container">
+                          <div class=" col s6" style="margin-bottom: 1%">
+                            <input type="file" class="waves-effect waves-light btn green" name="picture1" id="avatar" (change)="onFileChange($event)" ngModel>
+                           
+                          </div>
+                        </div>
+                </div>
+
+            
+            
+            <div class="row container"> 
+              <div class="col s3 offset-s3">
+                  <app-preloader [showProcessing] = "showProcessing"></app-preloader> 
+              </div>
+                
+            </div>
+            
+      
+          </form>
+       
+
+
+    </div>
+      
+
   </div>
+  
+ 

@@ -1,3 +1,4 @@
+
 <div class="row">
 
   <!--  <form #profile="ngForm" (ngSubmit)="onClickSubmit(profile.value)">
@@ -37,9 +38,15 @@
 
     <div class="row container">
       <div class="input-field col s10">
-        <textarea id="about_me" maxlength="200" placeholder="Write few lines about yourself/ likes/dislikes/ family values/etc"
-          class="materialize-textarea" name="aboutMe" required minlength="50" ngModel></textarea>
-        <label for="about_me">*About</label>
+        <textarea id="about_me" #aboutMe maxlength="200" placeholder="Write few lines about yourself/ likes/dislikes/ family values/etc"
+          class="materialize-textarea" name="aboutMe" data-length="200" required minlength="50" ngModel></textarea>
+        <label for="about_me">About Me</label>
+
+        <div *ngIf="profile.submitted && aboutMe.invalid" class="card-content white-text red">
+            <div *ngIf="aboutMe.errors.required">Please write atleast 50 characters about yourself</div>
+            
+          </div>
+      
       </div>
 
     </div>
@@ -57,22 +64,23 @@
     <div class="row container">
       <div class="input-field col s6">
         <input placeholder="first name" id="first_name" #firstName="ngModel" name="firstName" [(ngModel)]="profile.firstName" type="text"
-          required class="validate" data-length="50">
+          required class="validate" data-length="20"  minlength="1" maxlength="20">
 
         <div *ngIf="profile.submitted && firstName.invalid" class="card-content white-text red">
           <div *ngIf="firstName.errors.required">First Name is required</div>
+          
         </div>
         <label for="first_name">First Name</label>
       </div>
+      
       <div class="input-field col s6">
 
-        <input placeholder="last name" data-length="50" id="last_name" #lastName="ngModel" name="lastName" type="text" required class="validate"
-          [(ngModel)]="profile.lastName">
+        <input placeholder="last name" id="last_name" #lastName="ngModel"   name="lastName" [(ngModel)]="profile.lastName" type="text" 
+          required class="validate"  data-length="20" minlength="1" maxlength="20" >
 
         <div *ngIf="profile.submitted && lastName.invalid" class="card-content white-text red">
           <div *ngIf="lastName.errors.required">Last Name is required</div>
         </div>
-
         <label for="last_name">Last Name</label>
       </div>
     </div>
@@ -87,7 +95,6 @@
         <div *ngIf="profile.submitted && contactNumber.invalid" class="card-content white-text red">
           <div *ngIf="contactNumber.errors.required">Contact is required</div>
         </div>
-
 
         <label for="contact_number">Contact Number</label>
       </div>
@@ -107,18 +114,19 @@
 
     <div class="row container">
       <div class="input-field col s6">
-        <input id="birthdate" required #dateOfBirth="ngModel" materialize="pickadate" name="dateOfBirth" type="date" class="datepicker"
-          [materializeParams]="[{format: 'dd/mm/yyyy'}]" [(ngModel)]="profile.birthOfBirth">
-
+          <div>Birth Date</div>
+          <my-date-picker id="mydate" name="mydate" [options]="myDatePickerOptions"
+          [(ngModel)]="model"  (dateChanged)="onDateChanged($event)" required></my-date-picker>
+<!-- 
         <div *ngIf="profile.submitted && dateOfBirth.invalid" class="card-content white-text red">
           <div *ngIf="dateOfBirth.errors.required">Birth Date is required</div>
         </div>
-        <label placeholder="DOB" for="birthdate">Birthdate</label>
+        <label placeholder="DOB" for="birthdate">Birthdate</label> -->
       </div>
 
 
       <div class="input-field col s6">
-        <input placeholder="birth place" #placeOfBirth="ngModel" name="placeOfBirth" required minlength="3" id="birth_place" type="text"
+        <input placeholder="birth place" #placeOfBirth="ngModel" minlength="1" maxlength="30" name="placeOfBirth" required minlength="3" id="birth_place" type="text"
           class="validate" [(ngModel)]="profile.placeOfBirth">
         <label for="birth_place">Birth Place</label>
         <div *ngIf="profile.submitted && placeOfBirth.invalid" class="card-content white-text red">
@@ -196,7 +204,7 @@
 
 
       <div class="input-field col s6">
-        <input placeholder="caste" name="caste" id="caste" type="text" class="validate" required [(ngModel)]="profile.caste" #caste="ngModel">
+        <input placeholder="caste" name="caste" id="caste" type="text" minlength="1" maxlength="20" class="validate" required [(ngModel)]="profile.caste" #caste="ngModel">
         <label for="caste">Caste</label>
 
         <div *ngIf="profile.submitted && caste.invalid" class="card-content white-text red">
@@ -249,7 +257,7 @@
     <div class="row container">
       <div class="col s6">
         <label for="dietaryHabitsSelect">Dietary Habits</label>
-        <select name="dietaryHabits" name="dietaryHabitsOption" materialize="material_select" [materializeSelectOptions]="dietaryHabitsOptions"
+        <select name="dietaryHabits" name="dietaryHabits" materialize="material_select" [materializeSelectOptions]="dietaryHabitsOptions"
           [(ngModel)]="profile.dietaryHabits" #dietaryHabits="ngModel" required>
           <option value="" disabled selected>Select Dietary Habits</option>
           <option value="vegetarian">Vegetarian</option>
@@ -267,7 +275,7 @@
         <label for="drinkingHabitsSelect">Drinking Habits Type</label>
         <select name="drinkingHabits" materialize="material_select" [materializeSelectOptions]="drinkingHabitsOptions" #drinkingHabits="ngModel"
           required [(ngModel)]="profile.drinkingHabits">
-          <option value="" disabled selected>Select Skin Type</option>
+          <option value="" disabled selected>Select Drinking Habits</option>
           <option value="yes">yes</option>
           <option value="no">no</option>
           <option value="occasionally">occasionally</option>
@@ -352,7 +360,7 @@
 
       <div class="col s6">
         <label for="skinTypeSelect">Skin Type</label>
-        <select name="skinType" name="skinTypeOption" materialize="material_select" [materializeSelectOptions]="skinTypeOptions"
+        <select name="skinType" name="skinType" materialize="material_select" [materializeSelectOptions]="skinTypeOptions"
         [(ngModel)]="profile.skinType" #skinType="ngModel" required>
           <option value="" disabled selected>Select Skin Type</option>
           <option value="veryfair">Very fair</option>
@@ -423,7 +431,7 @@
 
     <div class="row container">
       <div class="input-field col s6">
-        <input placeholder="highest education" name="highestDegree" id="highest_education" type="text" class="validate" 
+        <input placeholder="highest education" name="highestDegree" minlength="1" maxlength="20" id="highest_education" type="text" class="validate" 
         [(ngModel)]="profile.highestDegree" #highestDegree="ngModel" required>
         <label for="highest_education">Highest Education</label>
         <div *ngIf="profile.submitted && highestDegree.invalid" class="card-content white-text red">
@@ -434,7 +442,7 @@
 
       <div class="input-field col s6">
 
-        <input placeholder="college name" name="collegeName" id="college_name" type="text" class="validate" 
+        <input placeholder="college name" name="collegeName" minlength="1" maxlength="50" id="college_name" type="text" class="validate" 
         [(ngModel)]="profile.collegeName" #collegeName="ngModel" required>
         <label for="college_name">College Name</label>
         <div *ngIf="profile.submitted && collegeName.invalid" class="card-content white-text red">
@@ -447,7 +455,7 @@
 
     <div class="row container">
       <div class="input-field col s6">
-        <input placeholder="Occupation" name="occupation" id="occupation" type="text" class="validate" 
+        <input placeholder="Occupation" name="occupation" id="occupation" minlength="1" maxlength="20" type="text" class="validate" 
         [(ngModel)]="profile.occupation" #occupation="ngModel" required>
         <label for="occupation">Occupation</label>
         <div *ngIf="profile.submitted && occupation.invalid" class="card-content white-text red">
@@ -481,7 +489,7 @@
 
     <div class="row container">
       <div class="input-field col s6">
-        <input placeholder="Mother name" name="motherName" id="mother_name" type="text" class="validate" 
+        <input placeholder="Mother name" name="motherName" minlength="1" maxlength="30" id="mother_name" type="text" class="validate" 
         [(ngModel)]="profile.motherName" #motherName="ngModel" required>
         <label for="mother_name">Mother name:</label>
         <div *ngIf="profile.submitted && motherName.invalid" class="card-content white-text red">
@@ -492,7 +500,7 @@
 
       <div class="input-field col s6">
 
-        <input placeholder="father name" name="fatherName" id="father_name" type="text" class="validate" 
+        <input placeholder="father name" name="fatherName" minlength="1" maxlength="30" id="father_name" type="text" class="validate" 
         [(ngModel)]="profile.fatherName" #fatherName="ngModel" required>
         <label for="father_name">Father name:</label>
         <div *ngIf="profile.submitted && fatherName.invalid" class="card-content white-text red">
@@ -506,7 +514,7 @@
 
     <div class="row container">
       <div class="input-field col s6">
-        <input placeholder="Housewife/working/entreprenuer/etc" name="motherIs" id="mother_is" type="text" class="validate" 
+        <input placeholder="Housewife/working/entreprenuer/etc" name="motherIs" minlength="1" maxlength="30" id="mother_is" type="text" class="validate" 
         [(ngModel)]="profile.motherIs" #motherIs="ngModel" required>
         <label for="mother_is">Mother is:</label>
         <div *ngIf="profile.submitted && motherIs.invalid" class="card-content white-text red">
@@ -517,7 +525,7 @@
 
       <div class="input-field col s6">
 
-        <input placeholder="service/business/etc" name="fatherIs" id="father_is" type="text" class="validate" 
+        <input placeholder="service/business/etc" name="fatherIs" id="father_is" minlength="1" maxlength="30" type="text" class="validate" 
         [(ngModel)]="profile.fatherIs" #fatherIs="ngModel" required>
         <label for="father_is">Father is:</label>
         <div *ngIf="profile.submitted && fatherIs.invalid" class="card-content white-text red">
@@ -548,12 +556,12 @@
 
     <div class="row container">
       <div class="input-field col s6">
-        <input placeholder="gothra" name="gothra" id="gothra" type="text" class="validate" ngModel>
+        <input placeholder="gothra" name="gothra" id="gothra" type="text" minlength="1" maxlength="30" class="validate" ngModel>
         <label for="gothra">Gothra</label>
       </div>
 
       <div class="input-field col s6">
-        <input placeholder="gothra_maternal" name="maternalGothra" id="gothra_maternal" type="text" class="validate" ngModel>
+        <input placeholder="gothra_maternal" name="maternalGothra" id="gothra_maternal" minlength="1" maxlength="30"  type="text" class="validate" ngModel>
         <label for="gothra_maternal">Gothra(maternal)</label>
       </div>
 
@@ -567,7 +575,7 @@
       </div>
 
       <div class="input-field col s6">
-        <input placeholder="Orthodox/reserved/conservative/moderate/liberal" name="familyValues" id="family_values" type="text" class="validate"
+        <input placeholder="Orthodox/reserved/conservative/moderate/liberal" name="familyValues" id="family_values" minlength="1" maxlength="30" type="text" class="validate"
           ngModel>
         <label for="family_values">Family Values</label>
       </div>
@@ -598,3 +606,4 @@
 
 
 </div>
+<app-preloader [showProcessing] = "showProcessing"></app-preloader> 
