@@ -1,16 +1,57 @@
-<div class="row container">
-    <div class="{{class}} " *ngFor="let number of profiles">
+<div style="margin-top:50px">
+<div>
+    <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">search</i>
+              <input id="icon_prefix" type="text" class="validate">
+              <label for="icon_prefix">Search Profile</label>
+            </div>
+            
+          </div>
+        </form>
+      </div>
+
+</div>
+
+<div class="row container" >
+    <div class="{{class}} " *ngFor="let profile of profiles">
       <div class="card">
-        <div class="card-image" style="padding:10px;width:200px;height:200px">
-          <img src="/src/assets/profile.jpg" >
-          <span class="card-title">Card Title</span>
+
+  
+        <div class="card-image" style="padding:10px;">
+  
+
+          <img src="/api/profile/getProfileImage" >
+          <span class="card-title">{{profile.firstName}}</span>
         </div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+         
+            <table>
+<tr>
+  <td>Name: {{profile.firstName + profile.lastName}}</td>
+  <td>Date Of Birth: {{profile.dateOfBirth}}</td>
+  
+</tr>
+
+<tr>
+    <td>Caste: {{profile.caste}}</td>
+    <td>Height: {{profile.heightFeet + "." +profile.heightInch}}</td>
+    
+  </tr>
+  <tr>
+      <td>Marital Status: {{profile.marritalStatus}}</td>
+      <td>Occupation: {{profile.occupation}}</td>
+      
+    </tr>
+
+            </table>
+
+        
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
+        <div class="card-action center">
+          <a href="editprofile/{{profile.id}}">View Profile</a>
         </div>
       </div>
     </div>
@@ -19,3 +60,5 @@
 
 
   </div>
+
+</div>

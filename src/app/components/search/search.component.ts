@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProfileServiceService } from '../../services/profile-service.service';
 import { Router } from '@angular/router';
+import { ProfileVo } from '../../vo/profile-vo';
 
 @Component({
   selector: 'app-search',
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit {
 
   form: FormGroup;
+  searchResult: ProfileVo[] = [];
+
 
   genders = ['male', 'female'];
   mariatalstatus = [{ name: 'Married', value: 'Married' },
@@ -59,14 +62,19 @@ export class SearchComponent implements OnInit {
 
     this.form = new FormGroup({
       gender: new FormControl(this.genders[0], Validators.required),
-      maritalstatus: new FormControl('', Validators.required),
-      education: new FormControl('', Validators.required),
-      district: new FormControl('', Validators.required),
-      caste: new FormControl('', [Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]),
-      religion: new FormControl('', [Validators.required]),
-      state: new FormControl(''),
-      age: new FormControl('')
+      maritalstatus: new FormControl('')
+      //education: new FormControl('', Validators.required),
+      // district: new FormControl('', Validators.required),
+      //caste: new FormControl('', [Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]),
+      // religion: new FormControl('', [Validators.required]),
+      // state: new FormControl(''),
+      // age: new FormControl('')
     });
+    const profile = new ProfileVo();
+    profile.gender = 'maile';
+    profile.firstName = 'Sagar';
+    profile.lastName = 'Takare';
+    profile.occupation = 'Doctor';
 
 
   }
@@ -77,6 +85,32 @@ export class SearchComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.form.value.gender);
+    const profile = new ProfileVo();
+    console.log(profile);
+    profile.gender = this.form.value.gender;
+    this.profileservice.searchProfile(profile).subscribe(res => {
+
+
+      if (res !== null) {
+        console.log(res);
+        this.searchResult = res;
+
+        this.reset();
+
+      }
+
+    },
+      err => {
+
+        console.log('Error Occured' + err);
+      }
+
+
+    );
+window.focus();
+    window.scrollTo(0, 5000);
+
+   
   }
 
 }
