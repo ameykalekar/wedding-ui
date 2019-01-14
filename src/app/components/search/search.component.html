@@ -1,10 +1,12 @@
-<div>
+<div style="margin-top:50px">
+
+  
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col s12">
   <div>
 
   <div class="row container">
-    <div class="col s12">
-      <h5>Search</h5>
+    <div class="col s6 offset-s3 center ">
+      <h3 style="color: #ee6e73">Search Profile</h3>
     </div>
     <div class="col s12">
       <div class="divider"></div>
@@ -13,7 +15,7 @@
 </div>
 
 <div class="row container">
-  <div class="col s6">
+  <div class="col s12 m6 l6">
   <div class="col s3">
 
 
@@ -36,7 +38,7 @@
   </div>
 </div>
 
-<div class="col s6 ">
+<div class="col s12 m6 l6 ">
   
  
     <div class="col s3">
@@ -47,13 +49,13 @@
     </div>
     <div class="col s9">
       <div class="input-field ">
-        <select name="singleSelect" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
+        <select formControlName="maritalstatus"  name="singleSelect" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
           [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose your option</option>
+                <option value="" disabled selected>Choose Marital Status</option>
                 <option *ngFor="let option of mariatalstatus" [value]="option.value">{{option.name}}</option>
                  <option  [value]="Married">Married</option>
               </select>
-        <label>Materialize Select</label>
+        <label> Select Marital Status</label>
       </div>
     </div>
 
@@ -76,7 +78,7 @@
 
 
 <div class="row container ">
-    <div class="col s6 ">
+    <div class="col s12 m6 l6 ">
   <div class="col s3">
 
 
@@ -85,18 +87,18 @@
   </div>
   <div class="col s9">
     <div class="input-field col s6">
-      <select name="singleSelect"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
+      <select name="singleSelect" formControlName="education"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
         [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose your option</option>
+                <option value="" disabled selected>Choose Education</option>
                 <option *ngFor="let option of Education" [value]="option.value">{{option.name}}</option>
                 
               </select>
-      <label>Materialize Select</label>
+      <label>Select Education</label>
     </div>
   </div>
 </div>
 
-<div class="col s6 ">
+<div class="col s12 m6 l6 ">
     <div class="col s3">
   
   
@@ -105,13 +107,13 @@
     </div>
     <div class="col s9">
       <div class="input-field col s6">
-        <select name="singleSelect"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
+        <select name="singleSelect" formControlName="district" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
           [disabled]="isDisabled?true:null">
-                  <option value="" disabled selected>Choose your option</option>
+                  <option value="" disabled selected>Choose District</option>
                   <option *ngFor="let option of district" [value]="option.value">{{option.name}}</option>
                   
                 </select>
-        <label>Materialize Select</label>
+        <label>Select District</label>
       </div>
     </div>
   
@@ -122,7 +124,7 @@
 
 
 <div class="row container ">
-    <div class="col s6 ">
+    <div class="col s12 m6 l6 ">
   <div class="col s3">
 
 
@@ -131,13 +133,13 @@
   </div>
   <div class="col s9">
     <div class="input-field col s6">
-      <select name="singleSelect"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
+      <select name="singleSelect"  formControlName="state" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
         [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose your option</option>
+                <option value="" disabled selected>Choose State</option>
                 <option *ngFor="let option of state" [value]="option.value">{{option.name}}</option>
                 
               </select>
-      <label>Materialize Select</label>
+      <label>Select State</label>
     </div>
   </div>
 
@@ -145,7 +147,7 @@
 
 
 
-<div class="col s6 ">
+<div class="col s12 m6 l6 ">
     <div class="col s3">
   
   
@@ -154,13 +156,13 @@
     </div>
     <div class="col s9">
       <div class="input-field col s6">
-        <select name="singleSelect"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
+        <select name="singleSelect" formControlName="age"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
           [disabled]="isDisabled?true:null">
-                  <option value="" disabled selected>Choose your option</option>
-                  <option *ngFor="let option of Education" [value]="option.value">{{option.name}}</option>
+                  <option value="" disabled selected>Choose Age Range</option>
+                  <option *ngFor="let option of agerange" [value]="option.value">{{option.name}}</option>
                   
                 </select>
-        <label>Materialize Select</label>
+        <label>Select Age Range</label>
       </div>
     </div>
   
@@ -168,7 +170,7 @@
 </div>
 
 <div class="row container">
-    <div class="col s6 ">
+    <div class="col s12 m6 l6 ">
   <div class="col s3">
 
 
@@ -177,19 +179,19 @@
   </div>
   <div class="col s9">
     <div class="input-field col s6">
-      <select name="singleSelect"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
+      <select name="singleSelect"  formControlName="religion" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
         [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose your option</option>
+                <option value="" disabled selected>Choose Religion</option>
                 <option *ngFor="let option of religion" [value]="option.value">{{option.name}}</option>
                 
               </select>
-      <label>Materialize Select</label>
+      <label>Select Religion</label>
     </div>
   </div>
 
 </div>
 
-<div class="col s6 ">
+<div class="col s12 m6 l6 ">
     <div class="col s3">
 
 
@@ -198,7 +200,11 @@
       </div>
   <div class="col s9">
     <div class="input-field  ">
-      <input id="cast" type="text" class="validate">
+      <input id="caste" type="text"  formControlName="caste"  [ngClass]="{
+        'invalid ng-invalid': form.controls.caste.invalid && form.controls.caste.dirty,
+        'valid': form.controls.caste.valid && form.controls.caste.dirty 
+       
+      }">
       <label for="cast">Cast</label>
     </div>
   </div>
@@ -208,17 +214,19 @@
 
 
 
-<div class="row container">
-  <div class="col s3  centre">
-<button class="waves-effect waves-light btn "  id="loginbtn" [disabled]="!form.valid">Search</button>
+<div class="row container ">
+  <div class="col s12 m3 l3  center ">
+<button class="waves-effect waves-light btn " style="margin:10px" id="loginbtn" [disabled]="!form.valid">Search</button>
 </div>
-<div class="col s3 centre">
-<button class="waves-effect waves-light btn reset"  id="reset" (click)="reset()">Reset</button>
+<div class="col s12 m3 l3 center">
+<button class="waves-effect waves-light btn reset" style="margin:10px" id="reset" (click)="reset()">Reset</button>
 </div>
 </div>
 </form>
+
+
+    <app-display-profiles [profiles]="searchResult" *ngIf="searchResult.length > 0"></app-display-profiles>
+
 </div>
-<div *ngIf="searchResult.length > 0"  >
-    <app-display-profiles [profiles]="searchResult"></app-display-profiles>
-</div>
+
 

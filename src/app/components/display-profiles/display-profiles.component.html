@@ -1,11 +1,11 @@
-<div style="margin-top:50px">
+
 <div>
-    <div class="row">
-        <form class="col s12">
+    <div class="row container"   id="test"> 
+        <form class="col s12 ">
           <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s6 offset-s3">
               <i class="material-icons prefix">search</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
               <label for="icon_prefix">Search Profile</label>
             </div>
             
@@ -16,14 +16,14 @@
 </div>
 
 <div class="row container" >
-    <div class="{{class}} " *ngFor="let profile of profiles">
+    <div class="{{class}} " *ngFor="let profile of profiles | genericsearch : search ">
       <div class="card">
 
   
-        <div class="card-image" style="padding:10px;">
+        <div style="padding:10px;">
   
 
-          <img src="/api/profile/getProfileImage" >
+          <img materialboxed class="materialboxed responsive-img" src="/api/profile/getProfileImage" >
           <span class="card-title">{{profile.firstName}}</span>
         </div>
         <div class="card-content">
@@ -61,4 +61,4 @@
 
   </div>
 
-</div>
+

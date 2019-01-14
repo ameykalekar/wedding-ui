@@ -48,7 +48,13 @@ export class SearchComponent implements OnInit {
   { name: 'JAIN', value: 'SOLAPUR' }
 
   ];
+  agerange = [{ name: '18-25', value: '18-25' },
+  { name: '26-30', value: '26-30' },
+  { name: '31-35', value: '31-35' },
+  { name: '35-40', value: '35-40' },
+  { name: '40-60', value: '40-60' }
 
+  ];
   selectOptions = [{ name: 'Married', value: 'Married' },
   { name: 'Single', value: 'Single' },
   { name: 'Widow', value: 'Widow' },
@@ -62,13 +68,13 @@ export class SearchComponent implements OnInit {
 
     this.form = new FormGroup({
       gender: new FormControl(this.genders[0], Validators.required),
-      maritalstatus: new FormControl('')
-      //education: new FormControl('', Validators.required),
-      // district: new FormControl('', Validators.required),
-      //caste: new FormControl('', [Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]),
-      // religion: new FormControl('', [Validators.required]),
-      // state: new FormControl(''),
-      // age: new FormControl('')
+      maritalstatus: new FormControl(''),
+      education: new FormControl(''),
+      district: new FormControl(''),
+      caste: new FormControl('', [Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]),
+      religion: new FormControl(''),
+      state: new FormControl(''),
+      age: new FormControl('')
     });
     const profile = new ProfileVo();
     profile.gender = 'maile';
@@ -81,6 +87,7 @@ export class SearchComponent implements OnInit {
 
   reset() {
     this.form.reset();
+    this.form.controls.gender.setValue(this.genders[0]);
 
   }
   onSubmit() {
@@ -88,6 +95,11 @@ export class SearchComponent implements OnInit {
     const profile = new ProfileVo();
     console.log(profile);
     profile.gender = this.form.value.gender;
+    profile.marritalStatus = this.form.value.mariatalstatus;
+    profile.caste = this.form.value.caste;
+    profile.religion = this.form.value.religion;
+    profile.highestDegree = this.form.value.education;
+    profile.agerange = this.form.value.age;
     this.profileservice.searchProfile(profile).subscribe(res => {
 
 
@@ -95,7 +107,7 @@ export class SearchComponent implements OnInit {
         console.log(res);
         this.searchResult = res;
 
-        this.reset();
+       // this.reset();
 
       }
 
@@ -107,10 +119,10 @@ export class SearchComponent implements OnInit {
 
 
     );
-window.focus();
+    window.focus();
     window.scrollTo(0, 5000);
 
-   
+
   }
 
 }
