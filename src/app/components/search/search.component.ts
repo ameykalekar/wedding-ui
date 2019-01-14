@@ -76,14 +76,18 @@ export class SearchComponent implements OnInit {
       state: new FormControl(''),
       age: new FormControl('')
     });
-    const profile = new ProfileVo();
-    profile.gender = 'maile';
-    profile.firstName = 'Sagar';
-    profile.lastName = 'Takare';
-    profile.occupation = 'Doctor';
+     this.profile = new ProfileVo();
+     this.profile.gender = 'maile';
+     this.profile.firstName = 'Sagar';
+     this.profile.lastName = 'Takare';
+     this.profile.occupation = 'Doctor';
 
 
   }
+
+  profiles:any;
+
+  profile:ProfileVo;
 
   reset() {
     this.form.reset();

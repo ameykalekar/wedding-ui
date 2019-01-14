@@ -1,0 +1,46 @@
+<div class="container"  [style.display]= "displayStyle">
+
+  <div class="row" style="margin-top:100px">
+
+    <div class="offset-s3 col s5 center  z-depth-1 " id="panell">
+      <h5 id="title">Login</h5>
+
+      <div class="col s12">
+        <div class="divider"></div>
+      </div>
+
+      <form #user="ngForm" (ngSubmit)="user.form.valid && onClickOfSubmit(user.value)">
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="userid" [(ngModel)]="uid" minlength="1" maxlength="10" name="userid" #userid="ngModel" type="text" required>
+            <div *ngIf="user.submitted && userid.invalid" class="card-content white-text red">
+              <div *ngIf="userid.errors.required">User Id is required</div>
+              <div *ngIf="userid.errors.minlength">User Id cannot be less than 3 characters</div>
+            </div>
+            <label for="userid">User Id</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="password" [(ngModel)]="pword" maxlength="10" name="password" #password="ngModel" type="password" required>
+            <div *ngIf="user.submitted && password.invalid" class="card-content white-text red">
+              <div *ngIf="password.errors.required">Password is required</div>
+            </div>
+            <label for="password">Password</label>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <input class="waves-effect waves-light btn green" type="submit" value="Login">
+        </div>
+
+      </form>
+
+      
+      
+    </div>
+  </div>
+
+</div>
+<app-preloader [showProcessing] = "showProcessing"></app-preloader> 

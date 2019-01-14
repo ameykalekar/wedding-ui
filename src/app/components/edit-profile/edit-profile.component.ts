@@ -1,7 +1,8 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { ProfileServiceService} from '../../services/profile-service.service';
 import { ProfileVo } from '../../vo/profile-vo';
-import {ActivatedRoute}  from "@angular/router";
+import {ActivatedRoute,Router}  from "@angular/router";
+
 import {IMyDpOptions} from 'mydatepicker';
 
 @Component({
@@ -15,7 +16,9 @@ export class EditProfileComponent implements OnInit {
 
   profileVo:ProfileVo=new ProfileVo();
 
-  constructor(private profileService: ProfileServiceService,private route:ActivatedRoute) {
+  showProcessing:boolean=false;
+
+  constructor(private router:Router,private profileService: ProfileServiceService,private route:ActivatedRoute) {
 
     this.route.params.subscribe( params => {
       console.log(params);
@@ -62,9 +65,12 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
     console.log(profile);
     profile.picture1=this.img1;
     profile.dateOfBirth = this.profileVo.dateOfBirth;
+    this.showProcessing = true;
     this.profileService.insertProfile(profile).subscribe(res=>
     {
       console.log(res);
+      this.showProcessing = false;
+      this.router.navigate['myprofile'];
 
     });
   }
