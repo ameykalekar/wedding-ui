@@ -31,7 +31,7 @@ const appRoutes: Routes = [
   , { path: 'login', component:UserLoginComponent}
   , { path: 'search',component: SearchComponent}
   , { path: 'logout', component:LogoutComponent}
-  , { path: '', component: UserLoginComponent }
+  , { path: '', component: FrontPageComponent }
 
 ];
 
