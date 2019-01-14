@@ -1,232 +1,183 @@
 <div style="margin-top:50px">
 
-  
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="col s12">
-  <div>
-
-  <div class="row container">
-    <div class="col s6 offset-s3 center ">
-      <h3 style="color: #ee6e73">Search Profile</h3>
-    </div>
-    <div class="col s12">
-      <div class="divider"></div>
-    </div>
-  </div>
-</div>
-
-<div class="row container">
-  <div class="col s12 m6 l6">
-  <div class="col s3">
-
-
-    <span class="right">Select Gender</span>
-
-  </div>
-  <div class="col s3" >
-    <p>
-      <input name="gender" type="radio" id="test1" formControlName="gender" [value]="genders[0]" 
-      />
-      <label for="test1">Male</label>
-    </p>
-  </div>
-  <div class="col s3">
-    <p>
-      <input name="gender" type="radio" id="test2" formControlName="gender" [value]="genders[1]" 
-      />
-      <label for="test2">Female</label>
-    </p>
-  </div>
-</div>
-
-<div class="col s12 m6 l6 ">
-  
- 
-    <div class="col s3">
-
-
-      <span class="right">Mariatal Status</span>
-
-    </div>
-    <div class="col s9">
-      <div class="input-field ">
-        <select formControlName="maritalstatus"  name="singleSelect" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
-          [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose Marital Status</option>
-                <option *ngFor="let option of mariatalstatus" [value]="option.value">{{option.name}}</option>
-                 <option  [value]="Married">Married</option>
-              </select>
-        <label> Select Marital Status</label>
+    <div class="col s10 z-depth-1 offset-s1">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col s12">
+      <div>
+    
+      <div class="row container">
+        <div class="col s6 offset-s3 center ">
+          <h3 style="color: #ee6e73">Search Profile</h3>
+        </div>
+        <div class="col s12">
+          <div class="divider"></div>
+        </div>
       </div>
     </div>
-
- 
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="row container ">
-    <div class="col s12 m6 l6 ">
-  <div class="col s3">
-
-
-    <span class="right">Education</span>
-
-  </div>
-  <div class="col s9">
-    <div class="input-field col s6">
-      <select name="singleSelect" formControlName="education"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
-        [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose Education</option>
-                <option *ngFor="let option of Education" [value]="option.value">{{option.name}}</option>
-                
-              </select>
-      <label>Select Education</label>
-    </div>
-  </div>
-</div>
-
-<div class="col s12 m6 l6 ">
-    <div class="col s3">
-  
-  
-      <span class="right">District:</span>
-  
-    </div>
-    <div class="col s9">
-      <div class="input-field col s6">
-        <select name="singleSelect" formControlName="district" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
-          [disabled]="isDisabled?true:null">
-                  <option value="" disabled selected>Choose District</option>
-                  <option *ngFor="let option of district" [value]="option.value">{{option.name}}</option>
-                  
-                </select>
-        <label>Select District</label>
-      </div>
-    </div>
-  
-  </div>
-</div>
-
-
-
-
-<div class="row container ">
-    <div class="col s12 m6 l6 ">
-  <div class="col s3">
-
-
-    <span class="right">State:</span>
-
-  </div>
-  <div class="col s9">
-    <div class="input-field col s6">
-      <select name="singleSelect"  formControlName="state" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
-        [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose State</option>
-                <option *ngFor="let option of state" [value]="option.value">{{option.name}}</option>
-                
-              </select>
-      <label>Select State</label>
-    </div>
-  </div>
-
-</div>
-
-
-
-<div class="col s12 m6 l6 ">
-    <div class="col s3">
-  
-  
-      <span class="right">Age:</span>
-  
-    </div>
-    <div class="col s9">
-      <div class="input-field col s6">
-        <select name="singleSelect" formControlName="age"  name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
-          [disabled]="isDisabled?true:null">
-                  <option value="" disabled selected>Choose Age Range</option>
-                  <option *ngFor="let option of agerange" [value]="option.value">{{option.name}}</option>
-                  
-                </select>
-        <label>Select Age Range</label>
-      </div>
-    </div>
-  
-  </div>
-</div>
-
-<div class="row container">
-    <div class="col s12 m6 l6 ">
-  <div class="col s3">
-
-
-    <span class="right">Religion:</span>
-
-  </div>
-  <div class="col s9">
-    <div class="input-field col s6">
-      <select name="singleSelect"  formControlName="religion" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
-        [disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose Religion</option>
-                <option *ngFor="let option of religion" [value]="option.value">{{option.name}}</option>
-                
-              </select>
-      <label>Select Religion</label>
-    </div>
-  </div>
-
-</div>
-
-<div class="col s12 m6 l6 ">
-    <div class="col s3">
-
-
-        <span class="right">Caste:</span>
+    
+    <div class="row container">
+      <div class="col s12 m6 l6">
+      <div class="col s3">
+    
+    
+        <span class="right">Select Gender</span>
     
       </div>
-  <div class="col s9">
-    <div class="input-field  ">
-      <input id="caste" type="text"  formControlName="caste"  [ngClass]="{
-        'invalid ng-invalid': form.controls.caste.invalid && form.controls.caste.dirty,
-        'valid': form.controls.caste.valid && form.controls.caste.dirty 
-       
-      }">
-      <label for="cast">Cast</label>
+      <div class="col s3" >
+        <p>
+          <input name="gender" type="radio" id="test1" formControlName="gender" [value]="genders[0]" 
+          />
+          <label for="test1">Male</label>
+        </p>
+      </div>
+      <div class="col s3">
+        <p>
+          <input name="gender" type="radio" id="test2" formControlName="gender" [value]="genders[1]" 
+          />
+          <label for="test2">Female</label>
+        </p>
+      </div>
     </div>
+    
+    <div class="col s12 m6 l6 ">
+      
+
+        <div class="col s9">
+          <div class="input-field ">
+            <select formControlName="maritalstatus"  name="MarritalStatus" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
+              [disabled]="isDisabled?true:null">
+                    <option value="" disabled selected>Choose Marital Status</option>
+                    <option *ngFor="let option of mariatalstatus" [value]="option.value">{{option.name}}</option>
+                     <option  [value]="Married">Married</option>
+                  </select>
+            <label for="MarritalStatus">Marrital Status</label>
+          </div>
+        </div>
+    
+     
+    </div>
+    
+    </div>
+    
+    
+    
+    <div class="row container ">
+        <div class="col s12 m6 l6 ">
+
+      <div class="col s9">
+        <div class="input-field">
+          <select name="singleSelect" formControlName="education"  name="education" materialize="material_select" [materializeSelectOptions]="selectOptions"
+            [disabled]="isDisabled?true:null">
+                    <option value="" disabled selected>Choose Education</option>
+                    <option *ngFor="let option of Education" [value]="option.value">{{option.name}}</option>
+                    
+                  </select>
+          <label for="education">Education</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col s12 m6 l6 ">
+        <div class="col s9">
+          <div class="input-field ">
+            <select name="singleSelect" formControlName="district" name="district" materialize="material_select" [materializeSelectOptions]="selectOptions"
+              [disabled]="isDisabled?true:null">
+                      <option value="" disabled selected>Choose District</option>
+                      <option *ngFor="let option of district" [value]="option.value">{{option.name}}</option>
+                      
+                    </select>
+            <label for="district">District</label>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    
+    
+    
+    
+    <div class="row container ">
+        <div class="col s12 m6 l6 ">
+      <div class="col s9">
+        <div class="input-field">
+          <select name="singleSelect"  formControlName="state" name="state" materialize="material_select" [materializeSelectOptions]="selectOptions"
+            [disabled]="isDisabled?true:null">
+                    <option value="" disabled selected>Choose State</option>
+                    <option *ngFor="let option of state" [value]="option.value">{{option.name}}</option>
+                    
+                  </select>
+          <label for="state">State</label>
+        </div>
+      </div>
+    
+    </div>
+    
+    
+    
+    <div class="col s12 m6 l6 ">
+        <div class="col s9">
+          <div class="input-field">
+            <select name="singleSelect" formControlName="age"  name="agerange" materialize="material_select" [materializeSelectOptions]="selectOptions"
+              [disabled]="isDisabled?true:null">
+                      <option value="" disabled selected>Choose Age Range</option>
+                      <option *ngFor="let option of agerange" [value]="option.value">{{option.name}}</option>
+                      
+                    </select>
+            <label for="agerange">Age Range</label>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    
+    <div class="row container">
+        <div class="col s12 m6 l6 ">
+      <div class="col s9">
+        <div class="input-field">
+          <select name="singleSelect"  formControlName="religion" name="religion" materialize="material_select" [materializeSelectOptions]="selectOptions"
+            [disabled]="isDisabled?true:null">
+                    <option value="" disabled selected>Choose Religion</option>
+                    <option *ngFor="let option of religion" [value]="option.value">{{option.name}}</option>
+                    
+                  </select>
+          <label for="religion">Select Religion</label>
+        </div>
+      </div>
+    
+    </div>
+    
+    <div class="col s12 m6 l6 ">
+
+      <div class="col s9">
+        <div class="input-field ">
+          <input id="caste" type="text"  formControlName="caste"  [ngClass]="{
+            'invalid ng-invalid': form.controls.caste.invalid && form.controls.caste.dirty,
+            'valid': form.controls.caste.valid && form.controls.caste.dirty 
+           
+          }">
+          <label for="cast">Cast</label>
+        </div>
+      </div>
+    
+    </div>
+    </div>
+    
+    
+    
+    <div class="row container ">
+      <div class="col s12 m3 l3  center ">
+    <button class="waves-effect waves-light btn " style="margin:10px" id="loginbtn" [disabled]="!form.valid">Search</button>
+    </div>
+    <div class="col s12 m3 l3 center">
+    <button class="waves-effect waves-light btn reset" style="margin:10px" id="reset" (click)="reset()">Reset</button>
+    </div>
+    </div>
+    </form>
   </div>
-
-</div>
-</div>
-
-
-
-<div class="row container ">
-  <div class="col s12 m3 l3  center ">
-<button class="waves-effect waves-light btn " style="margin:10px" id="loginbtn" [disabled]="!form.valid">Search</button>
-</div>
-<div class="col s12 m3 l3 center">
-<button class="waves-effect waves-light btn reset" style="margin:10px" id="reset" (click)="reset()">Reset</button>
-</div>
-</div>
-</form>
-
-
-    <app-display-profiles [profiles]="searchResult" *ngIf="searchResult.length > 0"></app-display-profiles>
-
-</div>
-
-
+    
+        <app-display-profiles [profiles]="searchResult" *ngIf="searchResult.length > 0"></app-display-profiles>
+    
+    </div>
+    
+    
+    
+    
