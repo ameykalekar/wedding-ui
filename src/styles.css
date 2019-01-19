@@ -17,3 +17,21 @@
 
     color:#ad1457;
 }
+
+
+.nav-wrapper-dashboard{
+	background: linear-gradient(to right,#006064,#ad1457);
+}
+
+.login-background{
+    background: linear-gradient(to right,white,#e8eaf6);
+    z-index: -1;
+}
+
+
+.front-back1 {
+    background-image: url("/assets/front-back1.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+}
