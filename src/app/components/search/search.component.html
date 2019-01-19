@@ -174,7 +174,7 @@
     </form>
   </div>
     
-        <app-display-profiles [profiles]="searchResult" *ngIf="searchResult.length > 0"></app-display-profiles>
+        <app-display-profiles [profiles]="searchResult" [profileVO]="searchCriteria" *ngIf="searchResult.length > 0"></app-display-profiles>
     
     </div>
     

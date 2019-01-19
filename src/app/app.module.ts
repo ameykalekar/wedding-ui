@@ -10,7 +10,7 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 import { MyDatePickerModule } from 'mydatepicker';
@@ -22,17 +22,17 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { SearchComponent } from './components/search/search.component';
 import { DisplayProfilesComponent } from './components/display-profiles/display-profiles.component';
-import {GenericsearchPipe} from './genericsearch.pipe'
-
+import { GenericsearchPipe } from './genericsearch.pipe';
+import { ScrollEventModule } from 'ngx-scroll-event';
 
 const appRoutes: Routes = [
-   { path: 'myprofile', component: MyProfileComponent , canActivate: [AuthGuard]}
-  , { path: 'register', component: CreateProfileComponent }  
-  , { path: 'editprofile/:id' , component: EditProfileComponent, canActivate: [AuthGuard]}
-  , { path: 'front',component: FrontPageComponent}
-  , { path: 'login', component:UserLoginComponent}
-  , { path: 'search',component: SearchComponent}
-  , { path: 'logout', component:LogoutComponent}
+  { path: 'myprofile', component: MyProfileComponent, canActivate: [AuthGuard] }
+  , { path: 'register', component: CreateProfileComponent }
+  , { path: 'editprofile/:id', component: EditProfileComponent, canActivate: [AuthGuard] }
+  , { path: 'front', component: FrontPageComponent }
+  , { path: 'login', component: UserLoginComponent }
+  , { path: 'search', component: SearchComponent }
+  , { path: 'logout', component: LogoutComponent }
   , { path: '', component: FrontPageComponent }
 
 ];
@@ -53,17 +53,19 @@ const appRoutes: Routes = [
     PreloaderComponent,
     SearchComponent,
     DisplayProfilesComponent,
-    GenericsearchPipe
+    GenericsearchPipe,
+    
   ],
   imports: [
-    MaterializeModule ,
+    MaterializeModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,ReactiveFormsModule,
+    FormsModule, ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    MyDatePickerModule 
-    
+    MyDatePickerModule,
+    ScrollEventModule
+
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

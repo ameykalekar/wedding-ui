@@ -1,4 +1,16 @@
-
+<div *ngIf="showProcessing" class="my-modal">
+  <div class="preloader-wrapper big active" style="margin-top:20%;margin-left: 40%" >
+      <div class="spinner-layer spinner-green-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+</div>
 <div>
     <div class="row container"   id="test"> 
         <form class="col s12 ">
@@ -16,7 +28,7 @@
 </div>
 
 <div class="row container" >
-    <div class="{{class}} " *ngFor="let profile of profiles | genericsearch : search ">
+    <div class="{{class}} " *ngFor="let profile of profiles | genericsearch : search " detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="10" [topOffset]="0" >
       <div class="card">
 
   

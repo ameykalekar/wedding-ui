@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
 
   form: FormGroup;
   searchResult: ProfileVo[] = [];
+  searchCriteria: ProfileVo;
 
 
   genders = ['male', 'female'];
@@ -76,18 +77,18 @@ export class SearchComponent implements OnInit {
       state: new FormControl(''),
       age: new FormControl('')
     });
-     this.profile = new ProfileVo();
-     this.profile.gender = 'maile';
-     this.profile.firstName = 'Sagar';
-     this.profile.lastName = 'Takare';
-     this.profile.occupation = 'Doctor';
+    this.profile = new ProfileVo();
+    this.profile.gender = 'maile';
+    this.profile.firstName = 'Sagar';
+    this.profile.lastName = 'Takare';
+    this.profile.occupation = 'Doctor';
 
 
   }
 
-  profiles:any;
+  profiles: any;
 
-  profile:ProfileVo;
+  profile: ProfileVo;
 
   reset() {
     this.form.reset();
@@ -110,8 +111,8 @@ export class SearchComponent implements OnInit {
       if (res !== null) {
         console.log(res);
         this.searchResult = res;
-
-       // this.reset();
+        this.searchCriteria = profile;
+        // this.reset();
 
       }
 
