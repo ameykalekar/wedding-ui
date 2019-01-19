@@ -22,6 +22,8 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
 import { SearchComponent } from './components/search/search.component';
 import { DisplayProfilesComponent } from './components/display-profiles/display-profiles.component';
+import {GenericsearchPipe} from './genericsearch.pipe'
+
 
 const appRoutes: Routes = [
    { path: 'myprofile', component: MyProfileComponent , canActivate: [AuthGuard]}
@@ -50,7 +52,8 @@ const appRoutes: Routes = [
     LogoutComponent,
     PreloaderComponent,
     SearchComponent,
-    DisplayProfilesComponent
+    DisplayProfilesComponent,
+    GenericsearchPipe
   ],
   imports: [
     MaterializeModule ,
