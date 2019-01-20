@@ -9,7 +9,7 @@ import { ProfileServiceService } from '../../services/profile-service.service';
   styleUrls: ['./display-profiles.component.css']
 })
 export class DisplayProfilesComponent implements OnInit {
-
+  selector: string = '.main-panel';
   @Input('profileVO')
   searchCriteria: ProfileVo;
 
@@ -33,12 +33,8 @@ export class DisplayProfilesComponent implements OnInit {
     this.showProcessing = false;
   }
 
-  public handleScroll(event: ScrollEvent) {
-
-
-
-    if (event.isReachingBottom) {
-      this.showProcessing = true;
+  onScroll() {
+    this.showProcessing = true;
 
       this.searchCriteria.start = this.searchCriteria.maxLimit;
       this.searchCriteria.maxLimit = this.searchCriteria.maxLimit + 5;
@@ -51,7 +47,7 @@ export class DisplayProfilesComponent implements OnInit {
           this.searchCriteria = this.searchCriteria;
           const temp: ProfileVo[] = res;
           const pr1: ProfileVo[] = [];
-          temp.forEach(function (p) {
+          temp.forEach((p) => {
             const pr = new ProfileVo();
             pr.firstName = p.firstName;
             pr.lastName = p.lastName;
@@ -61,10 +57,9 @@ export class DisplayProfilesComponent implements OnInit {
             pr.heightFeet = p.heightFeet;
             pr.heightInch = p.heightInch;
             pr.marritalStatus = p.marritalStatus;
-  
-
+            this.profiles.push(pr);
           });
-          this.profiles.push();
+
           const r: ProfileVo[] = [];
           /*   res.forEach(function (p) {
                r.push(p);
@@ -87,6 +82,14 @@ export class DisplayProfilesComponent implements OnInit {
       );
       window.focus();
       window.scrollTo(0, 5000);
+  }
+
+  public handleScroll(event: ScrollEvent) {
+
+
+
+    if (event.isReachingBottom) {
+      
 
 
     }

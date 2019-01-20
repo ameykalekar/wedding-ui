@@ -27,8 +27,11 @@
 
 </div>
 
-<div class="row container" >
-    <div class="{{class}} " *ngFor="let profile of profiles | genericsearch : search " detect-scroll (onScroll)="handleScroll($event)" [bottomOffset]="10" [topOffset]="0" >
+<div class="row container" infiniteScroll
+[infiniteScrollDistance]="1"
+[infiniteScrollThrottle]="50"
+(scrolled)="onScroll()">
+    <div class="{{class}} " *ngFor="let profile of profiles | genericsearch : search "  >
       <div class="card">
 
   

@@ -11,8 +11,11 @@
                         <li  *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="myprofile">My Profile</a></li>
                         <li  *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="register" >Register</a></li>
                         <li  *ngIf="_authService.isLoggednIn()"><a href="#" [routerLink]=getLoggedInUserRoute()>Edit Profile</a></li>
+                        <li  *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="payment">Payment</a></li>
                         <li  *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="login">Login</a></li>
                         <li  *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="logout">Logout</a></li>
+                   
+                        
                     </ul>
                 </div>
             </nav>

@@ -24,6 +24,12 @@ import { SearchComponent } from './components/search/search.component';
 import { DisplayProfilesComponent } from './components/display-profiles/display-profiles.component';
 import { GenericsearchPipe } from './genericsearch.pipe';
 import { ScrollEventModule } from 'ngx-scroll-event';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { PaymentResponseComponent } from './components/payment-response/payment-response.component';
+import { PaymentFailureComponent } from './components/payment-failure/payment-failure.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { ProceduresComponent } from './components/procedures/procedures.component';
 
 const appRoutes: Routes = [
   { path: 'myprofile', component: MyProfileComponent, canActivate: [AuthGuard] }
@@ -33,6 +39,7 @@ const appRoutes: Routes = [
   , { path: 'login', component: UserLoginComponent }
   , { path: 'search', component: SearchComponent }
   , { path: 'logout', component: LogoutComponent }
+  , { path: 'payment', component: PaymentComponent }
   , { path: '', component: FrontPageComponent }
 
 ];
@@ -54,7 +61,11 @@ const appRoutes: Routes = [
     SearchComponent,
     DisplayProfilesComponent,
     GenericsearchPipe,
-    
+    PaymentResponseComponent,
+    PaymentFailureComponent,
+    PaymentComponent,
+    ProceduresComponent
+
   ],
   imports: [
     MaterializeModule,
@@ -64,10 +75,14 @@ const appRoutes: Routes = [
     FormsModule, ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     MyDatePickerModule,
-    ScrollEventModule
+    ScrollEventModule,
+    InfiniteScrollModule,
 
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+}
