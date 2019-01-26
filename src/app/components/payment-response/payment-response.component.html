@@ -1,14 +1,68 @@
-<p>
-  payment-response works!
-</p>
-<div class="row container">
-
-
-  <div class="section">
-    <div class="card-panel {{color}}">{{ message }}</div>
-    <p>Stuff</p>
-  </div>
-  <div class="divider"></div>
+<div class="row ">
  
+    <div class="card-panel {{color}}">{{ message }}</div>
+  
+  
+  <div class="divider"></div>
+
+
+
+
+  <table>
+    <tr [hidden]="!responsevo.txnStatus">
+      <td >Transaction Status</td>
+      <td>{{responsevo.txnStatus}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.error">
+      <td >Error</td>
+      <td>{{responsevo.error}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.error_Message">
+      <td>Transaction Error Message</td>
+      <td>{{responsevo.error_Message}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.txnid">
+      <td>Transaction Id passed by the merchant</td>
+      <td>{{responsevo.txnid}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.txnMessage">
+      <td> Transaction Message</td>
+      <td>{{responsevo.txnMessage}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.firstname">
+      <td>Firstname of the payer</td>
+      <td>{{responsevo.firstname}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.amount">
+      <td>Transaction Amount</td>
+      <td>{{responsevo.amount}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.mode">
+      <td>Payment Mode</td>
+      <td>{{responsevo.mode}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.email">
+      <td>Email Id of the payer</td>
+      <td>{{responsevo.email}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.bank_ref_num">
+      <td>Bank Reference Number</td>
+      <td>{{responsevo.bank_ref_num}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.phone">
+      <td>Mobile No of the payer</td>
+      <td>{{responsevo.phone}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.paymentId">
+      <td>The payUmoney transaction id.</td>
+      <td>{{responsevo.paymentId}}</td>
+    </tr>
+    <tr [hidden]="!responsevo.status">
+      <td>PayUmoney Transaction Status.</td>
+      <td>{{responsevo.status}}</td>
+    </tr>
+  </table>
+
+
   
 </div>

@@ -1,24 +1,75 @@
 
-<div class="row container">
+<div class="row container" style="margin-top:50px">
 
-        <div class="section">
-                <div class="card-panel ">Please Select Payment Option</div>
-                
+                 <div class="container  ">
+                               
+                                                <div class="col s6 offset-s3 center ">
+                                                  <h3 class="section-header">Make Payment</h3>
+                                                </div>
+                                                <div class="col s12">
+                                                  <div class="divider"></div>
+                                                </div>
+                                            
+                        <div class="center">
+                        <table class="responsive-table    ">
+                                        <tbody>
+                                <tr>
+                                  <td>
+                                        Amount:
+                                  </td>
+                                  <td>
+                                    {{RequestDatas.amount}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                              Name:
+                                  </td>
+                                  <td>
+                                    {{RequestDatas.firstname}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                              Phone:
+                                  </td>
+                                  <td>
+                                    {{RequestDatas.phone}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                              Email:
+                                  </td>
+                                  <td>
+                                    {{RequestDatas.email}}
+                                  </td>
+                                </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                        <div style="margin:50px" class="center">
+                              <button  class ="btn" (click)="pay()">Click To Pay</button>
+                        </div>
+                        <app-payment-response [message] ="outmessage" [hidden]="!showSuccess" [color]="color" [responsevo]="responsevo">
 
+                                </app-payment-response>
+                 </div>
+
+            
+
+                       
               
-              <div class="divider"></div>
+            
 
 
 
-<button (click)="pay()">peyment</button>
-</div>
-<div class="row container">
-<app-payment-response [message] ="outmessage" [hidden]="!showSuccess" [color]="color">
 
-</app-payment-response>
 
-<app-payment-failure *ngIf="showFailure">
-
-</app-payment-failure>
 
 </div>
+
+
+
+
+
