@@ -2,27 +2,32 @@
 <!--<app-create-profile></app-create-profile> -->
 
 
-<div class="navbar-fixed" >
-        <nav>
-                <div class="nav-wrapper nav-wrapper-dashboard" >
-                    <a href="#" class="brand-logo right hide-on-med-and-down ">Jodi No 1</a>
-                    <ul id="nav-mobile" class="left">
-                        <li><a href="#" routerLink="search">Search</a></li>
-                        <li  *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="myprofile">My Profile</a></li>
-                        <li  *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="register" >Register</a></li>
-                        <li  *ngIf="_authService.isLoggednIn()"><a href="#" [routerLink]=getLoggedInUserRoute()>Edit Profile</a></li>
-                        <li  *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="payment">Payment</a></li>
-                        <li  *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="login">Login</a></li>
-                        <li  *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="logout">Logout</a></li>
-                   
-                        
-                    </ul>
-                </div>
-            </nav>
+<div class="navbar-fixed">
+    <ul id="profileDropDown" class="dropdown-content">
+        <li *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="myprofile">My Profile</a></li>
+        <li *ngIf="_authService.isLoggednIn()"><a href="#" [routerLink]=getLoggedInUserRoute()>Edit Profile</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Change Password</a></li>
+        <li *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="logout">Logout</a></li>
+    </ul>
+
+    <nav>
+        <div class="nav-wrapper nav-wrapper-dashboard">
+            <a href="#" class="brand-logo right hide-on-med-and-down ">Jodi No 1</a>
+            <ul id="nav-mobile" class="left">
+                <li><a href="#" routerLink="search">Search</a></li>
+                <li *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="register">Register</a></li>
+                <li *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="payment">Payment</a></li>
+                <li *ngIf="_authService.isLoggednIn()==false"><a href="#" routerLink="login">Login</a></li>
+                <li><a class="dropdown-trigger" href="#" materialize="dropdown" data-activates="profileDropDown"><i class="material-icons right">person</i></a></li>
+
+            </ul>
+        </div>
+    </nav>
 </div>
 
 
 <div class="row">
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 
 </div>

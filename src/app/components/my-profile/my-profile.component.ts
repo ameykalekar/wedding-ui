@@ -3,6 +3,7 @@ import { ProfileServiceService } from '../../services/profile-service.service';
 import {ProfileVo} from '../../vo/profile-vo';
 import { AuthService } from '../../services/auth.service';
 
+
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
@@ -11,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class MyProfileComponent implements OnInit {
 
   @ViewChild('carousel') carouselElement; 
+
 
   actions = new EventEmitter<string>();
 
@@ -38,6 +40,7 @@ constructor(private authService:AuthService,private profileService:ProfileServic
       res => {
         this.profileVo =res;
         console.log(this.profileVo);
+       
       }
 
     );

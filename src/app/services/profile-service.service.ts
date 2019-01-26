@@ -34,4 +34,8 @@ export class ProfileServiceService {
   searchProfile(profileVo: ProfileVo) {
     return this.http.post<ProfileVo[]>('/api/search', JSON.stringify(profileVo), this.httpOptions);
   }
+
+  insertSimpleProfile(profileVo: ProfileVo){
+    return this.http.post('/api/simple/profile',JSON.stringify(profileVo),this.httpOptions);
+  }
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { ProfileServiceService} from '../../services/profile-service.service';
 import { ProfileVo } from '../../vo/profile-vo';
 import {ActivatedRoute,Router}  from "@angular/router";
-
+import { ProfileStatusComponent} from  '../profile-status/profile-status.component';
 import {IMyDpOptions} from 'mydatepicker';
 
 @Component({
@@ -17,6 +17,11 @@ export class EditProfileComponent implements OnInit {
   profileVo:ProfileVo=new ProfileVo();
 
   showProcessing:boolean=false;
+
+
+  @ViewChild(ProfileStatusComponent)
+  private profileStatusComponent: ProfileStatusComponent;
+
 
   constructor(private router:Router,private profileService: ProfileServiceService,private route:ActivatedRoute) {
 
@@ -57,6 +62,8 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
         console.log(this.day +"/" + this.month+"/" + this.year);
         this.model = { date: { year: this.year, month: this.month, day: this.day } };
       }
+    //  this.profileStatusComponent.profileVo = this.profileVo;
+     // this.profileStatusComponent.calculatePercentComplete();
     });
   }
 

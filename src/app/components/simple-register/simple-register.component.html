@@ -1,0 +1,105 @@
+<div class="row">
+
+  <form #profile="ngForm" (ngSubmit)="profile.form.valid && onClickSubmit(profile.value)">
+
+
+    <div class="row">
+
+      <div class="input-field col s12 l4">
+        <input placeholder="email" name="email" required email #email="ngModel" id="email" type="email" class="validate" [(ngModel)]="profile.email">
+
+        <div *ngIf="profile.submitted && email.invalid" class="card-content white-text red">
+          <div *ngIf="email.errors.required">email is required</div>
+          <div *ngIf="email.errors.email">Email must be a valid email address</div>
+        </div>
+
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field col s12 l4">
+        <input placeholder="first name" id="first_name" #firstName="ngModel" name="firstName" [(ngModel)]="profile.firstName" type="text"
+          required class="validate" data-length="20" minlength="1" maxlength="20">
+
+        <div *ngIf="profile.submitted && firstName.invalid" class="card-content white-text red">
+          <div *ngIf="firstName.errors.required">First Name is required</div>
+
+        </div>
+        <label for="first_name">First Name</label>
+      </div>
+
+      <div class="input-field col s12 l4">
+
+        <input placeholder="last name" id="last_name" #lastName="ngModel" name="lastName" [(ngModel)]="profile.lastName" type="text"
+          required class="validate" data-length="20" minlength="1" maxlength="20">
+
+        <div *ngIf="profile.submitted && lastName.invalid" class="card-content white-text red">
+          <div *ngIf="lastName.errors.required">Last Name is required</div>
+        </div>
+        <label for="last_name">Last Name</label>
+      </div>
+    </div>
+
+    <div class="row ">
+
+      <div class="input-field col s12 l4">
+
+        <select name="genderSelect" #gender="ngModel" required name="gender" materialize="material_select" [materializeSelectOptions]="selectOptions"
+          [(ngModel)]="profile.gender">
+          <option value="" disabled selected>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <label for="genderSelect">Gender</label>
+
+        <div *ngIf="profile.submitted && gender.invalid" class="card-content white-text red">
+          <div *ngIf="gender.errors.required">Gender is required</div>
+        </div>
+      </div>
+
+      
+
+      <div class="input-field col s12 l4">
+         
+          <select  name="religion" materialize="material_select" [materializeSelectOptions]="selectOptions" #religion="ngModel"
+            required [(ngModel)]="profile.religion">
+            <option value="" disabled selected>Select religion</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Jain">Jain</option>
+            <option value="Christian">Christian</option>
+            <option value="Muslim">Muslim</option>
+            <option value="Buddist">Buddhist</option>
+            <option value="Parsi">Parsi</option>
+            <option value="Sikh">Sikh</option>
+            <option value="Sindhi">Sindhi</option>
+            <option value="NA">NA</option>
+          </select>
+          <label for="religion">Religion</label>
+          <div *ngIf="profile.submitted && religion.invalid" class="card-content white-text red">
+            <div *ngIf="religion.errors.required">religion is required</div>
+          </div>
+  
+        </div>
+
+        <div class="input-field col s12 l4">
+            <div>Birth Date</div>
+            <my-date-picker id="mydate" name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" (dateChanged)="onDateChanged($event)"
+              required></my-date-picker>
+          </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col s12 l5 grey-text">
+            <h6>By submitting,I agree to the Privacy Policy and T&C</h6>
+       </div>
+      <div class="col s12 l5">
+        <input class="btn green" type="submit" value="submit">
+      </div>
+    </div>
+
+  </form>
+
+
+
+</div>
+<app-preloader [showProcessing]="showProcessing"></app-preloader>

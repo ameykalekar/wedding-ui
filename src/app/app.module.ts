@@ -30,6 +30,8 @@ import { PaymentResponseComponent } from './components/payment-response/payment-
 import { PaymentFailureComponent } from './components/payment-failure/payment-failure.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ProceduresComponent } from './components/procedures/procedures.component';
+import { SimpleRegisterComponent } from './components/simple-register/simple-register.component';
+import { ProfileStatusComponent } from './components/profile-status/profile-status.component';
 
 const appRoutes: Routes = [
   { path: 'myprofile', component: MyProfileComponent, canActivate: [AuthGuard] }
@@ -64,7 +66,9 @@ const appRoutes: Routes = [
     PaymentResponseComponent,
     PaymentFailureComponent,
     PaymentComponent,
-    ProceduresComponent
+    ProceduresComponent,
+    SimpleRegisterComponent,
+    ProfileStatusComponent
 
   ],
   imports: [
