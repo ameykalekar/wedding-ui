@@ -7,13 +7,25 @@ import { ProfileVo } from '../../vo/profile-vo';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styles: [`
+      nav {
+          height: 0px;
+      }
+      .side-nav {
+          width: 200px;
+      }
+      li.active {
+        background-color: #ee6e73
+      }
+    `]
 })
 export class SearchComponent implements OnInit {
 
   form: FormGroup;
   searchResult: ProfileVo[] = [];
   searchCriteria: ProfileVo;
+  routeNames = ["Buttons", "Carousel", "Chips", "Collapsible", "Dialogs", "Dropdown", "Forms", "Tabs", "DatePicker", "Parallax", "ModelBindings"];
+
 
 
   genders = ['male', 'female'];

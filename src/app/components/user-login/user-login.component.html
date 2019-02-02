@@ -1,11 +1,15 @@
+<div class="front-back1">
 
-<div class="container white">
 
-  <div class="row"  style="margin-top:100px">
+  <div class="row container" style="padding-top:6%">
 
-    <div class="offset-s3 col s5 center  z-depth-1 " id="panell">
+    <div class="offset-s3 col s5 center  card-panel white " id="panell">
       <h5 id="title">Login</h5>
 
+      <div *ngIf ="showInvalidUsername" class="red white-text card-content">
+        Invalid Username/Password
+      </div>
+    
       <div class="col s12">
         <div class="divider"></div>
       </div>
@@ -43,5 +47,7 @@
     </div>
   </div>
 
-</div>
+
 <app-preloader [showProcessing] = "showProcessing"></app-preloader> 
+
+</div>

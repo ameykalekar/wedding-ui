@@ -2,6 +2,7 @@ import { Component, OnInit,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import {LoginService} from  '../../services/login.service';
+import { error } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class UserLoginComponent implements OnInit {
   uid: string;
   pword: string;
   showProcessing:boolean=false;
+  showInvalidUsername:boolean= false;
 
 
   constructor(private loginservice: LoginService
@@ -30,11 +32,22 @@ export class UserLoginComponent implements OnInit {
     this.loginservice.validatelogin(value).subscribe(
       res =>{
         this.showProcessing = false;
+        this.showInvalidUsername = false;
         console.log("logged in successfully");  
         console.log(res);
         this.auth.sendToken(value.userid);
         this.router.navigate(['/myprofile']);
+      },
+      err=> {
+        console.log("in error");
+        console.log(err);
+        if(err.status == "400"){
+          this.showProcessing = false;
+          this.showInvalidUsername = true;
+        } 
       }
     )
   }
 }
+
+

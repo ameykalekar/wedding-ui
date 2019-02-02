@@ -24,7 +24,7 @@
 }
 
 .login-background{
-    background: linear-gradient(to right,white,#e8eaf6);
+    
     z-index: -1;
 }
 
@@ -36,3 +36,19 @@
     background-size: cover;
 }
 
+.border-background {
+    
+    overflow-y: scroll;
+    position:fixed;
+    height: 100%;
+}
+
+
+#style-1::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+} 
+
+#style-1::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
