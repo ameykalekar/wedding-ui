@@ -1,0 +1,261 @@
+<div class="row">
+
+    <div class="col s12 grey lighten-3">
+  
+      <div #carousel class="carousel carousel-slider " [ngClass]="{ 'initialized': false }" materialize="carousel" [materializeActions]="actions">
+        <a *ngFor="let url of imageURLs" class="carousel-item" style="width: 50%"><img height="600" width="300" [src]="url"></a>
+        
+      </div>
+  
+      <div class="section white">
+        <div class="row container ">
+          <div class="col s12 grey lighten-3">
+            <h2 class="header">{{profileVo.firstName}} {{profileVo.lastName}}</h2>
+          </div>
+  
+        </div>
+  
+        <div class="row container">
+          <div class="col s10">
+            <h5 class="section-header">Basic Details</h5>
+          </div>
+          <div class="col s10">
+            <div class="divider"></div>
+          </div>
+  
+        </div>
+  
+  
+        <div class=" row container grey lighten-3" style="padding: 3%">
+          <div class="row container">
+            <div class="col s6">
+              <b>Name</b> : {{profileVo.firstName}}
+            </div>
+  
+            <div class="col s6">
+              <b>Surname</b> : {{profileVo.lastName}}
+            </div>
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Date of birth</b> : {{profileVo.dateOfBirth}}
+            </div>
+            <div class="col s6">
+              <b>Place of Birth</b> : {{profileVo.placeOfBirth}}
+            </div>
+  
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Religion</b> : {{profileVo.religion}}
+            </div>
+            <div class="col s6">
+              <b>Caste</b> : {{profileVo.caste}}
+            </div>
+  
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Marrital Status</b> : {{profileVo.marritalStatus}}
+            </div>
+            <div class="col s6">
+              <b>Height</b> : {{profileVo.heightFeet}} feet {{profileVo.heightInch}} inch
+            </div>
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Complexion</b> : {{profileVo.complexion}}
+            </div>
+  
+            <div class="col s6">
+              <b>Body Type</b> : {{profileVo.bodyType}}
+            </div>
+          </div>
+  
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Challenged</b> : {{profileVo.challenged}}
+            </div>
+          </div>
+        </div>
+  
+        <div class="row container">
+          <div class="col s10">
+            <h5 class="section-header">Educational Qualification</h5>
+          </div>
+          <div class="col s10">
+            <div class="divider"></div>
+          </div>
+  
+        </div>
+  
+  
+        <div class=" row container grey lighten-3" style="padding: 3%">
+          <div class="row container">
+            <div class="col s6">
+              <b>Highest Degree</b> : {{profileVo.highestDegree}}
+            </div>
+            <div class="col s6">
+              <b>UG College</b> : {{profileVo.collegeName}}
+            </div>
+  
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>School Name</b> : {{profileVo.companyName}}
+            </div>
+          </div>
+        </div>
+  
+  
+  
+  
+        <div class="row container">
+          <div class="col s10">
+            <h5 class="section-header">Profession Details</h5>
+          </div>
+          <div class="col s10">
+            <div class="divider"></div>
+          </div>
+  
+        </div>
+  
+        <div class=" row container grey lighten-3" style="padding: 3%">
+  
+          <div class="row container">
+  
+            <div class="col s6">
+              <b>Occupation</b> : {{profileVo.occupation}}
+            </div>
+            <div class="col s6">
+              <b>Anual Income</b> : {{profileVo.annualIncome}} lacs
+            </div>
+          </div>
+  
+  
+  
+          <div class="row container">
+  
+            <div class="col s6">
+              <b>Company Name</b> : {{profileVo.companyName}}
+            </div>
+          </div>
+        </div>
+  
+  
+  
+        <div class="row container">
+          <div class="col s10">
+            <h5 class="section-header">Lifestyle Details</h5>
+          </div>
+          <div class="col s10">
+            <div class="divider"></div>
+          </div>
+  
+        </div>
+  
+        <div class=" row container grey lighten-3" style="padding: 3%">
+  
+  
+          <div class="row container">
+            <div class="col s6">
+              Dietary Habits : {{profileVo.dietaryHabits}}
+            </div>
+  
+            <div class="col s6">
+              Drinking Habits : {{profileVo.drinkingHabits}}
+            </div>
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              Smoking Habits : {{profileVo.smokingHabits}}
+            </div>
+          </div>
+  
+  
+        </div>
+  
+  
+  
+        <div class="row container">
+          <div class="col s10">
+            <h5 class="section-header">Family Details</h5>
+          </div>
+          <div class="col s10">
+            <div class="divider"></div>
+          </div>
+  
+        </div>
+  
+        <div class=" row container grey lighten-3" style="padding: 3%">
+  
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Mother Name</b> : {{profileVo.motherName}}
+            </div>
+  
+            <div class="col s6">
+              <b>Mother is</b> : {{profileVo.motherIs}}
+            </div>
+          </div>
+  
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Father Name</b> : {{profileVo.fatherName}}
+            </div>
+  
+            <div class="col s6">
+              <b>Father is</b> : {{profileVo.fatherIs}}
+            </div>
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Number of Sisters</b> : {{profileVo.numberOfSisters}}
+            </div>
+            <div class="col s6">
+              <b>Number of Brothers</b> : {{profileVo.numberOfBrothers}}
+            </div>
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Gothra</b> : {{profileVo.gothra}}
+            </div>
+  
+          </div>
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Family Income</b> : {{profileVo.familyIncome}}
+            </div>
+            <div class="col s6">
+              <b>Family Type</b> : {{profileVo.familyType}}
+            </div>
+          </div>
+  
+  
+          <div class="row container">
+            <div class="col s6">
+              <b>Family Values</b> : {{profileVo.familyValues}}
+            </div>
+            <div class="col s6">
+              <b>Living with Parents</b> : {{profileVo.livingWithParents}}
+            </div>
+          </div>
+  
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>

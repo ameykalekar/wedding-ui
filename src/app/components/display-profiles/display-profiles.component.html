@@ -1,79 +1,88 @@
-<div *ngIf="showProcessing" class="my-modal">
-  <div class="preloader-wrapper big active" style="margin-top:20%;margin-left: 40%" >
-      <div class="spinner-layer spinner-green-only">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
+<!-- <div class="row"> -->
+
+<!--  <div class="col sl2">
+    <div *ngIf="showProcessing" class="my-modal">
+      <div class="preloader-wrapper big active" style="margin-top:20%;margin-left: 40%">
+        <div class="spinner-layer spinner-green-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
         </div>
       </div>
     </div>
-</div>
-<div>
-    <div class="row container"   id="test"> 
-        <form class="col s12 ">
+   </div>  -->
+<!--    <div>
+      <div class="row" id="test">
+        <form class="col s12">
           <div class="row">
             <div class="input-field col s6 offset-s3">
-        
+
               <input id="icon_prefix" type="text" class="validate" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
               <label for="icon_prefix">Search Profile</label>
             </div>
-            
+
           </div>
         </form>
       </div>
 
-</div>
+    </div> -->
 
-<div class="row container" infiniteScroll
-[infiniteScrollDistance]="1"
-[infiniteScrollThrottle]="50"
-(scrolled)="onScroll()">
-    <div class="{{class}} " *ngFor="let profile of profiles | genericsearch : search "  >
-      <div class="card">
+<div class="row">
+  <div class="col s12 offset-s4">
+    <div class="row" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+      <div class="{{class}} " *ngFor="let profile of profiles | genericsearch : search ">
+        <div class="card">
+          <div style="padding:10px;">
+            <img materialboxed class="materialboxed responsive-img" [src]="getProfileImageLocation(profile.id)">
+            <span class="card-title">{{profile.id}}</span>
+          </div>
+          <div class="card-content">
 
-  
-        <div style="padding:10px;">
-  
-
-          <img materialboxed class="materialboxed responsive-img" src="/api/profile/getProfileImage" >
-          <span class="card-title">{{profile.firstName}}</span>
-        </div>
-        <div class="card-content">
-         
             <table>
-<tr>
-  <td>Name: {{profile.firstName + profile.lastName}}</td>
-  <td>Date Of Birth: {{profile.dateOfBirth}}</td>
-  
-</tr>
+              <tr>
+                <td><span class="small-font grey-text">Name</span>  {{profile.firstName + profile.lastName}}</td>
+                <td><span class="small-font grey-text">Date Of Birth</span> {{profile.dateOfBirth}}</td>
 
-<tr>
-    <td>Caste: {{profile.caste}}</td>
-    <td>Height: {{profile.heightFeet + "." +profile.heightInch}}</td>
-    
-  </tr>
-  <tr>
-      <td>Marital Status: {{profile.marritalStatus}}</td>
-      <td>Occupation: {{profile.occupation}}</td>
-      
-    </tr>
+              </tr>
+
+              <tr>
+                <td><span class="small-font grey-text">Caste</span> {{profile.caste}}</td>
+                <td><span class="small-font grey-text">Height</span> {{profile.heightFeet + "." +profile.heightInch}}</td>
+
+              </tr>
+              <tr>
+                <td><span class="small-font grey-text">Marital Status</span> {{profile.marritalStatus}}</td>
+                <td><span class="small-font grey-text">Occupation</span> {{profile.occupation}}</td>
+
+              </tr>
 
             </table>
 
-        
-        </div>
-        <div class="card-action center">
-          <a href="editprofile/{{profile.id}}">View Profile</a>
+
+          </div>
+          <div class="card-action center">
+            <a href="#" routerLink="/readonly/{{profile.id}}">View Profile</a>
+          </div>
         </div>
       </div>
+
+
+
+
     </div>
-
-
-
 
   </div>
 
+</div>
 
+
+
+<!--   </div> -->
+
+<!-- </div> -->

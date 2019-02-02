@@ -84,7 +84,7 @@ export class SearchComponent implements OnInit {
       maritalstatus: new FormControl(''),
       education: new FormControl(''),
       district: new FormControl(''),
-      caste: new FormControl('', [Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]),
+      caste: new FormControl(''),
       religion: new FormControl(''),
       state: new FormControl(''),
       age: new FormControl('')

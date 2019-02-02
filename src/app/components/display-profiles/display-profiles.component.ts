@@ -21,7 +21,7 @@ export class DisplayProfilesComponent implements OnInit {
 
   showProcessing: boolean;
 
-  class = 'col s12 m4';
+  class = 'col s12 m3';
   constructor(private profileservice: ProfileServiceService) {
 
     console.log('profileconstructor' + this.profiles);
@@ -102,7 +102,10 @@ export class DisplayProfilesComponent implements OnInit {
   }
 
 
+  getProfileImageLocation(id){
 
+      return "/api/profile/getProfileImage/"+id;
+  }
 }
 
 

@@ -32,6 +32,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { ProceduresComponent } from './components/procedures/procedures.component';
 import { SimpleRegisterComponent } from './components/simple-register/simple-register.component';
 import { ProfileStatusComponent } from './components/profile-status/profile-status.component';
+import { ReadonlyProfileComponent } from './components/readonly-profile/readonly-profile.component';
 
 const appRoutes: Routes = [
   { path: 'myprofile', component: MyProfileComponent, canActivate: [AuthGuard] }
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
   , { path: 'search', component: SearchComponent }
   , { path: 'logout', component: LogoutComponent }
   , { path: 'payment', component: PaymentComponent }
+  , { path: 'readonly/:id', component: ReadonlyProfileComponent}
   , { path: '', component: FrontPageComponent }
 
 ];
@@ -68,7 +70,8 @@ const appRoutes: Routes = [
     PaymentComponent,
     ProceduresComponent,
     SimpleRegisterComponent,
-    ProfileStatusComponent
+    ProfileStatusComponent,
+    ReadonlyProfileComponent
 
   ],
   imports: [
