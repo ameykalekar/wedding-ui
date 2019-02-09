@@ -1,7 +1,7 @@
 
 <div class="row container" style="margin-top:50px">
 
-                 <div class="container  ">
+                 <div class="container  " [hidden]="paymentdone">
                                
                                                 <div class="col s6 offset-s3 center ">
                                                   <h3 class="section-header">Make Payment</h3>
@@ -51,7 +51,7 @@
                         <div style="margin:50px" class="center">
                               <button  class ="btn" (click)="pay()">Click To Pay</button>
                         </div>
-                        <app-payment-response [message] ="outmessage" [hidden]="!showSuccess" [color]="color" [responsevo]="responsevo">
+                        <app-payment-response [message] ="responsevo.message" [hidden]="!showSuccess" [color]="responsevo.color" [responsevo]="responsevo">
 
                                 </app-payment-response>
                  </div>

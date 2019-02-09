@@ -22,7 +22,7 @@ export class PaymentComponent implements OnInit {
   hashSequence: string;
   showSuccess = false;
   showFailure = false;
-
+  paymentdone = false;
   responsevo: ResponseVo = new ResponseVo();
 
   @Input('RequestDatas')
@@ -64,7 +64,9 @@ export class PaymentComponent implements OnInit {
 
   pay() {
     console.log('Paying');
-    this.hashSequence = this.RequestData.key + '|' + this.RequestData.txnid + '|' + this.RequestData.amount + '|' + this.RequestData.productinfo + '|' + this.RequestData.firstname + '|' + this.RequestData.email + '|' + '||||||||||' + 'KFSwE2j1';
+    this.hashSequence = this.RequestData.key + '|' + this.RequestData.txnid + '|' +
+      this.RequestData.amount + '|' + this.RequestData.productinfo + '|' + this.RequestData.firstname + '|' +
+      this.RequestData.email + '|' + '||||||||||' + 'KFSwE2j1';
     console.log('hashSequence' + this.hashSequence);
     const enc = cryptos.SHA512(this.hashSequence).toString(cryptos.enc.Hex);
     console.log('Hash' + enc);
@@ -93,6 +95,7 @@ export class PaymentComponent implements OnInit {
             } else {
               this.responsevo.message = 'Payment Successful';
               this.responsevo.color = 'teal darken-1';
+              this.paymentdone = true;
             }
 
             this.responsevo.txnid = BOLT.response.txnid;

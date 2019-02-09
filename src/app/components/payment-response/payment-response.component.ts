@@ -20,8 +20,7 @@ export class PaymentResponseComponent implements OnInit {
   responsevo: ResponseVo;
 
   constructor() {
-
-    console.log(this.message);
+    console.log('Message' + this.message + 'responsevo' + this.responsevo);
   }
 
   ngOnInit() {
