@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
 
   genders = ['male', 'female'];
   mariatalstatus = [{ name: 'Married', value: 'Married' },
-  { name: 'Single', value: 'Single' },
+  { name: 'Single', value: 'unmarried' },
   { name: 'Widow', value: 'Widow' },
   { name: 'Divorced', value: 'Divorced' },
   ];
@@ -57,8 +57,8 @@ export class SearchComponent implements OnInit {
 
 
   religion = [{ name: 'ALL', value: 'ALL' },
-  { name: 'HINDU', value: 'MAHARASTRA' },
-  { name: 'JAIN', value: 'SOLAPUR' }
+  { name: 'HINDU', value: 'HINDU' },
+  { name: 'JAIN', value: 'JAIN' }
 
   ];
   agerange = [{ name: '18-25', value: '18-25' },
@@ -90,10 +90,7 @@ export class SearchComponent implements OnInit {
       age: new FormControl('')
     });
     this.profile = new ProfileVo();
-    this.profile.gender = 'maile';
-    this.profile.firstName = 'Sagar';
-    this.profile.lastName = 'Takare';
-    this.profile.occupation = 'Doctor';
+   
 
 
   }
@@ -112,7 +109,7 @@ export class SearchComponent implements OnInit {
     const profile = new ProfileVo();
     console.log(profile);
     profile.gender = this.form.value.gender;
-    profile.marritalStatus = this.form.value.mariatalstatus;
+    profile.marritalStatus = this.form.value.maritalstatus;
     profile.caste = this.form.value.caste;
     profile.religion = this.form.value.religion;
     profile.highestDegree = this.form.value.education;
