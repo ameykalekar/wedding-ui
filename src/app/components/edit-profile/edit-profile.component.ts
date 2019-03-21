@@ -19,6 +19,20 @@ export class EditProfileComponent implements OnInit {
   showProcessing:boolean=false;
 
 
+  citiesary :String[];
+  
+  religionary = [
+    { name: 'Hindu', value: 'Hindu' },
+    { name: 'Jain', value: 'Jain' },
+    { name: 'Christian', value: 'Christian' },
+    { name: 'Muslim', value: 'Muslim' },
+    { name: 'Buddhist', value: 'Buddhist' },
+    { name: 'Parsi', value: 'Parsi' },
+    { name: 'Sikh', value: 'Sikh' },
+    { name: 'Sindhi', value: 'Sindhi' },
+  ];
+
+
   @ViewChild(ProfileStatusComponent)
   private profileStatusComponent: ProfileStatusComponent;
 
@@ -49,6 +63,9 @@ day:number=1
 public model: any = { date: { year: this.year, month: this.month, day: this.day } };
 
   private img1:string;
+  private img2:string;
+  private img3:string;
+
   ngOnInit() {
     console.log(this.profileId);
     this.profileService.getProfile(this.profileId).subscribe(res=>{
@@ -65,12 +82,17 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
     //  this.profileStatusComponent.profileVo = this.profileVo;
      // this.profileStatusComponent.calculatePercentComplete();
     });
+
+
+    this.getPlaces();
   }
 
   onClickSubmit(profile:ProfileVo){
 
     console.log(profile);
     profile.picture1=this.img1;
+    profile.picture2= this.img2;
+    profile.picture3 = this.img3
     profile.dateOfBirth = this.profileVo.dateOfBirth;
     this.showProcessing = true;
     this.profileService.insertProfile(profile).subscribe(res=>
@@ -87,7 +109,7 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
   }
 
 
-  onFileChange(event) {
+  onFileChange(event,pictureNo) {
     let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
@@ -95,7 +117,16 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
       reader.onload = () => {
         console.log(file.name);
         console.log(file.type);
-        this.img1 =reader.result.toString().split(',')[1]; 
+        if(pictureNo==1){
+          this.img1 =reader.result.toString().split(',')[1]; 
+        } 
+        if(pictureNo ==2){
+          this.img2 =reader.result.toString().split(',')[1]; 
+        }
+        if(pictureNo==3){
+          this.img3 =reader.result.toString().split(',')[1]; 
+        }
+        
       };
     }
   }
@@ -104,6 +135,13 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
     console.log( event.formatted);
     this.profileVo.dateOfBirth = event.formatted;
     console.log(this.profileVo);
+  }
+
+
+  getPlaces(){
+
+    this.profileService.getAllCities().subscribe(x=> this.citiesary = x);
+
   }
 
   clearFile(){

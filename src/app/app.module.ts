@@ -33,17 +33,21 @@ import { ProceduresComponent } from './components/procedures/procedures.componen
 import { SimpleRegisterComponent } from './components/simple-register/simple-register.component';
 import { ProfileStatusComponent } from './components/profile-status/profile-status.component';
 import { ReadonlyProfileComponent } from './components/readonly-profile/readonly-profile.component';
+import { DesiredProfileComponent } from './desired-profile/desired-profile.component';
+import { VisibilitySettingsComponent } from './visibility-settings/visibility-settings.component';
 
 const appRoutes: Routes = [
   { path: 'myprofile', component: MyProfileComponent, canActivate: [AuthGuard] }
   , { path: 'register', component: CreateProfileComponent }
   , { path: 'editprofile/:id', component: EditProfileComponent, canActivate: [AuthGuard] }
+  , { path : 'updateDesiredProfile',component:DesiredProfileComponent}
   , { path: 'front', component: FrontPageComponent }
   , { path: 'login', component: UserLoginComponent }
   , { path: 'search', component: SearchComponent }
   , { path: 'logout', component: LogoutComponent }
   , { path: 'payment', component: PaymentComponent }
   , { path: 'readonly/:id', component: ReadonlyProfileComponent}
+  , { path: 'visibility', component : VisibilitySettingsComponent}
   , { path: '', component: FrontPageComponent }
 
 ];
@@ -71,7 +75,9 @@ const appRoutes: Routes = [
     ProceduresComponent,
     SimpleRegisterComponent,
     ProfileStatusComponent,
-    ReadonlyProfileComponent
+    ReadonlyProfileComponent,
+    DesiredProfileComponent,
+    VisibilitySettingsComponent
 
   ],
   imports: [

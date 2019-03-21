@@ -6,8 +6,10 @@
     <ul id="profileDropDown" class="dropdown-content">
         <li *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="myprofile">My Profile</a></li>
         <li *ngIf="_authService.isLoggednIn()"><a href="#" [routerLink]=getLoggedInUserRoute()>Edit Profile</a></li>
+        <li *ngIf="_authService.isLoggednIn()"><a href="#" [routerLink]=getEditDesiredProfileRoute()>Edit Desired Profile</a></li>
+        <li *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="visibility">Visibility Settings</a></li>
         <li class="divider"></li>
-        <li><a href="#!">Change Password</a></li>
+        <!--<li><a href="#!">Change Password</a></li>-->
         <li *ngIf="_authService.isLoggednIn()"><a href="#" routerLink="logout">Logout</a></li>
     </ul>
 

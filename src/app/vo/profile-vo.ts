@@ -42,6 +42,8 @@ export class ProfileVo {
     maternalGothra: string = "";
     aboutMe: string = "";
     picture1: string = "";
+    picture2: string="";
+    picture3: string="";
     age: number = 18;
     agerange: string = "18-25";
     id: number;

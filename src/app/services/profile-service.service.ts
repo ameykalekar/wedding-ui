@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ProfileVo } from '../vo/profile-vo';
 import { RequestVo } from '../vo/requestvo';
+import { DesiredProfile} from '../vo/desired-profile';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class ProfileServiceService {
     , withCredentials: true
   };
 
+  
 
   constructor(private http: HttpClient) {
   }
@@ -37,5 +39,27 @@ export class ProfileServiceService {
 
   insertSimpleProfile(profileVo: ProfileVo){
     return this.http.post('/api/simple/profile',JSON.stringify(profileVo),this.httpOptions);
+  }
+
+  insertDesiredProfile(desiredProfile : DesiredProfile) {
+    console.log(desiredProfile);
+    return this.http.post('/api/updateDesired' , JSON.stringify(desiredProfile), this.httpOptions);
+  }
+
+
+  getDesiredProfile(){
+    return this.http.get<DesiredProfile>('/api/profile',this.httpOptions);
+  }
+
+  getAllCities(){
+    return this.http.get<String[]>('/api/city/cities',this.httpOptions);
+  }
+
+  updateVisibility(visibility){
+    return this.http.get('/api/visibility/update/'+visibility);
+  }
+
+  getCurrentVisibility(){
+    return this.http.get<any>('/api/visibility/get');
   }
 }

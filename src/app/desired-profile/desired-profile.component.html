@@ -1,0 +1,138 @@
+<div class="row grey lighten-3" style="padding: 2%">
+  <div class="col s10 offset-s1">
+
+
+    <div class="row white">
+      <div class="col s12">
+        <div class="divider"></div>
+      </div>
+    </div>
+
+
+
+    <div class="row white">
+      <div class="col s12">
+        <h4 class="section-header">Desired Profile</h4>
+      </div>
+      <div class="col s12">
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <form #desiredProfile="ngForm" (ngSubmit)="desiredProfile.form.valid && onClickSubmit(desiredProfile.value)">
+      <div class="fixed-action-btn">
+        <input class="waves-effect waves-light btn green" type="submit" value="Update">
+      </div>
+
+
+      <div class="white">
+        <div class="row container">
+          <div class="input-field col s6">
+            <select #agerange="ngModel" [(ngModel)] = "desiredProfileVo.agerange"  multiple name="agerange" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Age Range</option>
+              <option *ngFor="let option of agerangeary" [value]="option.value">{{option.name}}</option>
+
+            </select>
+            <label for="agerange">Age Range</label>
+          </div> 
+
+          <div class="input-field col s6">
+            <select #marritalstatus="ngModel"  [(ngModel)] = "desiredProfileVo.mariatalstatus" multiple name="mariatalstatus" materialize="material_select" [materializeSelectOptions]="selectOptions"
+              [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Marital Status</option>
+              <option *ngFor="let option of mariatalstatus" [value]="option.value">{{option.name}}</option>
+              <!-- <option [value]="Married">Married</option> -->
+            </select>
+            <label for="mariatalstatus">Marital Status</label>
+          </div>
+
+
+        </div>
+
+
+        <div class="row container">
+          <div class="input-field col s6">
+            <select #heightrange="ngModel"  [(ngModel)] = "desiredProfileVo.heightrange" multiple name="heightrange" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Height Range</option>
+              <option *ngFor="let option of heightrangeary" [value]="option.value">{{option.name}}</option>
+
+            </select>
+            <label for="heightrange">Height Range</label>
+          </div>
+
+          <div class="input-field col s6">
+
+            <select #religion="ngModel" multiple  [(ngModel)] = "desiredProfileVo.religion" name="religion" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Religion</option>
+              <option *ngFor="let option of religionary" [value]="option.value">{{option.name}}</option>
+
+            </select>
+            <label for="religion">Religion</label>
+          </div>
+
+
+        </div>
+
+        <div class="row container">
+          <div class="input-field col s6">
+
+            <select #qualification="ngModel"  [(ngModel)] = "desiredProfileVo.qualification" multiple name="qualification" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Qualification</option>
+              <option *ngFor="let option of qualificationary" [value]="option.name">{{option.name}}</option>
+            </select>
+            <label for="qualification">Qualification</label>
+          </div>
+
+          <div class="input-field col s6">
+
+            <select  #income="ngModel"  multiple name="income"  [(ngModel)] = "desiredProfileVo.income" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Income</option>
+              <option *ngFor="let option of incomeary" [value]="option.value">{{option.name}}</option>
+            </select>
+            <label for="income">Income</label>
+          </div>
+        </div>
+
+        <div class="row container">
+          <div class="input-field col s6">
+            <select  #dietaryhabit="ngModel" name="dietaryhabit"  [(ngModel)] = "desiredProfileVo.dietaryhabit" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Dietary Habit</option>
+              <option *ngFor="let option of dietaryhabitary" [value]="option.value">{{option.name}}</option>
+            </select>
+            <label for="dietaryhabit">Dietary Habits</label>
+          </div>
+
+          <div class="input-field col s6">
+            <select #drinking="ngModel" name="drinking"  [(ngModel)] = "desiredProfileVo.drinking" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Drinking Habit</option>
+              <option *ngFor="let option of drinkingary" [value]="option.value">{{option.name}}</option>
+            </select>
+            <label for="drinking">Drinking</label>
+          </div>
+        </div>
+
+        <div class="row container">
+          <div class="input-field col s6">
+            <select #smoking="ngModel"  name="smoking"  [(ngModel)] = "desiredProfileVo.smoking" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+              <option value="" disabled selected>Smoking habits</option>
+              <option *ngFor="let option of smokingary" [value]="option.value">{{option.name}}</option>
+            </select>
+            <label for="smoking">Smoking</label>
+          </div>
+
+          <div class="input-field col s6">
+              <select #smoking="ngModel" name="challenged"  [(ngModel)] = "desiredProfileVo.challenged" materialize="material_select" [materializeSelectOptions]="selectOptions" [disabled]="isDisabled?true:null">
+                <option value="" disabled selected>Challenged</option>
+                <option *ngFor="let option of challengedary" [value]="option.value">{{option.name}}</option>
+              </select>
+              <label for="challenged">Challenged</label>
+            </div>
+
+        </div>
+
+
+      </div>
+    </form>
+
+  </div>
+</div>

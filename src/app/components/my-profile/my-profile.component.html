@@ -13,6 +13,19 @@
       </div>
      -->
     <div class="section white">
+
+        <div *ngIf="paid" class="row container ">
+            <div class="col s12 grey lighten-3">
+              <h6 class="header">Your paid subscription ends on : 01/01/2019</h6>
+            </div>
+        </div>
+
+        <div *ngIf="paid==false" class="row container ">
+            <div class="col s12 grey lighten-3">
+              <h6 class="header">You are free subscriber. To subscribe <a href="#" routerLink="/payment">click here</a></h6>
+            </div>
+        </div> 
+
       <div class="row container ">
         <div class="col s12 grey lighten-3">
           <h4 class="section-header">Welcome,</h4>

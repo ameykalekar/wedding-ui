@@ -18,5 +18,9 @@ export class LandingPageComponent implements OnInit {
     return "editprofile/"+ this._authService.getUserId();
   }
 
+  getEditDesiredProfileRoute(){
+    return "updateDesiredProfile"
+  }
+
 
 }

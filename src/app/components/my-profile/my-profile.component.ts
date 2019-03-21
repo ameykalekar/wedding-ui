@@ -13,13 +13,15 @@ export class MyProfileComponent implements OnInit {
 
   @ViewChild('carousel') carouselElement; 
 
+  paid:boolean = true;
 
   actions = new EventEmitter<string>();
 
+  image1 = "/api/profile/getProfileImage/"+this.authService.getUserId() + "/1";
+  image2 = "/api/profile/getProfileImage/"+this.authService.getUserId() + "/2";
+  image3 = "/api/profile/getProfileImage/"+this.authService.getUserId() + "/3";
   imageURLs = [
-    "/api/profile/getProfileImage/13",
-    "/api/profile/getProfileImage/13",
-    "/api/profile/getProfileImage/13"
+    this.image1,this.image2,this.image3
   ];
 
   showInitialized = false;
@@ -27,10 +29,10 @@ export class MyProfileComponent implements OnInit {
 constructor(private authService:AuthService,private profileService:ProfileServiceService) {
 
   window.setTimeout(() => {
-    this.imageURLs = [this.imageURLs[0], ...this.imageURLs]; // duplicate the first iamge
+   // this.imageURLs = [this.imageURLs[0], ...this.imageURLs]; // duplicate the first iamge
     this.carouselElement.nativeElement.classList.toggle("initialized")
     this.actions.emit("carousel");
-  },3000);
+  },5000);
  }
 
 

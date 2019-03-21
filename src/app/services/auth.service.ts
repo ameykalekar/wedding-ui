@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   getUserId(){
-    
+    console.log(localStorage.getItem("LoggedInUser"));
      return localStorage.getItem("LoggedInUser"); 
   }
 }
