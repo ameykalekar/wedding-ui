@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProfileServiceService } from '../../services/profile-service.service';
 import { Router } from '@angular/router';
 import { ProfileVo } from '../../vo/profile-vo';
+import { City } from '../../vo/city-vo';
 
 @Component({
   selector: 'app-search',
@@ -43,17 +44,10 @@ export class SearchComponent implements OnInit {
   { name: 'BA', value: 'BAs' },
   ];
 
-  district = [{ name: 'ALL', value: 'ALL' },
-  { name: 'NASHIK', value: 'NASHIK' },
-  { name: 'SOLAPUR', value: 'SOLAPUR' }
+  district: City[];
 
-  ];
+  state: String[];
 
-  state = [{ name: 'ALL', value: 'ALL' },
-  { name: 'MAHARASTRA', value: 'MAHARASTRA' },
-  { name: 'SOLAPUR', value: 'SOLAPUR' }
-
-  ];
 
 
   religion = [{ name: 'ALL', value: 'ALL' },
@@ -73,11 +67,18 @@ export class SearchComponent implements OnInit {
   { name: 'Widow', value: 'Widow' },
   { name: 'Divorced', value: 'Divorced' },
   ];
-  constructor(private profileservice: ProfileServiceService, private router: Router) {
+  constructor(private profileservice: ProfileServiceService, private router: Router, private zone: NgZone, private ref: ChangeDetectorRef) {
 
   }
 
+  profiles: any;
+
+  profile: ProfileVo;
+
+
   ngOnInit() {
+    this.getStates();
+
 
     this.form = new FormGroup({
       gender: new FormControl(this.genders[0], Validators.required),
@@ -90,14 +91,46 @@ export class SearchComponent implements OnInit {
       age: new FormControl('')
     });
     this.profile = new ProfileVo();
-   
+
 
 
   }
+  getStates() {
 
-  profiles: any;
+    this.profileservice.getAllStates().subscribe(x => this.state = x);
 
-  profile: ProfileVo;
+  }
+
+
+  getCitiesByStates() {
+    this.profileservice.getCitiesByStates(this.form.value.state).subscribe(res => {
+
+      this.zone.run(() => {
+        if (res !== null) {
+          this.district = res;
+
+          console.log("District" + this.district);
+          this.ref.detectChanges();
+
+          
+        }
+      });
+
+
+    },
+      err => {
+
+        console.log('Error Occured' + err);
+      }
+
+
+    );
+
+  }
+
+
+
+
 
   reset() {
     this.form.reset();

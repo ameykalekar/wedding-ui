@@ -28,7 +28,7 @@
 
           <div class="input-field ">
             <select formControlName="maritalstatus" name="MarritalStatus" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions"
-              [disabled]="isDisabled?true:null">
+             >
               <option value="" disabled selected>Marital Status</option>
               <option *ngFor="let option of mariatalstatus" [value]="option.value">{{option.name}}</option>
               <option [value]="Married">Married</option>
@@ -42,7 +42,7 @@
         <div class="col s9">
           <div class="input-field">
             <select name="singleSelect" formControlName="education" name="education" materialize="material_select" [materializeSelectOptions]="selectOptions"
-              [disabled]="isDisabled?true:null">
+             >
               <option value="" disabled selected>Education</option>
               <option *ngFor="let option of Education" [value]="option.value">{{option.name}}</option>
             </select>
@@ -52,28 +52,11 @@
 
       <div class="row">
         <div class="col s9">
-          <div class="input-field ">
-            <select name="singleSelect" formControlName="district" name="district" materialize="material_select" [materializeSelectOptions]="selectOptions"
-              [disabled]="isDisabled?true:null">
-              <option value="" disabled selected>District</option>
-              <option *ngFor="let option of district" [value]="option.value">{{option.name}}</option>
-
-            </select>
-            <label for="district">District</label>
-          </div>
-        </div>
-      </div>
-
-
-
-
-      <div class="row">
-        <div class="col s9">
           <div class="input-field">
             <select name="singleSelect" formControlName="state" name="state" materialize="material_select" [materializeSelectOptions]="selectOptions"
-              [disabled]="isDisabled?true:null">
+               (change)="getCitiesByStates()">
               <option value="" disabled selected>State</option>
-              <option *ngFor="let option of state" [value]="option.value">{{option.name}}</option>
+              <option *ngFor="let option of state" [value]="option">{{option}}</option>
 
             </select>
             <label for="state">State</label>
@@ -84,11 +67,37 @@
 
 
 
+
+
+      <div class="row">
+        <div class="col s9"  >
+            <div class="input-field">
+                <select name="singleSelect"  name="district" materialize="material_select" [materializeSelectOptions]="selectOptions"
+                  >
+              
+                  <option *ngFor="let option of district" [value]="option.id">{{option.name}}</option>
+                 
+    
+                </select>
+                <label for="district">District</label>
+              </div>
+        
+          
+        </div>
+      </div>
+
+
+
+
+     
+
+
+
       <div class="row">
         <div class="col s9">
           <div class="input-field">
             <select name="singleSelect" formControlName="age" name="agerange" materialize="material_select" [materializeSelectOptions]="selectOptions"
-              [disabled]="isDisabled?true:null">
+             >
               <option value="" disabled selected>Age Range</option>
               <option *ngFor="let option of agerange" [value]="option.value">{{option.name}}</option>
 
@@ -103,7 +112,7 @@
 
           <div class="input-field">
             <select name="singleSelect" formControlName="religion" name="religion" materialize="material_select" [materializeSelectOptions]="selectOptions"
-              [disabled]="isDisabled?true:null">
+              >
               <option value="" disabled selected>Religion</option>
               <option *ngFor="let option of religion" [value]="option.value">{{option.name}}</option>
 

@@ -1,6 +1,6 @@
 export class ResponseVo {
 
-
+    profileid: string;
     message: string;
     color: string;
     txnStatus: string;

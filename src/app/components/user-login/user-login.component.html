@@ -18,7 +18,7 @@
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="userid" [(ngModel)]="uid" minlength="1" maxlength="10" name="userid" #userid="ngModel" type="text" required>
+            <input id="userid" [(ngModel)]="uid" minlength="1" maxlength="40" name="userid" #userid="ngModel" type="text" required>
             <div *ngIf="user.submitted && userid.invalid" class="card-content white-text red">
               <div *ngIf="userid.errors.required">User Id is required</div>
               <div *ngIf="userid.errors.minlength">User Id cannot be less than 3 characters</div>

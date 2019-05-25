@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RequestVo } from '../../vo/requestvo';
 import { ProfileServiceService } from '../../services/profile-service.service';
 import { ResponseVo } from '../../vo/responsevo';
+import { PaymentService } from '../../services/payment.service';
 declare var bolt: any;
 
 @Component({
@@ -43,7 +44,7 @@ export class PaymentComponent implements OnInit {
   };
 
 
-  constructor(private router: Router, private profileservice: ProfileServiceService) {
+  constructor(private router: Router, private profileservice: ProfileServiceService, private paymentservice: PaymentService) {
 
   }
 
@@ -114,7 +115,7 @@ export class PaymentComponent implements OnInit {
 
             console.log(JSON.stringify(this.responsevo));
 
-
+this.paymentservice.insertPayment(this.responsevo);
 
           },
           catchException: (BOLT) => {
@@ -135,7 +136,7 @@ export class PaymentComponent implements OnInit {
             this.responsevo.status = BOLT.response.status;
             this.responsevo.error = BOLT.response.txnMessage;
             this.responsevo.error_Message = BOLT.response.error_Message;
-
+            this.paymentservice.insertPayment(this.responsevo);
 
           }
         });
