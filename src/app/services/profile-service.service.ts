@@ -64,6 +64,19 @@ export class ProfileServiceService {
     return this.http.get<City[]>('/api/states/' + state, this.httpOptions);
   }
 
+
+  getAllCastes() {
+    return this.http.get<String[]>('/api/caste/castes', this.httpOptions);
+  }
+
+  getAllRelligions() {
+    return this.http.get<String[]>('/api/religions', this.httpOptions);
+  }
+
+  getCastesByReligion(religion: String) {
+    return this.http.get<City[]>('/api/religions/' + religion, this.httpOptions);
+  }
+
   updateVisibility(visibility) {
     return this.http.get('/api/visibility/update/' + visibility);
   }

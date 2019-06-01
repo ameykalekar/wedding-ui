@@ -18,6 +18,6 @@ export class PaymentService {
 
 
   insertPayment(pay: ResponseVo) {
-    return this.http.post('/api/profile', JSON.stringify(pay), this.httpOptions);
+    return this.http.post('/api/paymentresponse', JSON.stringify(pay), this.httpOptions);
   }
 }

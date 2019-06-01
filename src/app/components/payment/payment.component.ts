@@ -18,11 +18,11 @@ declare var bolt: any;
 export class PaymentComponent implements OnInit {
 
   form: FormGroup;
-  outmessage: string = '';
+  outmessage = '';
   color = '';
   hashSequence: string;
-  showSuccess = false;
-  showFailure = false;
+  showSuccess = true;
+  showFailure = true;
   paymentdone = false;
   responsevo: ResponseVo = new ResponseVo();
 
@@ -59,6 +59,9 @@ export class PaymentComponent implements OnInit {
       phone: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
       caste: new FormControl('', [Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]),
     });
+
+
+    console.log('Printing shosucces flag' +  this.showSuccess);
   }
 
 
@@ -87,7 +90,7 @@ export class PaymentComponent implements OnInit {
             console.log('Printing response' + JSON.stringify(BOLT.response));
 
 
-            this.showSuccess = true;
+            this.showSuccess = false;
             if (BOLT.response.txnStatus === 'CANCEL') {
               this.outmessage = 'Payment Cancelled By User';
               this.color = 'red darken-3';
@@ -115,7 +118,7 @@ export class PaymentComponent implements OnInit {
 
             console.log(JSON.stringify(this.responsevo));
 
-this.paymentservice.insertPayment(this.responsevo);
+    this.paymentservice.insertPayment(this.responsevo);
 
           },
           catchException: (BOLT) => {

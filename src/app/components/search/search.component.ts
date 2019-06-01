@@ -41,18 +41,35 @@ export class SearchComponent implements OnInit {
   Education = [{ name: 'ALL', value: 'ALL' },
   { name: 'BE', value: 'BE' },
   { name: 'ME', value: 'ME' },
-  { name: 'BA', value: 'BAs' },
+  { name: 'BA', value: 'BA' },
+  { name: 'MA', value: 'MA' },
+  { name: 'MS', value: 'MS' },
+
   ];
+
+  hideDistrict = true;
 
   district: City[];
 
   state: String[];
 
 
+  religions: String[];
+
+  castes: City[];
+
 
   religion = [{ name: 'ALL', value: 'ALL' },
-  { name: 'HINDU', value: 'HINDU' },
-  { name: 'JAIN', value: 'JAIN' }
+  { name: 'Buddhist', value: 'Buddhist' },
+  { name: 'Christian', value: 'Christian' },
+  { name: 'Hindu', value: 'Hindu' },
+  { name: 'Jain', value: 'Jain' },
+
+  { name: 'Muslim', value: 'Muslim' },
+
+  { name: 'Parsi', value: 'Parsi' },
+  { name: 'Sikh', value: 'Sikh' },
+  { name: 'Sindhi', value: 'Sindhi' },
 
   ];
   agerange = [{ name: '18-25', value: '18-25' },
@@ -78,7 +95,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.getStates();
-
+    this.getReligions();
 
     this.form = new FormGroup({
       gender: new FormControl(this.genders[0], Validators.required),
@@ -101,10 +118,26 @@ export class SearchComponent implements OnInit {
 
   }
 
+  getReligions() {
+
+    this.profileservice.getAllRelligions().subscribe(x => {
+      this.religions = x;
+      console.log('religions' + this.religions);
+
+
+    }
+    );
+
+    console.log('Religions ' + this.religions);
+
+  }
+
+
 
   getCitiesByStates() {
-    this.profileservice.getCitiesByStates(this.form.value.state).subscribe(res => {
 
+    this.profileservice.getCitiesByStates(this.form.value.state).subscribe(res => {
+      this.hideDistrict = false;
       this.zone.run(() => {
         if (res !== null) {
           this.district = res;
@@ -112,7 +145,7 @@ export class SearchComponent implements OnInit {
           console.log("District" + this.district);
           this.ref.detectChanges();
 
-          
+
         }
       });
 
@@ -128,7 +161,32 @@ export class SearchComponent implements OnInit {
 
   }
 
+  getCasteByReligion() {
+    this.castes = [];
+    this.profileservice.getCastesByReligion(this.form.value.religion).subscribe(res => {
 
+      this.zone.run(() => {
+        if (res !== null) {
+          this.castes = res;
+
+          console.log("Caste" + this.castes);
+          this.ref.detectChanges();
+
+
+        }
+      });
+
+
+    },
+      err => {
+
+        console.log('Error Occured' + err);
+      }
+
+
+    );
+
+  }
 
 
 

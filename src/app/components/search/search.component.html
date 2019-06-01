@@ -69,12 +69,12 @@
 
 
 
-      <div class="row">
+      <div class="row" [hidden] ='hideDistrict'  *ngIf="district?.length > 0">
         <div class="col s9"  >
             <div class="input-field">
                 <select name="singleSelect"  name="district" materialize="material_select" [materializeSelectOptions]="selectOptions"
                   >
-              
+                  <option value="" disabled selected>District</option>
                   <option *ngFor="let option of district" [value]="option.id">{{option.name}}</option>
                  
     
@@ -107,14 +107,14 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" *ngIf="religions?.length > 0" >
         <div class="col s9">
 
           <div class="input-field">
             <select name="singleSelect" formControlName="religion" name="religion" materialize="material_select" [materializeSelectOptions]="selectOptions"
-              >
+            (change)="getCasteByReligion()" >
               <option value="" disabled selected>Religion</option>
-              <option *ngFor="let option of religion" [value]="option.value">{{option.name}}</option>
+              <option *ngFor="let religion of religions" [value]="religion">{{religion}}</option>
 
             </select>
             <label for="religion">Religion</label>
@@ -122,18 +122,24 @@
         </div>
       </div>
 
-      <div class="row">
+
+      <div class="row" *ngIf="castes?.length > 0" >
         <div class="col s9">
-          <div class="input-field ">
-            <input id="caste" type="text" formControlName="caste" [ngClass]="{
-                  'invalid ng-invalid': form.controls.caste.invalid && form.controls.caste.dirty,
-                  'valid': form.controls.caste.valid && form.controls.caste.dirty 
-                 
-                }">
-            <label for="cast">Caste</label>
+
+          <div class="input-field">
+            <select name="singleSelect" formControlName="caste" name="caste" materialize="material_select" [materializeSelectOptions]="selectOptions"
+              >
+              <option value="" disabled selected>Caste</option>
+              <option *ngFor="let caste of castes" [value]="caste.name">{{caste.name}}</option>
+
+            </select>
+            <label for="caste">Caste</label>
           </div>
         </div>
       </div>
+
+
+     
 
 
 

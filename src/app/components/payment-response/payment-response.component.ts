@@ -13,7 +13,7 @@ export class PaymentResponseComponent implements OnInit {
 
 
   @Input('color')
-  color: string;
+  color: string = 'green';
 
 
   @Input('responsevo')
