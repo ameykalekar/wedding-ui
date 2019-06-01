@@ -1,8 +1,12 @@
 <div class="row">
 
-  <form #profile="ngForm" (ngSubmit)="profile.form.valid && onClickSubmit(profile.value)">
+  <form #profile="ngForm" (ngSubmit)="profile.form.valid && onClickSubmit(profile.value,profile)">
 
-
+    <div *ngIf="usercreated"
+    class="card-panel  light-green accent-4 "
+    style="padding: 5px; margin: 10px">
+    <span class="white-text">User Created Successfully;Kindly Check your Email or Mobile for further Details</span>
+  </div>
     <div class="row">
 
       <div class="input-field col s12 l4">
