@@ -30,10 +30,15 @@ export class SimpleRegisterComponent implements OnInit {
     this.showProcessing = true;
     this.profileService.insertSimpleProfile(profile).subscribe(res => {
       this.showProcessing = false;
-      console.log(res);
-      this.usercreated = true;
 
+      if (res ==null) {
+      this.usercreated = false;
+      } else {
+      this.usercreated = true;
       form.resetForm();
+      }
+
+
     });
   }
 

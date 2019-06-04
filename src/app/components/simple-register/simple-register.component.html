@@ -5,8 +5,15 @@
     <div *ngIf="usercreated"
     class="card-panel  light-green accent-4 "
     style="padding: 5px; margin: 10px">
-    <span class="white-text">User Created Successfully;Kindly Check your Email or Mobile for further Details</span>
+    <span class="white-text">User Created Successfully. Kindly Check your Email or Mobile for further Details</span>
   </div>
+  
+  	
+    <div *ngIf="usercreated==false"
+    class="card-panel  red accent-4 "
+    style="padding: 5px; margin: 10px">
+    <span class="white-text">Unable to create user. Email already registered</span>
+  	</div>
     <div class="row">
 
       <div class="input-field col s12 l4">
