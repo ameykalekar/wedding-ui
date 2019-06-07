@@ -21,6 +21,11 @@
 
     
     <form #profile="ngForm" (ngSubmit)="profile.form.valid && onClickSubmit(profile.value)">
+      <div *ngIf="showError==true"
+    	class="card-panel  red accent-4 "
+    	style="padding: 5px; margin: 10px">
+    	<span class="white-text">Unable to create user. Email already registered</span>
+  		</div>
       <div class="fixed-action-btn">
         <input class="waves-effect waves-light btn green" type="submit" value="Update">
       </div>

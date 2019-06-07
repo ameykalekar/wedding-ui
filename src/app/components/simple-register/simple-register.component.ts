@@ -12,6 +12,7 @@ export class SimpleRegisterComponent implements OnInit {
   showProcessing: boolean = false;
   dateOfBirth: any;
   usercreated = false;
+  showerror:boolean = false;
 
   constructor(private profileService: ProfileServiceService) { }
 
@@ -33,6 +34,7 @@ export class SimpleRegisterComponent implements OnInit {
 
       if (res ==null) {
       this.usercreated = false;
+      this.showerror = true;
       } else {
       this.usercreated = true;
       form.resetForm();

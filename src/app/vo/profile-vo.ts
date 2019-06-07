@@ -50,4 +50,5 @@ export class ProfileVo {
     start: number;
     maxLimit: number = 5;
     marritalStatus: string;
+    userName:string;
 }

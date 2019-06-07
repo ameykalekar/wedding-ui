@@ -3,6 +3,7 @@ import { ProfileServiceService} from '../../services/profile-service.service';
 import { ProfileVo } from '../../vo/profile-vo';
 import {ActivatedRoute,Router}  from "@angular/router";
 import { ProfileStatusComponent} from  '../profile-status/profile-status.component';
+import { UsePipeTransformInterfaceRule } from 'index.js';
 import {IMyDpOptions} from 'mydatepicker';
 
 @Component({
@@ -66,6 +67,7 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
   private img2:string;
   private img3:string;
 
+  showError:boolean=false;
   ngOnInit() {
     console.log(this.profileId);
     this.profileService.getProfile(this.profileId).subscribe(res=>{
@@ -94,6 +96,7 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
     profile.picture2= this.img2;
     profile.picture3 = this.img3
     profile.dateOfBirth = this.profileVo.dateOfBirth;
+    profile.userName = this.profileVo.userName;
     this.showProcessing = true;
     this.profileService.insertProfile(profile).subscribe(res=>
     {
@@ -101,7 +104,10 @@ public model: any = { date: { year: this.year, month: this.month, day: this.day 
       this.showProcessing = false;
       this.router.navigate['myprofile'];
 
-    });
+    },error=>{
+      this.showProcessing = false;
+      this.showError = true;
+      });
   }
 
   log(dt1){
